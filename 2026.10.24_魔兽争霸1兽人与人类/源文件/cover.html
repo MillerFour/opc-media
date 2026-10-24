@@ -9,6 +9,7 @@
     -webkit-font-smoothing: antialiased;
     background: #52525b;
   }
+  .serif { font-family: 'STZhongsong','STSong','SimSun',serif; }
   .cover {
     width: 900px; height: 383px;
     position: relative; overflow: hidden;
@@ -51,22 +52,26 @@
   .tag {
     display: inline-flex; align-items: center; gap: 8px;
     border: 1px solid var(--tag-br); border-radius: 9999px;
-    padding: 4px 14px; font-size: 11.5px; font-weight: 600;
-    letter-spacing: .14em; color: var(--tag-fg); margin-bottom: 18px;
+    padding: 5px 15px; font-size: 11.5px; font-weight: 600;
+    letter-spacing: .16em; color: var(--gold); margin-bottom: 18px;
   }
-  .tag .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--dot); }
+  .tag .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
   h1 {
-    font-size: 54px; font-weight: 800; letter-spacing: -0.035em;
+    font-size: 56px; font-weight: 800; letter-spacing: -0.01em;
     line-height: 1.12; color: var(--fg); margin-bottom: 14px; white-space: nowrap;
   }
   h1 .num {
     font-variant-numeric: tabular-nums;
-    color: var(--num); padding-right: 6px;
+    color: var(--num); padding-left: 10px; letter-spacing: -0.02em;
   }
   .sub {
-    font-size: 17px; line-height: 1.6; color: var(--muted); letter-spacing: .01em;
+    font-size: 17px; line-height: 1.6; color: var(--muted); letter-spacing: .02em;
   }
   .sub b { color: var(--fg); font-weight: 600; }
+  .rule {
+    margin-top: 18px; padding-top: 12px; border-top: 1px solid var(--rule);
+    font-size: 11.5px; letter-spacing: .2em; color: var(--rule-text);
+  }
   .foot {
     position: absolute; left: 48px; bottom: 26px;
     font-size: 11.5px; letter-spacing: .1em; color: var(--foot);
@@ -76,9 +81,9 @@
   .foot::before { content: ""; width: 26px; height: 1px; background: var(--foot-line); }
   .slogan {
     position: absolute; left: 64px; bottom: 68px;
-    font-size: 13px; font-weight: 600; letter-spacing: .04em; color: var(--muted);
+    font-size: 13.5px; font-weight: 600; letter-spacing: .06em; color: var(--muted);
   }
-  .slogan b { color: var(--fg); font-weight: 700; }
+  .slogan b { color: var(--gold); font-weight: 700; }
   .term {
     width: 330px; flex: none;
     border: 1px solid var(--term-br); border-radius: 14px;
@@ -95,48 +100,53 @@
   .term-bar .ttl { margin-left: 8px; font-size: 10.5px; color: var(--term-muted); letter-spacing: .06em; font-family: "SFMono-Regular", Consolas, monospace; }
   .term-body { padding: 14px 16px 16px; font-family: "SFMono-Regular", Consolas, "Courier New", monospace; font-size: 11.5px; line-height: 2.0; }
   .term-body .cmd { color: var(--term-muted); margin-bottom: 6px; font-size: 10.5px; }
-  .term-body .cmd .p { color: var(--accent); }
+  .term-body .cmd .p { color: var(--gold); }
   .row { display: grid; grid-template-columns: 62px 1fr auto; align-items: center; gap: 10px; }
-  .row .st { color: var(--accent); font-weight: 600; }
+  .row .st { color: var(--gold); font-weight: 600; }
   .row .bar { height: 5px; border-radius: 9999px; background: var(--track); overflow: hidden; }
   .row .bar i { display: block; height: 100%; background: var(--fill); border-radius: 9999px; }
-  .row .nm { color: var(--fg); font-weight: 600; width: 104px; text-align: right; font-size: 10.5px; }
-  .dark {
-    --grid: rgba(255,255,255,.045);
-    --glow: rgba(161,161,170,.10);
-    --fg: #fafafa; --muted: #a1a1aa; --num: #d4d4d8;
-    --tag-br: rgba(255,255,255,.16); --tag-fg: #d4d4d8; --dot: #fafafa;
-    --foot: #71717a; --foot-line: #3f3f46;
-    --term-bg: #111113; --term-br: #27272a; --term-muted: #71717a;
-    --term-shadow: 0 24px 60px rgba(0,0,0,.5);
-    --tdot: #3f3f46; --accent: #fafafa; --track: #232327; --fill: #d4d4d8;
-    background: #09090b;
+  .row .nm { color: var(--term-fg); font-weight: 600; width: 104px; text-align: right; font-size: 10.5px; }
+  /* 深蓝夜空版 */
+  .navy {
+    --grid: rgba(201,162,75,.07);
+    --glow: rgba(201,162,75,.10);
+    --fg: #f3ead2; --muted: #8a94ad; --num: #c9a24b; --gold: #c9a24b;
+    --tag-br: #3d4a6b;
+    --rule: #2a3550; --rule-text: #5a6580;
+    --foot: #5a6580; --foot-line: #2a3550;
+    --term-bg: #111a30; --term-br: #2a3550; --term-muted: #5a6580; --term-fg: #f3ead2;
+    --term-shadow: 0 24px 60px rgba(0,0,0,.55);
+    --tdot: #3d4a6b; --track: #1a2440; --fill: #c9a24b;
+    background: #0d1526;
   }
-  .light {
-    --grid: rgba(9,9,11,.05);
-    --glow: rgba(24,24,27,.06);
-    --fg: #09090b; --muted: #52525b; --num: #3f3f46;
-    --tag-br: #e4e4e7; --tag-fg: #3f3f46; --dot: #09090b;
-    --foot: #a1a1aa; --foot-line: #d4d4d8;
-    --term-bg: #ffffff; --term-br: #e4e4e7; --term-muted: #a1a1aa;
-    --term-shadow: 0 20px 50px rgba(9,9,11,.12);
-    --tdot: #d4d4d8; --accent: #09090b; --track: #f4f4f5; --fill: #18181b;
-    background: #fafafa;
+  /* 浅色羊皮纸版 */
+  .cream {
+    --grid: rgba(33,29,21,.05);
+    --glow: rgba(168,132,52,.10);
+    --fg: #211d15; --muted: #6b6552; --num: #a88434; --gold: #a88434;
+    --tag-br: #d8cfb8;
+    --rule: #e6dfcd; --rule-text: #a89f88;
+    --foot: #a89f88; --foot-line: #d8cfb8;
+    --term-bg: #0d1526; --term-br: #2a3550; --term-muted: #5a6580; --term-fg: #f3ead2;
+    --term-shadow: 0 20px 50px rgba(33,29,21,.18);
+    --tdot: #3d4a6b; --track: #1a2440; --fill: #c9a24b;
+    background: #faf7ef;
   }
   .spacer { height: 40px; }
 </style>
 </head>
 <body>
 
-<!-- ============ 2.3 比例 · 浅色 ============ -->
-<div class="cover light" id="light">
+<!-- ============ 2.3 比例 · 深蓝夜空版 ============ -->
+<div class="cover navy" id="navy">
   <div class="grid-bg"></div>
   <div class="glow"></div>
   <div class="content">
     <div class="left">
       <div class="tag"><span class="dot"></span>游戏考古 · GAME RETRO</div>
-      <h1>魔兽争霸 <span class="num">1994</span></h1>
+      <h1 class="serif">魔兽争霸<span class="num">1994</span></h1>
       <div class="sub"><b>兽人与人类</b>：第一次战争全回顾</div>
+      <div class="rule">黑暗之门 ｜ 兽人北进 ｜ 王国陷落</div>
     </div>
     <div class="term">
       <div class="term-bar"><i></i><i></i><i></i><span class="ttl">wc1 — campaign · the first war</span></div>
@@ -153,15 +163,16 @@
 
 <div class="spacer"></div>
 
-<!-- ============ 2.3 比例 · 深色 ============ -->
-<div class="cover dark" id="dark">
+<!-- ============ 2.3 比例 · 浅色羊皮纸版 ============ -->
+<div class="cover cream" id="cream">
   <div class="grid-bg"></div>
   <div class="glow"></div>
   <div class="content">
     <div class="left">
       <div class="tag"><span class="dot"></span>游戏考古 · GAME RETRO</div>
-      <h1>魔兽争霸 <span class="num">1994</span></h1>
+      <h1 class="serif">魔兽争霸<span class="num">1994</span></h1>
       <div class="sub"><b>兽人与人类</b>：第一次战争全回顾</div>
+      <div class="rule">黑暗之门 ｜ 兽人北进 ｜ 王国陷落</div>
     </div>
     <div class="term">
       <div class="term-bar"><i></i><i></i><i></i><span class="ttl">wc1 — campaign · the first war</span></div>
@@ -178,13 +189,13 @@
 
 <div class="spacer"></div>
 
-<!-- ============ 方版 1x1 · 浅色 ============ -->
-<div class="cover-square light" id="square-light">
+<!-- ============ 方版 1x1 · 深蓝夜空版 ============ -->
+<div class="cover-square navy" id="square-navy">
   <div class="grid-bg"></div>
   <div class="glow"></div>
   <div class="content-col">
     <div class="tag" style="margin-bottom:26px;"><span class="dot"></span>游戏考古 · GAME RETRO</div>
-    <h1 style="font-size:80px;margin-bottom:18px;">魔兽争霸 <span class="num">1994</span></h1>
+    <h1 class="serif" style="font-size:80px;margin-bottom:18px;">魔兽争霸<span class="num">1994</span></h1>
     <div class="sub" style="font-size:20px;margin-bottom:36px;"><b>兽人与人类</b>：第一次战争全回顾</div>
     <div class="term term-wide">
       <div class="term-bar"><i></i><i></i><i></i><span class="ttl">wc1 — campaign · the first war</span></div>
