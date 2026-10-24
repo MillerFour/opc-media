@@ -35,6 +35,12 @@ E:\Writing\wx-mp\
 - **羊皮卷**（别名：史诗/chronicle/编年史风）——基线 `2026.10.24_魔兽编年史导读/正文.html` + `00-模板/cover-chronicle.html`；叙事/历史/游戏题材
 - 用户指定风格名则用之；未指定按题材推断并说明。完整规范见 `E:\Writing\wx-mp\.workbuddy\style-guide.md`，每次创作前先读它。封面必须与正文同风格。
 
+## 插图风格（强制，2026.10.24 起）
+
+- **禁用黑白版画风**；必须彩色，且贴近**魔兽官方美术风格**（提示词要点：official Warcraft game art style / WoW expansion key art，粗笔触厚涂、夸张英雄体造型、高饱和金蓝红配色、戏剧性轮廓光）
+- 每篇 2 张，按从上到下顺序编号 `插图_1_xxx.jpg`、`插图_2_xxx.jpg`，ffmpeg 缩 1200px 转 JPEG（≤1MB）
+- 系列封面用 `00-模板/cover-generator.py` 参数化生成（2.3 深蓝 + 方版 1x1），系列视觉统一
+
 ## 推送链路（言序连接器）
 
 - 全链路：get_upload_channel 上传（一次性 ticket，每张图一个通道；scene=cover/body）→ create_article（title≤30 字、abstract≤100 字硬校验）→ publish_article

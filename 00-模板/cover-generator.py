@@ -1,0 +1,124 @@
+# -*- coding: utf-8 -*-
+"""从参数生成魔兽系列羊皮卷封面（2.3深蓝 + 方版深蓝），基于 wc1 cover.html 精简版"""
+import sys, io
+
+def make(out_path, num, sub_main, sub_rest, rule, ttl, rows, foot):
+    rows23 = "\n".join(
+        f'        <div class="row"><span class="st">{st}</span><span class="bar"><i style="width:{w}%"></i></span><span class="nm">{nm}</span></div>'
+        for st, w, nm in rows)
+    rows11 = "\n".join(
+        f'        <div class="row" style="grid-template-columns:110px 1fr auto;"><span class="st">{st}</span><span class="bar"><i style="width:{w}%"></i></span><span class="nm" style="width:150px;font-size:12px;">{nm}</span></div>'
+        for st, w, nm in rows)
+    html = f'''<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  * {{ box-sizing: border-box; margin: 0; padding: 0; }}
+  body {{ font-family: "Inter", -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background: #52525b; }}
+  .serif {{ font-family: 'STZhongsong','STSong','SimSun',serif; }}
+  .cover {{ width: 900px; height: 383px; position: relative; overflow: hidden; display: flex; align-items: center; }}
+  .cover-square {{ width: 900px; height: 900px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }}
+  .grid-bg {{ position: absolute; inset: 0;
+    background-image: linear-gradient(to right, var(--grid) 1px, transparent 1px), linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: radial-gradient(720px 420px at 30% 40%, #000 30%, transparent 100%);
+    -webkit-mask-image: radial-gradient(720px 420px at 30% 40%, #000 30%, transparent 100%); }}
+  .cover-square .grid-bg {{ mask-image: radial-gradient(860px 620px at 50% 42%, #000 30%, transparent 100%);
+    -webkit-mask-image: radial-gradient(860px 620px at 50% 42%, #000 30%, transparent 100%); }}
+  .glow {{ position: absolute; width: 560px; height: 560px; border-radius: 50%;
+    background: radial-gradient(circle, var(--glow) 0%, transparent 65%); top: -280px; right: -120px; }}
+  .content {{ position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; }}
+  .content-col {{ position: relative; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: 0 64px; }}
+  .left {{ max-width: 480px; }}
+  .tag {{ display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--tag-br); border-radius: 9999px;
+    padding: 5px 15px; font-size: 11.5px; font-weight: 600; letter-spacing: .16em; color: var(--gold); margin-bottom: 18px; }}
+  .tag .dot {{ width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }}
+  h1 {{ font-size: 56px; font-weight: 800; line-height: 1.12; color: var(--fg); margin-bottom: 14px; white-space: nowrap; }}
+  h1 .num {{ font-variant-numeric: tabular-nums; color: var(--num); padding-left: 10px; }}
+  .sub {{ font-size: 17px; line-height: 1.6; color: var(--muted); letter-spacing: .02em; }}
+  .sub b {{ color: var(--fg); font-weight: 600; }}
+  .rule {{ margin-top: 18px; padding-top: 12px; border-top: 1px solid var(--rule); font-size: 11.5px; letter-spacing: .2em; color: var(--rule-text); }}
+  .foot {{ position: absolute; left: 48px; bottom: 26px; font-size: 11.5px; letter-spacing: .1em; color: var(--foot);
+    font-variant-numeric: tabular-nums; display: flex; align-items: center; gap: 10px; }}
+  .cover-square .foot {{ left: 64px; bottom: 36px; }}
+  .foot::before {{ content: ""; width: 26px; height: 1px; background: var(--foot-line); }}
+  .slogan {{ position: absolute; left: 64px; bottom: 68px; font-size: 13.5px; font-weight: 600; letter-spacing: .06em; color: var(--muted); }}
+  .slogan b {{ color: var(--gold); font-weight: 700; }}
+  .term {{ width: 330px; flex: none; border: 1px solid var(--term-br); border-radius: 14px; background: var(--term-bg);
+    box-shadow: var(--term-shadow); overflow: hidden; }}
+  .term-wide {{ width: 100%; max-width: 772px; }}
+  .term-bar {{ display: flex; align-items: center; gap: 6px; padding: 10px 14px; border-bottom: 1px solid var(--term-br); }}
+  .term-bar i {{ width: 9px; height: 9px; border-radius: 50%; background: var(--tdot); display: block; }}
+  .term-bar .ttl {{ margin-left: 8px; font-size: 10.5px; color: var(--term-muted); letter-spacing: .06em; font-family: Consolas, monospace; }}
+  .term-body {{ padding: 14px 16px 16px; font-family: Consolas, "Courier New", monospace; font-size: 11.5px; line-height: 2.0; }}
+  .term-body .cmd {{ color: var(--term-muted); margin-bottom: 6px; font-size: 10.5px; }}
+  .term-body .cmd .p {{ color: var(--gold); }}
+  .row {{ display: grid; grid-template-columns: 62px 1fr auto; align-items: center; gap: 10px; }}
+  .row .st {{ color: var(--gold); font-weight: 600; }}
+  .row .bar {{ height: 5px; border-radius: 9999px; background: var(--track); overflow: hidden; }}
+  .row .bar i {{ display: block; height: 100%; background: var(--fill); border-radius: 9999px; }}
+  .row .nm {{ color: var(--term-fg); font-weight: 600; width: 104px; text-align: right; font-size: 10.5px; }}
+  .navy {{ --grid: rgba(201,162,75,.07); --glow: rgba(201,162,75,.10);
+    --fg: #f3ead2; --muted: #8a94ad; --num: #c9a24b; --gold: #c9a24b; --tag-br: #3d4a6b;
+    --rule: #2a3550; --rule-text: #5a6580; --foot: #5a6580; --foot-line: #2a3550;
+    --term-bg: #111a30; --term-br: #2a3550; --term-muted: #5a6580; --term-fg: #f3ead2;
+    --term-shadow: 0 24px 60px rgba(0,0,0,.55); --tdot: #3d4a6b; --track: #1a2440; --fill: #c9a24b;
+    background: #0d1526; }}
+  .spacer {{ height: 40px; }}
+</style>
+</head>
+<body>
+
+<div class="cover navy" id="navy">
+  <div class="grid-bg"></div>
+  <div class="glow"></div>
+  <div class="content">
+    <div class="left">
+      <div class="tag"><span class="dot"></span>游戏考古 · GAME RETRO</div>
+      <h1 class="serif">魔兽争霸<span class="num">{num}</span></h1>
+      <div class="sub"><b>{sub_main}</b>{sub_rest}</div>
+      <div class="rule">{rule}</div>
+    </div>
+    <div class="term">
+      <div class="term-bar"><i></i><i></i><i></i><span class="ttl">{ttl}</span></div>
+      <div class="term-body">
+        <div class="cmd"><span class="p">$</span> warcraft --tides-of-darkness</div>
+{rows23}
+      </div>
+    </div>
+  </div>
+  <div class="foot">{foot}</div>
+</div>
+
+<div class="spacer"></div>
+
+<div class="cover-square navy" id="square-navy">
+  <div class="grid-bg"></div>
+  <div class="glow"></div>
+  <div class="content-col">
+    <div class="tag" style="margin-bottom:26px;"><span class="dot"></span>游戏考古 · GAME RETRO</div>
+    <h1 class="serif" style="font-size:80px;margin-bottom:18px;">魔兽争霸<span class="num">{num}</span></h1>
+    <div class="sub" style="font-size:20px;margin-bottom:36px;"><b>{sub_main}</b>{sub_rest}</div>
+    <div class="term term-wide">
+      <div class="term-bar"><i></i><i></i><i></i><span class="ttl">{ttl}</span></div>
+      <div class="term-body" style="font-size:13px;">
+        <div class="cmd"><span class="p">$</span> warcraft --tides-of-darkness</div>
+{rows11}
+      </div>
+    </div>
+    <div class="slogan">回顾的是<b>游戏</b>，怀念的是<b>童年与友谊</b>。</div>
+  </div>
+  <div class="foot">{foot}</div>
+</div>
+
+</body>
+</html>'''
+    with io.open(out_path, "w", encoding="utf-8") as f:
+        f.write(html)
+    print("written:", out_path)
+
+if __name__ == "__main__":
+    import json
+    cfg = json.loads(sys.argv[1])
+    make(cfg["out"], cfg["num"], cfg["sub_main"], cfg["sub_rest"], cfg["rule"], cfg["ttl"], cfg["rows"], cfg["foot"])
