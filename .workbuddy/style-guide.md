@@ -1,0 +1,60 @@
+# 公众号创作风格规范（v1，2026.10.23 固定）
+
+参考基线：`2026.10.22_GitHub涨星TOP10.html`（正文）+ `cover-design.html`（封面模板）。
+以后所有公众号文章与封面均按此风格生成，除非用户当次明确要求换风格。
+
+## 一、正文 HTML 风格（公众号适配版）
+
+### 总体
+- 单文件 HTML，全内联样式（section 嵌套 + inline style），不依赖外部 CSS/JS/图片——直接粘贴进公众号编辑器即可用。
+- `<style>` 块仅用于本地预览（body 灰底 #f4f4f5），并注释说明"粘贴到公众号编辑器时会被丢弃"。
+- 外层容器：`max-width:677px; margin:0 auto; background:#ffffff; padding:28px 20px 36px;` 字体栈 `-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif`。
+- **所有 section 显式 `text-align:left`**（公众号合规要求，一个都不能漏）。
+- 起止处放复制范围注释：`<!-- 外层容器：复制时从这一行下方开始全选 -->` … `<!-- 复制到此行为止 -->`。
+
+### 色彩体系（zinc 单色，黑白灰，无彩色）
+| 用途 | 色值 |
+|---|---|
+| 主标题/强调/正文黑 | #09090b |
+| 条形图填充/左竖线 | #18181b |
+| 次级正文 | #52525b |
+| 辅助说明 | #71717a |
+| 弱化/页脚 | #a1a1aa |
+| 序号水印大数字 | #d4d4d8 |
+| 边框 | #e4e4e7 |
+| 浅灰底（要点卡/附录底） | #fafafa |
+| 轨道/预览底 | #f4f4f5 |
+| 卡片底 | #ffffff |
+| 头部卡黑底 | #09090b（内文字 #fafafa / #a1a1aa / #71717a） |
+
+### 文档结构（自上而下）
+1. **头部卡**：#09090b 圆角12px；眉标（12px/600/letter-spacing:3px/#a1a1aa）→ 大标题（24px/700/#fafafa/letter-spacing:-0.5px）→ 来源与导读（13px/#71717a/line-height:1.8）。
+2. **章节标题**：17px/700/#09090b/letter-spacing:-0.3px，中文序号「一、二、三、」。
+3. **核心要点卡**（N 个）：`border-left:3px solid #18181b; background:#fafafa; border-radius:0 8px 8px 0;` 标题 14.5px/600 + 正文 13.5px/#52525b/line-height:1.75。
+4. **数据卡**：白底 + 1px #e4e4e7 边框圆角8px；条形图用纯 span 堆叠实现（label 定宽 + 数值 + `height:6px; border-radius:99px` 圆角条），等宽小字标题。
+5. **条目卡**（列表主体）：白底 1px 边框圆角10px；行内布局 = 序号水印（20px/700/#d4d4d8）+ 名称（16px/700）+ 语言徽章（11px/#71717a 圆角99px 边框）+ 右浮星数（12.5px/600）。正文 14px，加粗金句开头；「为什么火：」13px/#71717a 加粗黑前缀；末行等宽 12px/#a1a1aa 放链接/出处。
+6. **附录卡**：#fafafa 底 + Consolas 等宽 12.5px，用 `··········` 点线对齐清单。
+7. **口径说明卡**：#fafafa 底，13px/600 黑标题 + 12.5px/#71717a 列表（· 开头）。
+8. **结尾**：居中 `— 完 —`（12px/#a1a1aa）。
+
+### 排版参数
+- 正文 13.5–14.5px，标题 16–24px，行高 1.75–1.8；数据/代码用 `Consolas,monospace`。
+- 强调只用 `<b>` 加粗 + 色号分级，不用彩色高亮。
+- 卡片间距 10–12px，章节间 28–30px。
+
+## 二、封面图风格
+
+- 模板：`cover-design.html`（zinc 双主题，light 为主交付，dark 备用）。
+- 规格：**两种比例都要**——消息列表 2.35:1（900×383）+ 转发卡片/主页 1:1（900×900 方版，竖排布局：标签/标题/全宽终端卡/底部标语）。
+- 视觉元素：
+  - 网格背景（44px 网格 + radial mask 聚焦左中）+ 右上光晕（径向渐变，极低透明度）；
+  - 左侧：tag 药丸（圆点 + 11.5px/600/letter-spacing:.14em 边框圆角）→ 大标题（54px/800/letter-spacing:-0.035em/nowrap，数字部分 tabular-nums 用次级灰）→ 副标题（17px，关键词加粗黑）；
+  - 右侧：终端卡（330px 宽，圆角14px，三圆点标题栏 + 等宽命令行 `$` 前缀 + 星数行：数值+6px圆角条+名称）；
+  - 左下 foot：短横线 + 11.5px 字距标注。
+- 浅色主题变量：底 #fafafa，fg #09090b，muted #52525b，边框 #e4e4e7，条形 fill #18181b / track #f4f4f5。
+- 交付：按命名规则出 PNG（如 `YYYY.MM.DD_标题_2.3比例封面.png`、`YYYY.MM.DD_标题_方版1x1.png`），保留源 HTML。
+- 截图踩坑：clip 超出视口需 `fullPage:true`，坐标用 `getBoundingClientRect + scrollY` 换算。
+
+## 三、交付清单（每篇文章标配）
+1. 正文 HTML：`日期_标题.html`（公众号适配版，全内联样式）
+2. 封面 PNG ×2：`日期_标题_2.3比例封面.png` + `日期_标题_方版1x1.png`

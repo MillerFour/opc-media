@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>公众号适配版 · Paperclip：把 AI Agent 管成一家公司</title>
+<style>
+  /* 此样式块仅供本地预览，粘贴到公众号编辑器时会被丢弃，不影响排版 */
+  body { background: #f4f4f5; margin: 0; padding: 24px 0; }
+</style>
+</head>
+<body>
+
+<!-- 外层容器：复制时从这一行下方开始全选 -->
+<section style="text-align:left;max-width:677px;margin:0 auto;background:#ffffff;padding:28px 20px 36px;font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;">
+
+  <!-- ===== 头部 ===== -->
+  <section style="text-align:left;background:#09090b;border-radius:12px;padding:30px 26px 26px;margin-bottom:24px;">
+    <section style="text-align:left;font-size:12px;font-weight:600;letter-spacing:3px;color:#a1a1aa;margin-bottom:12px;">开源项目解读 · OPEN SOURCE DEEP DIVE</section>
+    <section style="text-align:left;font-size:24px;font-weight:700;color:#fafafa;line-height:1.35;letter-spacing:-0.5px;margin-bottom:10px;">Paperclip：把 AI Agent 管成一家公司</section>
+    <section style="text-align:left;font-size:13px;color:#71717a;line-height:1.8;">来源：github.com/paperclipai/paperclip（2026-10-23 实查）· 它不造 Agent，也不做框架——它给 Agent 一家公司：组织架构、目标对齐、预算治理、任务分配，一次配齐。</section>
+  </section>
+
+  <!-- ===== 核心要点 ===== -->
+  <section style="text-align:left;font-size:17px;font-weight:700;color:#09090b;margin:28px 0 14px;letter-spacing:-0.3px;">一、核心要点</section>
+
+  <section style="text-align:left;border-left:3px solid #18181b;background:#fafafa;border-radius:0 8px 8px 0;padding:14px 16px;margin-bottom:10px;">
+    <section style="text-align:left;font-size:14.5px;font-weight:600;color:#09090b;margin-bottom:3px;">01 · Agent 是员工，Paperclip 是公司</section>
+    <section style="text-align:left;font-size:13.5px;color:#52525b;line-height:1.75;">官方 README 的定位一句话说透："If OpenClaw is an employee, Paperclip is the company."——它不构建 Agent、不是 Agent 框架，而是承载所有 Agent 工作的控制平面。</section>
+  </section>
+
+  <section style="text-align:left;border-left:3px solid #18181b;background:#fafafa;border-radius:0 8px 8px 0;padding:14px 16px;margin-bottom:10px;">
+    <section style="text-align:left;font-size:14.5px;font-weight:600;color:#09090b;margin-bottom:3px;">02 · 七个月冲到 10.6 万星</section>
+    <section style="text-align:left;font-size:13.5px;color:#52525b;line-height:1.75;">2026-03-02 建仓，10-23 实查已有 106,201 stars、17,660 forks，且当天仍在推代码；累计合并超 2,700 个 PR。这个涨速放在 AI 基建赛道也属第一梯队。</section>
+  </section>
+
+  <section style="text-align:left;border-left:3px solid #18181b;background:#fafafa;border-radius:0 8px 8px 0;padding:14px 16px;margin-bottom:10px;">
+    <section style="text-align:left;font-size:14.5px;font-weight:600;color:#09090b;margin-bottom:3px;">03 · 任何 Agent 都能"入职"</section>
+    <section style="text-align:left;font-size:13.5px;color:#52525b;line-height:1.75;">内置 Claude Code、Codex、Cursor、Gemini CLI、OpenCode、Kimi Code、Hermes 等 10+ 适配器，README 的原话是："能收到心跳（heartbeat）的，就算录用。"</section>
+  </section>
+
+  <section style="text-align:left;border-left:3px solid #18181b;background:#fafafa;border-radius:0 8px 8px 0;padding:14px 16px;margin-bottom:10px;">
+    <section style="text-align:left;font-size:14.5px;font-weight:600;color:#09090b;margin-bottom:3px;">04 · 用 AI 开发"管理 AI 的系统"</section>
+    <section style="text-align:left;font-size:13.5px;color:#52525b;line-height:1.75;">仓库本身就是 AI 驱动开发的样板：PR 由 Claude、GPT 系模型编写并合著，Greptile AI 代码评审要求 5/5 满分门禁，单个 PR 要过 194 项工作流测试 + 3,963 项 UI 测试。</section>
+  </section>
+
+  <!-- ===== 数据一览 ===== -->
+  <section style="text-align:left;font-size:17px;font-weight:700;color:#09090b;margin:30px 0 14px;letter-spacing:-0.3px;">二、数据一览</section>
+
+  <section style="text-align:left;font-size:13.5px;color:#52525b;line-height:1.8;margin-bottom:14px;">建仓仅 7 个多月（2026-03-02 至今），当前累计 <b style="color:#09090b;">106,201</b> stars。以下为仓库核心指标（GitHub API 实查于 2026-10-23）：</section>
+
+  <section style="text-align:left;border:1px solid #e4e4e7;border-radius:8px;padding:16px;background:#ffffff;margin-bottom:10px;">
+    <section style="text-align:left;font-size:12.5px;color:#71717a;margin-bottom:12px;font-family:Consolas,monospace;">★ Paperclip 仓库指标（GitHub API · 2026-10-23）</section>
+
+    <section style="text-align:left;font-size:12.5px;margin-bottom:8px;"><span style="display:inline-block;width:132px;color:#09090b;font-weight:600;">Stars</span><span style="display:inline-block;width:44px;color:#71717a;">106.2k</span><span style="display:inline-block;vertical-align:middle;width:170px;height:6px;background:#f4f4f5;border-radius:99px;"><span style="display:block;width:100%;height:6px;background:#18181b;border-radius:99px;">&nbsp;</span></span></section>
+    <section style="text-align:left;font-size:12.5px;margin-bottom:8px;"><span style="display:inline-block;width:132px;color:#09090b;font-weight:600;">Forks</span><span style="display:inline-block;width:44px;color:#71717a;">17.7k</span><span style="display:inline-block;vertical-align:middle;width:170px;height:6px;background:#f4f4f5;border-radius:99px;"><span style="display:block;width:17%;height:6px;background:#18181b;border-radius:99px;">&nbsp;</span></span></section>
+    <section style="text-align:left;font-size:12.5px;margin-bottom:8px;"><span style="display:inline-block;width:132px;color:#09090b;font-weight:600;">Open Issues</span><span style="display:inline-block;width:44px;color:#71717a;">6,412</span><span style="display:inline-block;vertical-align:middle;width:170px;height:6px;background:#f4f4f5;border-radius:99px;"><span style="display:block;width:6%;height:6px;background:#18181b;border-radius:99px;">&nbsp;</span></span></section>
+    <section style="text-align:left;font-size:12.5px;"><span style="display:inline-block;width:132px;color:#09090b;font-weight:600;">已合并 PR</span><span style="display:inline-block;width:44px;color:#71717a;">2,700+</span><span style="display:inline-block;vertical-align:middle;width:170px;height:6px;background:#f4f4f5;border-radius:99px;"><span style="display:block;width:3%;height:6px;background:#18181b;border-radius:99px;">&nbsp;</span></span></section>
+  </section>
+
+  <section style="text-align:left;font-size:13.5px;color:#52525b;line-height:1.8;margin-bottom:10px;">技术栈：Node/TypeScript 服务端 + React 前端 + Rust 运行器（paperclip-runner），数据库 PostgreSQL + Drizzle ORM，测试 Vitest + Playwright。License 为 <b style="color:#09090b;">MIT</b>，可自由自部署。</section>
+
+  <!-- ===== 四大支柱 ===== -->
+  <section style="text-align:left;font-size:17px;font-weight:700;color:#09090b;margin:30px 0 14px;letter-spacing:-0.3px;">三、它到底管什么：四大支柱</section>
+
+  <section style="text-align:left;border:1px solid #e4e4e7;border-radius:10px;padding:16px 18px;margin-bottom:12px;background:#ffffff;">
+    <section style="text-align:left;margin-bottom:8px;"><span style="font-size:20px;font-weight:700;color:#d4d4d8;margin-right:10px;">01</span><span style="font-size:16px;font-weight:700;color:#09090b;">Agentic Task Manager</span><span style="display:inline-block;font-size:11px;color:#71717a;border:1px solid #e4e4e7;border-radius:99px;padding:1px 8px;margin-left:8px;">面向所有人</span></section>
+    <section style="text-align:left;font-size:14px;color:#09090b;line-height:1.75;margin-bottom:6px;"><b>把 Agent 的工作装进票据系统。</b>任务票据化、对话线程化，会话跨重启持久；审批与 review gate 内建；routines 按计划自动创建任务，产出用 diff、截图、测试结果验证。</section>
+    <section style="text-align:left;font-size:13px;color:#71717a;line-height:1.75;margin-bottom:8px;"><b style="color:#09090b;">为什么关键：</b>没有它，你开着 20 个 Claude Code 终端 tabs，重启全丢；有了它，想法变成一张任务票，coding agent 做完、管理层审查即可。</section>
+    <section style="text-align:left;font-size:12px;color:#a1a1aa;font-family:Consolas,monospace;">work &amp; task system · atomic checkout</section>
+  </section>
+
+  <section style="text-align:left;border:1px solid #e4e4e7;border-radius:10px;padding:16px 18px;margin-bottom:12px;background:#ffffff;">
+    <section style="text-align:left;margin-bottom:8px;"><span style="font-size:20px;font-weight:700;color:#d4d4d8;margin-right:10px;">02</span><span style="font-size:16px;font-weight:700;color:#09090b;">Org Chart for Agents</span><span style="display:inline-block;font-size:11px;color:#71717a;border:1px solid #e4e4e7;border-radius:99px;padding:1px 8px;margin-left:8px;">面向管理者</span></section>
+    <section style="text-align:left;font-size:14px;color:#09090b;line-height:1.75;margin-bottom:6px;"><b>给 Agent 发工牌、定职级、画汇报线。</b>人与 Agent 混合的组织架构，任务沿汇报线委派流动；"你的 Agent 有老板、有头衔、有岗位说明书。"</section>
+    <section style="text-align:left;font-size:13px;color:#71717a;line-height:1.75;margin-bottom:8px;"><b style="color:#09090b;">为什么关键：</b>委派有了结构，权限才能收敛——scoped secrets、连接权限、responsible-user 身份归因都挂在组织架构上。</section>
+    <section style="text-align:left;font-size:12px;color:#a1a1aa;font-family:Consolas,monospace;">org chart · governance · approvals</section>
+  </section>
+
+  <section style="text-align:left;border:1px solid #e4e4e7;border-radius:10px;padding:16px 18px;margin-bottom:12px;background:#ffffff;">
+    <section style="text-align:left;margin-bottom:8px;"><span style="font-size:20px;font-weight:700;color:#d4d4d8;margin-right:10px;">03</span><span style="font-size:16px;font-weight:700;color:#09090b;">Agent Employee Training</span><span style="display:inline-block;font-size:11px;color:#71717a;border:1px solid #e4e4e7;border-radius:99px;padding:1px 8px;margin-left:8px;">面向赋能者</span></section>
+    <section style="text-align:left;font-size:14px;color:#09090b;line-height:1.75;margin-bottom:6px;"><b>技能是全公司的资产，不是个人的配置文件。</b>Skill Studio 编写共享技能，保存输入测试与 evals，技能有版本历史可回滚，还有现成的团队模板一键安装。</section>
+    <section style="text-align:left;font-size:13px;color:#71717a;line-height:1.75;margin-bottom:8px;"><b style="color:#09090b;">为什么关键：</b>Agent 在运行时注入技能与项目上下文，不用重训练——"员工培训"第一次有了工程化路径。</section>
+    <section style="text-align:left;font-size:12px;color:#a1a1aa;font-family:Consolas,monospace;">skill studio · evals · team templates</section>
+  </section>
+
+  <section style="text-align:left;border:1px solid #e4e4e7;border-radius:10px;padding:16px 18px;margin-bottom:12px;background:#ffffff;">
+    <section style="text-align:left;margin-bottom:8px;"><span style="font-size:20px;font-weight:700;color:#d4d4d8;margin-right:10px;">04</span><span style="font-size:16px;font-weight:700;color:#09090b;">Agentic OS</span><span style="display:inline-block;font-size:11px;color:#71717a;border:1px solid #e4e4e7;border-radius:99px;padding:1px 8px;margin-left:8px;">面向 IT / 平台</span></section>
+    <section style="text-align:left;font-size:14px;color:#09090b;line-height:1.75;margin-bottom:6px;"><b>跨 provider 的运行时底座。</b>沙箱（e2b、Cloudflare、Daytona、Modal、K8s）、MCP server 接入、SSO/RBAC、成本控制、运行历史与可选 tracing。</section>
+    <section style="text-align:left;font-size:13px;color:#71717a;line-height:1.75;margin-bottom:8px;"><b style="color:#09090b;">为什么关键：</b>预算按 company/agent/project/goal/provider/model 七个维度追踪，达到限额自动暂停——AI 失控烧钱这件事第一次有了硬刹车。</section>
+    <section style="text-align:left;font-size:12px;color:#a1a1aa;font-family:Consolas,monospace;">sandbox · mcp gateway · budget control</section>
+  </section>
+
+  <!-- ===== 核心机制 ===== -->
+  <section style="text-align:left;font-size:17px;font-weight:700;color:#09090b;margin:30px 0 14px;letter-spacing:-0.3px;">四、真正管住 Agent 的几个机制</section>
+
+  <section style="text-align:left;background:#fafafa;border:1px solid #e4e4e7;border-radius:8px;padding:16px 18px;margin-bottom:12px;">
+    <section style="text-align:left;font-size:13.5px;color:#52525b;line-height:2.1;">
+      · <b style="color:#09090b;">Heartbeats 心跳唤醒：</b>Agent 因被分配工作、收到跟进消息或到达计划时间而唤醒，委派沿组织架构上下流动；<br>
+      · <b style="color:#09090b;">Atomic task checkout：</b>任务单一认领人 + 执行锁，多 Agent 并发不抢票；<br>
+      · <b style="color:#09090b;">Goal alignment：</b>任务携带目标血缘（goal ancestry），Agent 干活时自带"公司要什么"的上下文；<br>
+      · <b style="color:#09090b;">Governance with rollback：</b>审批门强制执行、配置版本化，出问题可安全回滚；<br>
+      · <b style="color:#09090b;">Accountable connections：</b>人类访问、Agent 资格、gateway 权限三者分离，MCP 动作可设 Allowed / Ask first / Off；<br>
+      · <b style="color:#09090b;">Company portability：</b>整个"公司"可导出导入，含 secret 清洗与冲突处理。
+    </section>
+  </section>
+
+  <!-- ===== 上手 ===== -->
+  <section style="text-align:left;font-size:17px;font-weight:700;color:#09090b;margin:30px 0 14px;letter-spacing:-0.3px;">五、三步上手</section>
+
+  <section style="text-align:left;font-size:14px;color:#09090b;line-height:1.8;margin-bottom:10px;"><b>① 定目标</b>（如"做到 AI 笔记第一、1M MRR"）→ <b>② 招团队</b>（CEO、CTO、工程师、设计师、营销，任何 bot、任何 provider）→ <b>③ 审批开跑</b>（审查策略、设预算、启动、监控）。需要 Node.js 24.11+，一条命令安装：</section>
+
+  <section style="text-align:left;background:#fafafa;border:1px solid #e4e4e7;border-radius:8px;padding:16px 18px;margin-bottom:12px;">
+    <section style="text-align:left;font-size:12.5px;color:#52525b;line-height:2;font-family:Consolas,monospace;">
+      $ npx paperclipai@latest onboard --yes<br>
+      $ npx paperclipai configure&nbsp;&nbsp;&nbsp;<span style="color:#a1a1aa;"># 修改配置</span><br>
+      $ ANTHROPIC_API_KEY=... npx paperclipai test-drive<br>
+      <span style="color:#a1a1aa;"># 体验模式：--harness codex / --model / --data-dir</span>
+    </section>
+  </section>
+
+  <section style="text-align:left;font-size:14px;color:#09090b;line-height:1.8;margin-bottom:10px;">生产部署指向自己的 PostgreSQL，支持认证模式 + Tailscale 私网绑定或 Docker。默认开启匿名遥测，介意可用 <b>PAPERCLIP_TELEMETRY_DISABLED=1</b> 关闭。</section>
+
+  <!-- ===== 谁该关注 ===== -->
+  <section style="text-align:left;font-size:17px;font-weight:700;color:#09090b;margin:30px 0 14px;letter-spacing:-0.3px;">六、谁该关注它</section>
+
+  <section style="text-align:left;font-size:14px;color:#52525b;line-height:1.85;margin-bottom:10px;">如果你同时在开 20 个 Claude Code 终端并已经跟丢；如果你想让 Agent 7×24 自主干活但必须可审计、可介入、可断供；如果你的团队同时用 Claude、Codex、Cursor 却各管各的——Paperclip 就是缺的那一层。它的口号值得再读一遍：<b style="color:#09090b;">Manage business goals, not pull requests.</b></section>
+
+  <!-- ===== 项目地址 ===== -->
+  <section style="text-align:left;font-size:17px;font-weight:700;color:#09090b;margin:30px 0 14px;letter-spacing:-0.3px;">七、项目地址</section>
+
+  <section style="text-align:left;background:#fafafa;border:1px solid #e4e4e7;border-radius:8px;padding:16px 18px;margin-bottom:12px;">
+    <section style="text-align:left;font-size:12.5px;color:#52525b;line-height:2;font-family:Consolas,monospace;">
+      仓库 ············ github.com/paperclipai/paperclip<br>
+      文档 ············ docs.paperclip.ing<br>
+      官网 ············ paperclip.ing<br>
+      License ········· MIT © 2026 Paperclip Labs, Inc
+    </section>
+  </section>
+
+  <!-- ===== 说明 ===== -->
+  <section style="text-align:left;background:#fafafa;border:1px solid #e4e4e7;border-radius:8px;padding:16px 18px;margin-top:18px;">
+    <section style="text-align:left;font-size:13px;font-weight:600;color:#09090b;margin-bottom:6px;">数据与口径说明</section>
+    <section style="text-align:left;font-size:12.5px;color:#71717a;line-height:1.9;">
+      · 文中 stars / forks / issues 数通过 GitHub API 实时查询于 2026-10-23；<br>
+      · "Agent 是员工，Paperclip 是公司"的比喻与"能收到心跳就算录用"均出自官方 README 原文；<br>
+      · 已合并 PR 数 2,700+ 出自仓库 FAQ；AI 合著 PR、Greptile 5/5 门禁、测试规模等来自仓库公开 PR 记录；<br>
+      · 项目由 Paperclip Labs, Inc 维护，MIT 协议，本文与项目方无利益关联。
+    </section>
+  </section>
+
+  <section style="margin-top:26px;text-align:center;">
+    <span style="font-size:12px;color:#a1a1aa;">— 完 —</span>
+  </section>
+
+</section>
+<!-- 复制到此行为止 -->
+
+</body>
+</html>

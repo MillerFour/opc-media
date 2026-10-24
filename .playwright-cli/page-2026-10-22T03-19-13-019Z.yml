@@ -1,0 +1,53 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - generic [ref=e7]: 开源周报 · OPEN SOURCE WEEKLY
+        - heading "GitHub 涨星 TOP 10" [level=1] [ref=e9]: GitHub 涨星TOP 10
+        - generic [ref=e10]: 本周最值得安装的 10 个 AI 开源项目
+      - generic [ref=e11]:
+        - generic [ref=e12]: trending — ai · weekly
+        - generic [ref=e17]:
+          - generic [ref=e18]: $ gh trending --topic=ai --this-week
+          - generic [ref=e19]:
+            - generic [ref=e20]: ★ 349.8k
+            - generic [ref=e23]: REA
+          - generic [ref=e24]:
+            - generic [ref=e25]: ★ 298.9k
+            - generic [ref=e28]: skills
+          - generic [ref=e29]:
+            - generic [ref=e30]: ★ 102.0k
+            - generic [ref=e33]: claude-mem
+          - generic [ref=e34]:
+            - generic [ref=e35]: ★ 70.4k
+            - generic [ref=e38]: OpenMontage
+          - generic [ref=e39]:
+            - generic [ref=e40]: ★ 59.1k
+            - generic [ref=e43]: diagram-design
+    - generic [ref=e44]: 2026 · WEEK 42 · BILIBILI BV1UAn36aEX3
+  - generic [ref=e46]:
+    - generic [ref=e49]:
+      - generic [ref=e50]:
+        - generic [ref=e51]: 开源周报 · OPEN SOURCE WEEKLY
+        - heading "GitHub 涨星 TOP 10" [level=1] [ref=e53]: GitHub 涨星TOP 10
+        - generic [ref=e54]: 本周最值得安装的 10 个 AI 开源项目
+      - generic [ref=e55]:
+        - generic [ref=e56]: trending — ai · weekly
+        - generic [ref=e61]:
+          - generic [ref=e62]: $ gh trending --topic=ai --this-week
+          - generic [ref=e63]:
+            - generic [ref=e64]: ★ 349.8k
+            - generic [ref=e67]: REA
+          - generic [ref=e68]:
+            - generic [ref=e69]: ★ 298.9k
+            - generic [ref=e72]: skills
+          - generic [ref=e73]:
+            - generic [ref=e74]: ★ 102.0k
+            - generic [ref=e77]: claude-mem
+          - generic [ref=e78]:
+            - generic [ref=e79]: ★ 70.4k
+            - generic [ref=e82]: OpenMontage
+          - generic [ref=e83]:
+            - generic [ref=e84]: ★ 59.1k
+            - generic [ref=e87]: diagram-design
+    - generic [ref=e88]: 2026 · WEEK 42 · BILIBILI BV1UAn36aEX3

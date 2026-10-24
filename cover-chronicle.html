@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>魔兽编年史 · 公众号封面</title>
+<style>
+  body{margin:0;padding:24px;background:#e8e4d8;font-family:'Microsoft YaHei',sans-serif;}
+  .board{position:relative;overflow:hidden;background:#0d1526;box-shadow:0 8px 32px rgba(0,0,0,.25);}
+  .art{position:absolute;inset:0;background-image:url('.playwright-cli/chronicle-art.jpg');background-repeat:no-repeat;}
+  .frame{position:absolute;inset:14px;border:1px solid rgba(201,162,75,.38);pointer-events:none;}
+  .corner{position:absolute;width:14px;height:14px;border-color:#c9a24b;border-style:solid;}
+  .pill{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(201,162,75,.55);border-radius:99px;padding:5px 14px;font-size:12px;font-weight:600;letter-spacing:.18em;color:#e5c878;}
+  .pill .dot{width:5px;height:5px;border-radius:99px;background:#c9a24b;display:inline-block;}
+  .serif{font-family:'STZhongsong','SimSun','Microsoft YaHei',serif;}
+</style>
+</head>
+<body>
+
+<!-- ===== 画板 A：2.35:1（900×383，消息列表封面） ===== -->
+<div class="board" id="artA" style="width:900px;height:383px;">
+  <div class="art" style="background-size:900px auto;background-position:right top;"></div>
+  <!-- 左侧压暗渐变，保证标题可读 -->
+  <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,21,38,.96) 0%,rgba(13,21,38,.88) 34%,rgba(13,21,38,.35) 58%,rgba(13,21,38,0) 78%);"></div>
+  <!-- 底部轻微压暗 -->
+  <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(13,21,38,.55) 0%,rgba(13,21,38,0) 26%);"></div>
+  <div class="frame"></div>
+  <!-- 金色角饰 -->
+  <div class="corner" style="top:14px;left:14px;border-width:2px 0 0 2px;"></div>
+  <div class="corner" style="top:14px;right:14px;border-width:2px 2px 0 0;"></div>
+  <div class="corner" style="bottom:14px;left:14px;border-width:0 0 2px 2px;"></div>
+  <div class="corner" style="bottom:14px;right:14px;border-width:0 2px 2px 0;"></div>
+
+  <!-- 左侧文字区 -->
+  <div style="position:absolute;left:58px;top:0;height:100%;display:flex;flex-direction:column;justify-content:center;">
+    <div><span class="pill"><span class="dot"></span>暴雪官方正史 · 全三卷导读</span></div>
+    <div class="serif" style="margin-top:18px;font-size:62px;font-weight:700;letter-spacing:10px;color:#f3ead2;text-shadow:0 2px 24px rgba(0,0,0,.6);line-height:1.1;">魔兽编年史</div>
+    <div style="margin-top:14px;display:flex;align-items:center;gap:12px;">
+      <span style="display:inline-block;width:34px;height:1px;background:#c9a24b;"></span>
+      <span style="font-size:16.5px;letter-spacing:4px;color:#c7cede;">从光与虚空，到联盟与部落</span>
+    </div>
+  </div>
+
+  <!-- 左下脚注 -->
+  <div style="position:absolute;left:58px;bottom:30px;display:flex;align-items:center;gap:10px;">
+    <span style="font-size:11px;letter-spacing:.3em;color:#8a94ad;">AZEROTH · 万年史诗速读</span>
+  </div>
+
+  <!-- 右下三卷徽记 -->
+  <div style="position:absolute;right:34px;bottom:30px;display:flex;gap:8px;">
+    <span style="font-size:11px;letter-spacing:.12em;color:#e5c878;border:1px solid rgba(201,162,75,.45);border-radius:99px;padding:3px 10px;background:rgba(13,21,38,.55);">卷一 · 起源</span>
+    <span style="font-size:11px;letter-spacing:.12em;color:#e5c878;border:1px solid rgba(201,162,75,.45);border-radius:99px;padding:3px 10px;background:rgba(13,21,38,.55);">卷二 · 大分裂</span>
+    <span style="font-size:11px;letter-spacing:.12em;color:#e5c878;border:1px solid rgba(201,162,75,.45);border-radius:99px;padding:3px 10px;background:rgba(13,21,38,.55);">卷三 · 战争</span>
+  </div>
+</div>
+
+<div style="height:40px;"></div>
+
+<!-- ===== 画板 B：1:1（900×900，转发卡片/主页） ===== -->
+<div class="board" id="artB" style="width:900px;height:900px;">
+  <div class="art" style="background-size:cover;background-position:100% 0;"></div>
+  <!-- 顶部压暗给标题让位 -->
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,21,38,.92) 0%,rgba(13,21,38,.62) 26%,rgba(13,21,38,0) 52%);"></div>
+  <!-- 底部压暗承载标语（同时盖住水印区） -->
+  <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(13,21,38,.95) 0%,rgba(13,21,38,.78) 18%,rgba(13,21,38,0) 44%);"></div>
+  <div class="frame" style="inset:18px;"></div>
+  <div class="corner" style="top:18px;left:18px;border-width:2px 0 0 2px;"></div>
+  <div class="corner" style="top:18px;right:18px;border-width:2px 2px 0 0;"></div>
+  <div class="corner" style="bottom:18px;left:18px;border-width:0 0 2px 2px;"></div>
+  <div class="corner" style="bottom:18px;right:18px;border-width:0 2px 2px 0;"></div>
+
+  <!-- 顶部标题区 -->
+  <div style="position:absolute;top:64px;left:0;width:100%;display:flex;flex-direction:column;align-items:center;text-align:center;">
+    <span class="pill"><span class="dot"></span>暴雪官方正史 · 全三卷导读</span>
+    <div class="serif" style="margin-top:26px;font-size:88px;font-weight:700;letter-spacing:14px;color:#f3ead2;text-shadow:0 2px 28px rgba(0,0,0,.65);text-indent:14px;">魔兽编年史</div>
+    <div style="margin-top:18px;display:flex;align-items:center;gap:14px;">
+      <span style="display:inline-block;width:44px;height:1px;background:#c9a24b;"></span>
+      <span style="font-size:19px;letter-spacing:5px;color:#c7cede;">从光与虚空，到联盟与部落</span>
+      <span style="display:inline-block;width:44px;height:1px;background:#c9a24b;"></span>
+    </div>
+  </div>
+
+  <!-- 底部信息区 -->
+  <div style="position:absolute;bottom:64px;left:0;width:100%;display:flex;flex-direction:column;align-items:center;text-align:center;">
+    <div style="display:flex;gap:12px;margin-bottom:22px;">
+      <span style="font-size:12.5px;letter-spacing:.14em;color:#e5c878;border:1px solid rgba(201,162,75,.5);border-radius:99px;padding:5px 14px;background:rgba(13,21,38,.6);">卷一 · 起源</span>
+      <span style="font-size:12.5px;letter-spacing:.14em;color:#e5c878;border:1px solid rgba(201,162,75,.5);border-radius:99px;padding:5px 14px;background:rgba(13,21,38,.6);">卷二 · 大分裂</span>
+      <span style="font-size:12.5px;letter-spacing:.14em;color:#e5c878;border:1px solid rgba(201,162,75,.5);border-radius:99px;padding:5px 14px;background:rgba(13,21,38,.6);">卷三 · 战争</span>
+    </div>
+    <div style="font-size:12px;letter-spacing:.32em;color:#8a94ad;">AZEROTH · 艾泽拉斯万年史诗速读</div>
+  </div>
+</div>
+
+</body>
+</html>

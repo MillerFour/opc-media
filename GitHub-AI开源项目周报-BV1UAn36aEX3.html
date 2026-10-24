@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GitHub 本周涨星 TOP 10 · AI 开源项目报告</title>
+<style>
+  :root {
+    --background: #fafafa;
+    --foreground: #09090b;
+    --card: #ffffff;
+    --muted: #f4f4f5;
+    --muted-foreground: #71717a;
+    --border: #e4e4e7;
+    --primary: #18181b;
+    --primary-foreground: #fafafa;
+    --ring: #a1a1aa;
+    --radius: 0.5rem;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: "Inter", -apple-system, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  .container { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- Header ---------- */
+  header {
+    border-bottom: 1px solid var(--border);
+    background: rgba(255,255,255,.85);
+    backdrop-filter: blur(8px);
+    position: sticky; top: 0; z-index: 50;
+  }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; height: 56px; }
+  .logo { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 14px; letter-spacing: -0.01em; }
+  .logo-box {
+    width: 28px; height: 28px; border-radius: 6px;
+    background: var(--primary); color: var(--primary-foreground);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700;
+  }
+  .header-meta { font-size: 13px; color: var(--muted-foreground); }
+
+  /* ---------- Badges / Buttons ---------- */
+  .badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    border: 1px solid var(--border); border-radius: 9999px;
+    padding: 2px 10px; font-size: 12px; color: var(--muted-foreground);
+    background: var(--card); white-space: nowrap;
+  }
+  .badge-solid {
+    background: var(--primary); color: var(--primary-foreground);
+    border-color: var(--primary);
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 6px 14px; font-size: 13px; font-weight: 500;
+    background: var(--card); text-decoration: none;
+    transition: background .15s ease, border-color .15s ease;
+  }
+  .btn:hover { background: var(--muted); }
+  .btn-solid { background: var(--primary); color: var(--primary-foreground); border-color: var(--primary); }
+  .btn-solid:hover { background: #3f3f46; }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: 56px 0 40px; border-bottom: 1px solid var(--border); }
+  .kicker {
+    font-size: 12px; font-weight: 600; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--muted-foreground); margin-bottom: 16px;
+  }
+  h1 {
+    font-size: clamp(26px, 4vw, 38px); font-weight: 700;
+    letter-spacing: -0.03em; line-height: 1.25; margin-bottom: 16px;
+  }
+  .hero-sub { color: var(--muted-foreground); font-size: 16px; max-width: 640px; margin-bottom: 24px; }
+  .hero-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+
+  /* ---------- Sections ---------- */
+  section { padding: 48px 0; }
+  section + section { border-top: 1px solid var(--border); }
+  .section-title { font-size: 20px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 20px; display: flex; align-items: baseline; gap: 10px; }
+  .section-title .num { font-size: 13px; color: var(--muted-foreground); font-weight: 500; font-variant-numeric: tabular-nums; }
+
+  /* ---------- Takeaways ---------- */
+  .takeaway {
+    border: 1px solid var(--border); border-radius: var(--radius);
+    background: var(--card); padding: 20px 24px; margin-bottom: 12px;
+    display: flex; gap: 16px; align-items: flex-start;
+  }
+  .takeaway-icon {
+    flex: none; width: 28px; height: 28px; border-radius: 6px;
+    background: var(--muted); display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 600; color: var(--foreground); margin-top: 2px;
+  }
+  .takeaway h3 { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+  .takeaway p { color: var(--muted-foreground); font-size: 14px; }
+
+  /* ---------- Stat strip ---------- */
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 32px; }
+  .stat {
+    border: 1px solid var(--border); border-radius: var(--radius);
+    background: var(--card); padding: 16px 20px;
+  }
+  .stat .v { font-size: 24px; font-weight: 700; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+  .stat .k { font-size: 12px; color: var(--muted-foreground); margin-top: 2px; }
+
+  /* ---------- Bar chart (total stars) ---------- */
+  .chart { border: 1px solid var(--border); border-radius: var(--radius); background: var(--card); padding: 24px; }
+  .chart h4 { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+  .chart .note { font-size: 12px; color: var(--muted-foreground); margin-bottom: 16px; }
+  .bar-row { display: grid; grid-template-columns: 150px 1fr 72px; align-items: center; gap: 12px; padding: 5px 0; }
+  .bar-row .name { font-size: 13px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .bar-row .name .rank { color: var(--muted-foreground); font-variant-numeric: tabular-nums; margin-right: 8px; }
+  .bar-track { height: 8px; background: var(--muted); border-radius: 9999px; overflow: hidden; }
+  .bar-fill { height: 100%; background: var(--primary); border-radius: 9999px; }
+  .bar-row .val { font-size: 12px; color: var(--muted-foreground); text-align: right; font-variant-numeric: tabular-nums; }
+
+  /* ---------- Project cards ---------- */
+  .grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  .card {
+    border: 1px solid var(--border); border-radius: var(--radius);
+    background: var(--card); padding: 24px 28px;
+    transition: border-color .15s ease;
+  }
+  .card:hover { border-color: var(--ring); }
+  .card-head { display: flex; align-items: flex-start; gap: 18px; }
+  .rank {
+    flex: none; font-size: 28px; font-weight: 700; color: #d4d4d8;
+    font-variant-numeric: tabular-nums; letter-spacing: -0.03em;
+    line-height: 1.2; width: 44px; text-align: left;
+  }
+  .card-main { flex: 1; min-width: 0; }
+  .card-title-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 6px; }
+  .card-title { font-size: 17px; font-weight: 600; letter-spacing: -0.01em; }
+  .card-title a { text-decoration: none; }
+  .card-title a:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .stars { font-variant-numeric: tabular-nums; font-weight: 600; font-size: 13px; }
+  .card-desc { color: var(--foreground); font-size: 14.5px; margin-bottom: 10px; }
+  .card-why { color: var(--muted-foreground); font-size: 14px; }
+  .card-why b { color: var(--foreground); font-weight: 600; }
+  .card-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 14px; }
+
+  /* ---------- Notes ---------- */
+  .note-card {
+    border: 1px solid var(--border); border-radius: var(--radius);
+    background: var(--muted); padding: 20px 24px; font-size: 14px; color: var(--muted-foreground);
+  }
+  .note-card ul { margin: 8px 0 0 18px; }
+  .note-card li { margin: 4px 0; }
+
+  /* ---------- Footer ---------- */
+  footer { border-top: 1px solid var(--border); padding: 32px 0 48px; }
+  .footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 13px; color: var(--muted-foreground); }
+
+  @media (max-width: 640px) {
+    .stats { grid-template-columns: 1fr; }
+    .bar-row { grid-template-columns: 110px 1fr 60px; }
+    .card-head { flex-direction: column; gap: 4px; }
+    .rank { width: auto; font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container header-inner">
+    <div class="logo"><span class="logo-box">GH</span>开源项目周报</div>
+    <div class="header-meta">2026 · 第 42 周</div>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="kicker">视频要点汇总 · Weekly Report</div>
+    <h1>这周 GitHub 上涨星最猛的 10 个 AI 开源项目</h1>
+    <p class="hero-sub">
+      每个项目一分钟讲清楚：它是干什么的、为什么火、装上之后你的 AI 能多做什么。
+      视频为每个项目配了等距机械动画来演示原理，本报告将其要点整理为文字版。
+    </p>
+    <div class="hero-badges">
+      <span class="badge badge-solid">视频笔记</span>
+      <span class="badge">Bilibili · BV1UAn36aEX3</span>
+      <span class="badge">发布于 2026-10-18</span>
+      <span class="badge">时长约 11 分钟</span>
+      <span class="badge">10 个项目</span>
+    </div>
+    <div class="hero-actions">
+      <a class="btn btn-solid" href="https://www.bilibili.com/video/BV1UAn36aEX3/" target="_blank" rel="noopener">观看原视频 ↗</a>
+      <a class="btn" href="#projects">跳转项目清单</a>
+      <a class="btn" href="#notes">数据说明</a>
+    </div>
+  </div>
+
+  <!-- 核心要点 -->
+  <section id="takeaways">
+    <div class="section-title">核心要点 <span class="num">Takeaways</span></div>
+    <div class="takeaway">
+      <div class="takeaway-icon">01</div>
+      <div>
+        <h3>AI 正在从"写代码"扩展到"懂系统"</h3>
+        <p>REA 让 Agent 逆向任何 App 一直到二进制层，OpenSRE 让 AI 排查线上故障——AI 的能力边界正从生成代码，推进到理解、分析和运维整个软件系统。</p>
+      </div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-icon">02</div>
+      <div>
+        <h3>工程纪律类工具集体爆发</h3>
+        <p>skills（先问清楚、再写测试）和 diagram-design（专业图解）本质上是把"资深工程师的工作方法"打包成 AI 可执行的技能包，弥补 AI 编码助手在流程和表达上的短板。</p>
+      </div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-icon">03</div>
+      <div>
+        <h3>记忆与上下文成为新基建</h3>
+        <p>claude-mem 主打跨对话长期记忆——Agent 的"记住你"能力正在成为独立赛道，解决每次对话从零开始的痛点。</p>
+      </div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-icon">04</div>
+      <div>
+        <h3>硬件门槛与内容生产被大幅拉低</h3>
+        <p>AirLLM 让 4GB 显卡跑 70B 大模型，text-to-cad 一句话生成可加工 3D 零件，OpenMontage 把 AI 助手变成视频工作室——本地化推理、物理制造、视频创作都在被 AI 重做一遍。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 数据一览 -->
+  <section id="data">
+    <div class="section-title">数据一览 <span class="num">By the numbers</span></div>
+    <div class="stats">
+      <div class="stat"><div class="v">10</div><div class="k">上榜项目</div></div>
+      <div class="stat"><div class="v">≈ 93.1 万</div><div class="k">十个项目当前总星数合计</div></div>
+      <div class="stat"><div class="v">6 / 10</div><div class="k">项目主语言为 Python / TypeScript</div></div>
+    </div>
+    <div class="chart">
+      <h4>当前总星数对比</h4>
+      <div class="note">数据来自 GitHub API，查询于 2026-10-21；视频中的排名依据是当周涨星增量（截至 2026-10-16），两者口径不同。</div>
+      <div id="bars"></div>
+    </div>
+  </section>
+
+  <!-- 项目清单 -->
+  <section id="projects">
+    <div class="section-title">TOP 10 项目清单 <span class="num">Ranked by weekly stars</span></div>
+    <div class="grid">
+
+      <div class="card">
+        <div class="card-head">
+          <div class="rank">01</div>
+          <div class="card-main">
+            <div class="card-title-row">
+              <span class="card-title"><a href="https://github.com/morluto/rea" target="_blank" rel="noopener">REA ↗</a></span>
+              <span class="badge">TypeScript</span>
+              <span class="badge stars">★ 349,793</span>
+            </div>
+            <p class="card-desc"><b>让 AI 逆向任何 App，一直拆到二进制。</b>通过 Agent 观察应用行为、层层下钻到原生二进制，把闭源应用"拆开看懂"。</p>
+            <p class="card-why"><b>为什么火：</b>把逆向工程这件高度专业化的事交给 AI——兼容性分析、安全审计、协议破解类工作的门槛被大幅拉低。</p>
+            <div class="card-foot">
+              <a class="btn" href="https://www.bilibili.com/video/BV1UAn36aEX3/?t=35" target="_blank" rel="noopener">视频 00:35</a>
+              <a class="btn" href="https://github.com/morluto/rea" target="_blank" rel="noopener">GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="rank">02</div>
+          <div class="card-main">
+            <div class="card-title-row">
+              <span class="card-title"><a href="https://github.com/mattpocock/skills" target="_blank" rel="noopener">skills ↗</a></span>
+              <span class="badge">Shell</span>
+              <span class="badge stars">★ 298,861</span>
+            </div>
+            <p class="card-desc"><b>让 AI 先问清楚、再写测试的编程技能包。</b>出自知名 TypeScript 教育者 Matt Pocock 的个人 .agents 目录，"Skills for Real Engineers"。</p>
+            <p class="card-why"><b>为什么火：</b>它约束 AI 按资深工程师的方式干活——先澄清需求、先写测试再实现，把工程纪律注入编码 Agent。</p>
+            <div class="card-foot">
+              <a class="btn" href="https://www.bilibili.com/video/BV1UAn36aEX3/?t=101" target="_blank" rel="noopener">视频 01:41</a>
+              <a class="btn" href="https://github.com/mattpocock/skills" target="_blank" rel="noopener">GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="rank">03</div>
+          <div class="card-main">
+            <div class="card-title-row">
+              <span class="card-title"><a href="https://github.com/cathrynlavery/diagram-design" target="_blank" rel="noopener">diagram-design ↗</a></span>
+              <span class="badge">HTML</span>
+              <span class="badge stars">★ 59,100</span>
+            </div>
+            <p class="card-desc"><b>一句话让 AI 画出专业图解。</b>为 Claude Code、Codex、Copilot、Cursor 等主流编码助手提供"杂志级"图解设计能力。</p>
+            <p class="card-why"><b>为什么火：</b>AI 生成的图通常丑而随意，这个技能包把编辑级排版审美变成规则，让架构图、示意图直接能放进正式文档。</p>
+            <div class="card-foot">
+              <a class="btn" href="https://www.bilibili.com/video/BV1UAn36aEX3/?t=162" target="_blank" rel="noopener">视频 02:42</a>
+              <a class="btn" href="https://github.com/cathrynlavery/diagram-design" target="_blank" rel="noopener">GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="rank">04</div>
+          <div class="card-main">
+            <div class="card-title-row">
+              <span class="card-title"><a href="https://github.com/calesthio/OpenMontage" target="_blank" rel="noopener">OpenMontage ↗</a></span>
+              <span class="badge">Python</span>
+              <span class="badge stars">★ 70,379</span>
+            </div>
+            <p class="card-desc"><b>把 AI 编程助手变成视频工作室。</b>号称全球首个开源的 Agentic 视频生产系统，内置 12 条生产流水线。</p>
+            <p class="card-why"><b>为什么火：</b>用写代码的方式做视频——脚本、剪辑、包装全流程交给 Agent，视频生产第一次有了可复现的"工程化"路径。</p>
+            <div class="card-foot">
+              <a class="btn" href="https://www.bilibili.com/video/BV1UAn36aEX3/?t=278" target="_blank" rel="noopener">视频 04:38</a>
+              <a class="btn" href="https://github.com/calesthio/OpenMontage" target="_blank" rel="noopener">GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="rank">05</div>
+          <div class="card-main">
+            <div class="card-title-row">
+              <span class="card-title"><a href="https://github.com/thedotmack/claude-mem" target="_blank" rel="noopener">claude-mem ↗</a></span>
+              <span class="badge">TypeScript</span>
+              <span class="badge stars">★ 101,995</span>
+            </div>
+            <p class="card-desc"><b>给 AI 加上跨对话的长期记忆。</b>记录 Agent 做过的每件事，实现跨会话的持久上下文（Persistent Context Across Sessions）。</p>
+            <p class="card-why"><b>为什么火：</b>直击 AI 编码助手最大痛点——每次开新对话就"失忆"。有了持久记忆，项目上下文可以无缝延续。</p>
+            <div class="card-foot">
+              <a class="btn" href="https://www.bilibili.com/video/BV1UAn36aEX3/?t=329" target="_blank" rel="noopener">视频 05:29</a>
+              <a class="btn" href="https://github.com/thedotmack/claude-mem" target="_blank" rel="noopener">GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="rank">06</div>
+          <div class="card-main">
+            <div class="card-title-row">
+              <span class="card-title"><a href="https://github.com/Alishahryar1/free-claude-code" target="_blank" rel="noopener">free-claude-code ↗</a></span>
+              <span class="badge">Python</span>
+              <span class="badge stars">★ 62,239</span>
+            </div>
+            <p class="card-desc"><b>用免费额度跑 Claude Code 这类编程工具。</b>支持 Claude Code、Codex、VSCode、Pi、OpenCode 等 10+ 种编码工具（harness）。</p>
+            <p class="card-why"><b>为什么火：</b>降低使用门槛——不付订阅费也能体验顶级编码 Agent。注意：<b>非 Anthropic 官方项目</b>，合规与稳定性需自行评估。</p>
+            <div class="card-foot">
+              <a class="btn" href="https://www.bilibili.com/video/BV1UAn36aEX3/?t=389" target="_blank" rel="noopener">视频 06:29</a>
+              <a class="btn" href="https://github.com/Alishahryar1/free-claude-code" target="_blank" rel="noopener">GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="rank">07</div>
+          <div class="card-main">
+            <div class="card-title-row">
+              <span class="card-title"><a href="https://github.com/anthropics/knowledge-work-plugins" target="_blank" rel="noopener">knowledge-work-plugins ↗</a></span>
+              <span class="badge">Python</span>
+              <span class="badge">Anthropic 官方</span>
+              <span class="badge stars">★ 30,869</span>
+            </div>
+            <p class="card-desc"><b>Anthropic 官方推出的 11 个岗位插件。</b>面向知识工作者（knowledge workers）的开源插件仓库。</p>
+            <p class="card-why"><b>为什么火：</b>官方下场做垂直岗位场景，说明"AI 助手 + 岗位插件"正在被平台方当作正式方向投入。</p>
+            <div class="card-foot">
+              <a class="btn" href="https://www.bilibili.com/video/BV1UAn36aEX3/?t=449" target="_blank" rel="noopener">视频 07:29</a>
+              <a class="btn" href="https://github.com/anthropics/knowledge-work-plugins" target="_blank" rel="noopener">GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="rank">08</div>
+          <div class="card-main">
+            <div class="card-title-row">
+              <span class="card-title"><a href="https://github.com/lyogavin/airllm" target="_blank" rel="noopener">AirLLM ↗</a></span>
+              <span class="badge">Jupyter Notebook</span>
+              <span class="badge stars">★ 39,954</span>
+            </div>
+            <p class="card-desc"><b>4GB 显卡跑 70B 大模型。</b>通过分层换入换出等推理优化，让消费级显卡也能本地推理超大模型，最高支持 2.8T 参数推理。</p>
+            <p class="card-why"><b>为什么火：</b>本地部署大模型的硬件门槛直接打到一个 GPU 的零头。注意：125B 模型 6GB 那项说的是 <b>LoRA 微调</b>，不是全量推理。</p>
+            <div class="card-foot">
+              <a class="btn" href="https://www.bilibili.com/video/BV1UAn36aEX3/?t=513" target="_blank" rel="noopener">视频 08:33</a>
+              <a class="btn" href="https://github.com/lyogavin/airllm" target="_blank" rel="noopener">GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="rank">09</div>
+          <div class="card-main">
+            <div class="card-title-row">
+              <span class="card-title"><a href="https://github.com/earthtojake/text-to-cad" target="_blank" rel="noopener">text-to-cad ↗</a></span>
+              <span class="badge">Python</span>
+              <span class="badge stars">★ 22,039</span>
+            </div>
+            <p class="card-desc"><b>一句话生成能加工的 3D 零件。</b>给 Agent 装上 CAD 能力，从文字描述直接产出可用于实际制造的三维模型。</p>
+            <p class="card-why"><b>为什么火：</b>AI 从"生成图片"跨到"生成可制造的实物"，打通了文字 → CAD → 加工的物理世界链路。</p>
+            <div class="card-foot">
+              <a class="btn" href="https://www.bilibili.com/video/BV1UAn36aEX3/?t=568" target="_blank" rel="noopener">视频 09:28</a>
+              <a class="btn" href="https://github.com/earthtojake/text-to-cad" target="_blank" rel="noopener">GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="rank">10</div>
+          <div class="card-main">
+            <div class="card-title-row">
+              <span class="card-title"><a href="https://github.com/Tracer-Cloud/opensre" target="_blank" rel="noopener">OpenSRE ↗</a></span>
+              <span class="badge">Python</span>
+              <span class="badge stars">★ 12,304</span>
+            </div>
+            <p class="card-desc"><b>让 AI 帮你排查线上故障。</b>开源的 SRE Agent 工具集（"The open source toolkit for the AI era"），支持自建 AI 值班工程师。</p>
+            <p class="card-why"><b>为什么火：</b>On-call 是最痛苦也最适合自动化的工程工作之一，AI SRE 有明确的降本价值，星数虽低但增长势头足。</p>
+            <div class="card-foot">
+              <a class="btn" href="https://www.bilibili.com/video/BV1UAn36aEX3/?t=629" target="_blank" rel="noopener">视频 10:29</a>
+              <a class="btn" href="https://github.com/Tracer-Cloud/opensre" target="_blank" rel="noopener">GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 说明 -->
+  <section id="notes">
+    <div class="section-title">数据与口径说明 <span class="num">Notes</span></div>
+    <div class="note-card">
+      <ul>
+        <li>视频中的排名依据为<b style="color:var(--foreground)">当周涨星增量</b>（来自 GitHub Trending，截至 2026-10-16），本报告排序沿用视频顺序。</li>
+        <li>各卡片展示的 ★ 星数为<b style="color:var(--foreground)">累计总星数</b>，通过 GitHub API 实时查询于 2026-10-21，与视频中的周增量口径不同。</li>
+        <li>free-claude-code <b style="color:var(--foreground)">不是 Anthropic 官方项目</b>；AirLLM 的"125B 模型 6GB"指的是 LoRA 微调场景。</li>
+        <li>项目描述综合视频旁白与各仓库官方 README，链接均指向原始出处。</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div>基于 Bilibili 视频《这周 GitHub 上涨星最猛的 10 个 AI 开源项目》整理</div>
+    <div>BV1UAn36aEX3 · 2026-10-21 生成</div>
+  </div>
+</footer>
+
+<script>
+  const repos = [
+    ['REA', 349793], ['skills', 298861], ['claude-mem', 101995], ['OpenMontage', 70379],
+    ['free-claude-code', 62239], ['diagram-design', 59100], ['AirLLM', 39954],
+    ['knowledge-work-plugins', 30869], ['text-to-cad', 22039], ['OpenSRE', 12304]
+  ];
+  const max = repos[0][1];
+  const fmt = n => n >= 10000 ? (n / 10000).toFixed(1) + ' 万' : n.toLocaleString();
+  document.getElementById('bars').innerHTML = repos.map(([name, stars], i) => `
+    <div class="bar-row">
+      <div class="name"><span class="rank">${String(i + 1).padStart(2, '0')}</span>${name}</div>
+      <div class="bar-track"><div class="bar-fill" style="width:${(stars / max * 100).toFixed(1)}%"></div></div>
+      <div class="val">${fmt(stars)}</div>
+    </div>`).join('');
+</script>
+
+</body>
+</html>

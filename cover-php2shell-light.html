@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Inter", -apple-system, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background: #52525b;
+  }
+  .cover {
+    width: 900px; height: 383px;
+    position: relative; overflow: hidden;
+    background: #fafafa;
+    display: flex; align-items: center;
+  }
+  /* 1:1 方版（转发卡片 / 公众号主页） */
+  .cover-sq {
+    width: 900px; height: 900px;
+    position: relative; overflow: hidden;
+    background: #fafafa;
+    margin-top: 60px;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 72px 64px;
+  }
+  .cover-sq .grid-bg {
+    mask-image: radial-gradient(900px 700px at 50% 20%, #000 30%, transparent 100%);
+    -webkit-mask-image: radial-gradient(900px 700px at 50% 20%, #000 30%, transparent 100%);
+  }
+  .cover-sq .tag { margin-bottom: 30px; }
+  .cover-sq .t1 { font-size: 54px; }
+  .cover-sq .t2 { font-size: 66px; margin-top: 10px; }
+  .cover-sq .php-pill { border-radius: 16px; padding: 4px 22px 6px; }
+  .cover-sq .term { width: 100%; margin-top: 52px; }
+  .cover-sq .term-body { font-size: 14px; line-height: 2.2; padding: 18px 22px 20px; }
+  .cover-sq .term-bar .ttl { font-size: 12px; }
+  .cover-sq .k .badge { font-size: 10.5px; padding: 2px 9px; }
+  .sq-foot {
+    position: absolute; left: 64px; bottom: 48px;
+    font-size: 13px; letter-spacing: .1em; color: #a1a1aa;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .sq-foot::before { content: ""; width: 26px; height: 1px; background: #d4d4d8; }
+  .sq-foot b { color: #09090b; font-weight: 700; }
+  .sq-gap { height: 60px; background: #52525b; }
+  .grid-bg {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(9,9,11,.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(9,9,11,.05) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: radial-gradient(720px 420px at 28% 40%, #000 30%, transparent 100%);
+    -webkit-mask-image: radial-gradient(720px 420px at 28% 40%, #000 30%, transparent 100%);
+  }
+  .glow {
+    position: absolute; width: 560px; height: 560px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(24,24,27,.07) 0%, transparent 65%);
+    top: -280px; right: -120px;
+  }
+  .content {
+    position: relative; width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 42px;
+  }
+  .left { width: 490px; flex: none; }
+  .tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1px solid #e4e4e7; border-radius: 9999px;
+    padding: 4px 14px; font-size: 11.5px; font-weight: 600;
+    letter-spacing: .14em; color: #3f3f46; margin-bottom: 20px;
+  }
+  .tag .dot { width: 6px; height: 6px; border-radius: 50%; background: #09090b; }
+  .t1 {
+    font-size: 37px; font-weight: 800; letter-spacing: -0.02em;
+    color: #09090b; line-height: 1.25; white-space: nowrap;
+  }
+  .t2 {
+    font-size: 47px; font-weight: 800; letter-spacing: -0.02em;
+    color: #09090b; line-height: 1.2; margin-top: 6px; white-space: nowrap;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .php-pill {
+    display: inline-flex; align-items: center; justify-content: center;
+    background: #09090b; color: #fafafa;
+    border-radius: 12px; padding: 2px 16px 4px;
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-weight: 700; letter-spacing: 0;
+  }
+  .foot {
+    position: absolute; left: 42px; bottom: 24px;
+    font-size: 11.5px; letter-spacing: .1em; color: #a1a1aa;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .foot::before { content: ""; width: 26px; height: 1px; background: #d4d4d8; }
+
+  /* terminal */
+  .term {
+    width: 296px; flex: none;
+    border: 1px solid #e4e4e7; border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 20px 50px rgba(9,9,11,.12);
+    overflow: hidden;
+  }
+  .term-bar {
+    display: flex; align-items: center; gap: 6px;
+    padding: 10px 14px; border-bottom: 1px solid #e4e4e7;
+  }
+  .term-bar i { width: 9px; height: 9px; border-radius: 50%; background: #d4d4d8; display: block; }
+  .term-bar .ttl { margin-left: 8px; font-size: 10.5px; color: #a1a1aa; letter-spacing: .06em; font-family: "SFMono-Regular", Consolas, monospace; }
+  .term-body { padding: 14px 16px 16px; font-family: "SFMono-Regular", Consolas, "Courier New", monospace; font-size: 11.5px; line-height: 2.05; color: #09090b; }
+  .cmd { color: #a1a1aa; font-size: 10.5px; }
+  .cmd .p { color: #09090b; font-weight: 700; }
+  .k { display: flex; align-items: center; gap: 8px; }
+  .k .id { color: #3f3f46; }
+  .k .badge {
+    margin-left: auto; font-size: 9px; font-weight: 700; letter-spacing: .08em;
+    background: #09090b; color: #fafafa; border-radius: 4px; padding: 1px 7px;
+  }
+  .ver { color: #71717a; text-decoration: line-through; }
+  .arrow { color: #09090b; font-weight: 700; }
+  .ok { color: #3f3f46; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<div class="cover" id="light">
+  <div class="grid-bg"></div>
+  <div class="glow"></div>
+  <div class="content">
+    <div class="left">
+      <div class="tag"><span class="dot"></span>安全事件复盘 · PHP2SHELL</div>
+      <div class="t1">先让日本首相 · 高市早苗</div>
+      <div class="t2">恐慌的竟然是 <span class="php-pill">PHP</span></div>
+    </div>
+    <div class="term">
+      <div class="term-bar"><i></i><i></i><i></i><span class="ttl">php — critical</span></div>
+      <div class="term-body">
+        <div class="cmd"><span class="p">$</span> php -v</div>
+        <div class="k"><span class="ver">PHP 8.5.11</span><span class="arrow">→</span><span class="ok">8.5.12</span></div>
+        <div class="k"><span class="id">CVE-2026-109618</span><span class="badge">RCE</span></div>
+        <div class="k"><span class="id">CVE-2026-109619</span><span class="badge">RCE</span></div>
+        <div class="cmd"><span class="p">$</span> upgrade --now !</div>
+      </div>
+    </div>
+  </div>
+  <div class="foot">安全事件深度复盘</div>
+</div>
+
+<div class="sq-gap"></div>
+
+<!-- ============ 1:1 方版（转发卡片 / 公众号主页） ============ -->
+<div class="cover-sq" id="square">
+  <div class="grid-bg"></div>
+  <div class="glow" style="top:-300px;right:-160px;"></div>
+  <div class="tag" style="position:relative;"><span class="dot"></span>安全事件复盘 · PHP2SHELL</div>
+  <div class="t1" style="position:relative;">先让日本首相 · 高市早苗</div>
+  <div class="t2" style="position:relative;">恐慌的竟然是 <span class="php-pill">PHP</span></div>
+  <div class="term" style="position:relative;">
+    <div class="term-bar"><i></i><i></i><i></i><span class="ttl">php — critical</span></div>
+    <div class="term-body">
+      <div class="cmd"><span class="p">$</span> php -v</div>
+      <div class="k"><span class="ver">PHP 8.5.11</span><span class="arrow">→</span><span class="ok">8.5.12</span></div>
+      <div class="k"><span class="id">CVE-2026-109618</span><span class="badge">RCE</span></div>
+      <div class="k"><span class="id">CVE-2026-109619</span><span class="badge">RCE</span></div>
+      <div class="cmd"><span class="p">$</span> upgrade --now !</div>
+    </div>
+  </div>
+  <div class="sq-foot"><b>先让日本首相恐慌的，竟然是 PHP</b></div>
+</div>
+
+</body>
+</html>

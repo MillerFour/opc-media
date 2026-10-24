@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>公众号文章 · PHP2Shell 漏洞始末</title>
+<style>
+  /* 此样式块仅供本地预览，粘贴到公众号编辑器时会被丢弃 */
+  body { background: #f4f4f5; margin: 0; padding: 24px 0; }
+</style>
+</head>
+<body>
+
+<!-- ====== 复制起点 ====== -->
+<section style="max-width:677px;margin:0 auto;background:#ffffff;padding:28px 20px 36px;font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;text-align:left;">
+
+  <!-- 头部 -->
+  <section style="background:#09090b;border-radius:12px;padding:30px 26px 26px;margin-bottom:24px;text-align:left;">
+    <section style="font-size:12px;font-weight:600;letter-spacing:3px;color:#a1a1aa;margin-bottom:12px;">安全事件深度复盘 · SECURITY POSTMORTEM</section>
+    <section style="font-size:24px;font-weight:700;color:#fafafa;line-height:1.4;letter-spacing:-0.5px;margin-bottom:12px;">一颗埋了 14 年的雷：PHP2Shell 漏洞，71 天紧急修复始末</section>
+    <section style="font-size:13px;color:#71717a;line-height:1.8;">两个 CVSS 9.2 的未认证远程代码执行漏洞，让全球政府网站主动"关机避险"。这篇文章讲清楚：漏洞是什么、全球受了什么影响、官方用了多久修完，以及作为开发者该做什么。</section>
+  </section>
+
+  <!-- 导语 -->
+  <section style="font-size:14.5px;color:#3f3f46;line-height:1.85;margin-bottom:24px;text-align:justify;">
+    2026 年 10 月 21 日 14:00（UTC），PHP 官方一口气发布了 <b>8.5.12、8.4.27、8.3.36、8.2.35</b> 四个安全版本，修复两个可以被<b>未登录的远程攻击者直接拿下服务器</b>的严重漏洞。安全圈给这对漏洞起了个名字——<b>PHP2Shell</b>。公告发出后 45 分钟内，Cloudflare 观测到的攻击尝试从数千次飙升到数万次，两小时内达到数十万次，累计突破百万。这不是一篇贩卖焦虑的文章，下面用事实把这件事讲透。
+  </section>
+
+  <!-- 一、发生了什么 -->
+  <section style="font-size:17px;font-weight:700;color:#09090b;margin:30px 0 14px;letter-spacing:-0.3px;text-align:left;">一、PHP 的 BUG，引发了哪些具体问题？</section>
+
+  <section style="font-size:14.5px;color:#3f3f46;line-height:1.85;margin-bottom:14px;text-align:justify;">
+    先给一个直觉：PHP 在服务端编程语言中的占比长期超过七成，全球WordPress 站点就超过 7200 万个。这次出问题的不是某个插件、某个主题，而是 <b>PHP 解释器内核本身</b>——意味着哪怕你的业务代码一行 bug 都没有，只要服务器在用 PHP 处理 Web 请求，就暴露在风险之下。
+  </section>
+
+  <section style="border-left:3px solid #18181b;background:#fafafa;border-radius:0 8px 8px 0;padding:14px 16px;margin-bottom:10px;text-align:left;">
+    <section style="font-size:14.5px;font-weight:600;color:#09090b;margin-bottom:3px;">1. 多国政府网站主动关站避险</section>
+    <section style="font-size:13.5px;color:#52525b;line-height:1.75;">据 Reuters、TechTarget 等媒体报道，英国超过 30 个政府服务网站下线，荷兰、德国、比利时、法国、芬兰、日本等多国的政府和企业网站也采取预防性关停。修复期间宁可停止服务，也不把带漏洞的入口留在互联网上——这是近年罕见的大规模"主动关机"。</section>
+  </section>
+
+  <section style="border-left:3px solid #18181b;background:#fafafa;border-radius:0 8px 8px 0;padding:14px 16px;margin-bottom:10px;text-align:left;">
+    <section style="font-size:14.5px;font-weight:600;color:#09090b;margin-bottom:3px;">2. 攻击以"机器速度"扑上来</section>
+    <section style="font-size:13.5px;color:#52525b;line-height:1.75;">Cloudflare CEO Matthew Prince 披露：漏洞细节公开前 10 小时已有数千次攻击尝试；公开后仅 45 分钟升至数万次，2 小时内达到数十万次，随后累计突破数百万次。更早的是——亚马逊威胁情报网络的蜜罐显示，<b>漏洞还在保密期内的 10 月 17 日</b>（官方发布前 4 天），就已经有人尝试利用。</section>
+  </section>
+
+  <section style="border-left:3px solid #18181b;background:#fafafa;border-radius:0 8px 8px 0;padding:14px 16px;margin-bottom:10px;text-align:left;">
+    <section style="font-size:14.5px;font-weight:600;color:#09090b;margin-bottom:3px;">3. 百万级服务器暴露，大量还在用"停服版本"</section>
+    <section style="font-size:13.5px;color:#52525b;line-height:1.75;">据公开扫描数据，已确认暴露的受影响服务器超过百万台；VirusTotal 观测到约 510 万个 IP 在跑 PHP，其中约 75.8 万台运行着 5.4～8.1 这些<b>已停止官方维护的老版本</b>（仅 PHP 7.4 就约 18.7 万台）。更扎心的是：甚至有约 8.5 万台跑着"修复前最新版"——跑最新版也不等于安全，只有打上补丁才算数。</section>
+  </section>
+
+  <section style="border-left:3px solid #18181b;background:#fafafa;border-radius:0 8px 8px 0;padding:14px 16px;margin-bottom:10px;text-align:left;">
+    <section style="font-size:14.5px;font-weight:600;color:#09090b;margin-bottom:3px;">4. 几乎所有主流 PHP 生态全部中招</section>
+    <section style="font-size:13.5px;color:#52525b;line-height:1.75;">WordPress、Drupal、Joomla、Laravel、Magento、MediaWiki、Symfony、WHMCS……公开的利用演示里这些名字都在列。多国网络安全机构（美国 NSA、CISA，英国 NCSC，澳大利亚 ACSC，中国 CNVD / 国家网安通报中心）接连发布紧急预警。</section>
+  </section>
+
+  <!-- 二、漏洞是什么 -->
+  <section style="font-size:17px;font-weight:700;color:#09090b;margin:30px 0 14px;letter-spacing:-0.3px;text-align:left;">二、专业讨论：这个漏洞到底"毒"在哪？</section>
+
+  <section style="font-size:14.5px;color:#3f3f46;line-height:1.85;margin-bottom:14px;text-align:justify;">
+    PHP2Shell 是两个独立但可协同利用的<b>内存安全漏洞</b>，都位于 PHP 解释器核心（C 语言写的引擎层），CVSS 评分均为 <b>9.2（Critical）</b>。理解它们需要一点背景：PHP 采用"多进程/多线程 Worker"模型处理请求，每个请求有一套独立的内部状态（请求数据、全局变量、会话信息），请求结束后要彻底清理干净，再服务下一个请求。<b>这套"初始化—使用—清理"的纪律一旦被打破，就是内核级灾难。</b>
+  </section>
+
+  <section style="border:1px solid #e4e4e7;border-radius:10px;padding:16px 18px;margin-bottom:12px;background:#ffffff;text-align:left;">
+    <section style="margin-bottom:6px;"><span style="font-size:16px;font-weight:700;color:#09090b;">CVE-2026-109618 · OOM 破坏 → RCE</span><span style="display:inline-block;font-size:11px;color:#09090b;border:1px solid #09090b;border-radius:99px;padding:1px 8px;margin-left:8px;">内存破坏</span></section>
+    <section style="font-size:13.5px;color:#52525b;line-height:1.8;text-align:justify;">当 PHP 触发<b>内存耗尽（Out of Memory）</b>时，引擎会被中途打断，此时内部请求数据可能只初始化了一半。问题在于：随后的请求清理流程会把这份"半成品数据"当成有效数据继续处理，造成内存破坏，进而被利用为代码执行。攻击者可以<b>故意构造超大请求</b>去触发受控的 memory_limit 失败——这也是官方临时缓解措施要求调大 memory_limit、调低 post_max_size 的原因。此外该漏洞还可单独泄露服务端内存内容，研究者将其影响类比为当年的 Heartbleed。</section>
+  </section>
+
+  <section style="border:1px solid #e4e4e7;border-radius:10px;padding:16px 18px;margin-bottom:12px;background:#ffffff;text-align:left;">
+    <section style="margin-bottom:6px;"><span style="font-size:16px;font-weight:700;color:#09090b;">CVE-2026-109619 · 全局状态残留 → RCE</span><span style="display:inline-block;font-size:11px;color:#09090b;border:1px solid #09090b;border-radius:99px;padding:1px 8px;margin-left:8px;">释放后使用</span></section>
+    <section style="font-size:13.5px;color:#52525b;line-height:1.8;text-align:justify;">请求私有的内部状态，在其<b>底层内存已被释放后仍然存活</b>。当同一个 Worker 进程处理下一个请求时，可能在正常初始化完成之前就摸到这份"上一辈子"的残留状态。已确认的触发路径包括 session.upload_progress 和（PHP 8.5 的）致命错误回溯。一句话：上个请求的"幽灵"附身到了下个请求身上。</section>
+  </section>
+
+  <section style="border:1px solid #e4e4e7;border-radius:10px;padding:16px 18px;margin-bottom:14px;background:#09090b;text-align:left;">
+    <section style="font-size:14px;font-weight:700;color:#fafafa;margin-bottom:6px;">为什么说它是"教科书级"的严重漏洞？</section>
+    <section style="font-size:13.5px;color:#d4d4d8;line-height:1.85;text-align:justify;">① <b>无需认证</b>：一个精心构造的 POST 请求就够，不需要任何账号；② <b>在应用代码之前触发</b>：官方评估 mod_php 风险最高，因为已演示的利用发生在任何业务逻辑执行之前——WAF 按业务接口配的规则基本形同虚设；③ <b>与业务代码质量无关</b>：应用再规范也拦不住运行时自己烂掉；④ <b>日志几乎无感</b>：利用发生在应用层之下，业务日志里可能只有一条异常请求，甚至什么都看不到。</section>
+  </section>
+
+  <!-- 三、时间线 -->
+  <section style="font-size:17px;font-weight:700;color:#09090b;margin:30px 0 14px;letter-spacing:-0.3px;text-align:left;">三、过了多久官方才修复？——71 天时间线</section>
+
+  <section style="font-size:14.5px;color:#3f3f46;line-height:1.85;margin-bottom:14px;text-align:justify;">
+    先说结论：从 8 月 11 日首次正式报告，到 10 月 21 日安全版本发布，官方协调修复历时 <b>71 天</b>。而这颗雷在代码里埋了更久——有研究指出问题代码可以追溯到 <b>2012 年的 PHP 5.4</b>，潜伏了约 14 年。完整时间线如下（据 PHP 官方公告及多方公开报道整理）：
+  </section>
+
+  <section style="border:1px solid #e4e4e7;border-radius:10px;padding:18px 20px;margin-bottom:12px;background:#ffffff;text-align:left;">
+    <section style="margin-bottom:10px;"><span style="display:inline-block;width:108px;font-size:12.5px;font-weight:700;color:#09090b;">2024 年</span><span style="font-size:13.5px;color:#52525b;line-height:1.75;">PHP 核心开发者曾注意到相关内存问题的早期迹象，但未找到可利用路径，修复停滞。</span></section>
+    <section style="margin-bottom:10px;"><span style="display:inline-block;width:108px;font-size:12.5px;font-weight:700;color:#09090b;">8 月 1 日</span><span style="font-size:13.5px;color:#52525b;line-height:1.75;">安全公司 Calif 在 OpenAI「Patch the Planet」项目中，借助 AI 模型找到多条远程代码执行路径。</span></section>
+    <section style="margin-bottom:10px;"><span style="display:inline-block;width:108px;font-size:12.5px;font-weight:700;color:#09090b;">8 月 11 日</span><span style="font-size:13.5px;color:#52525b;line-height:1.75;"><b>Calif 向 PHP 官方报告首个漏洞</b>，协调披露流程启动。</span></section>
+    <section style="margin-bottom:10px;"><span style="display:inline-block;width:108px;font-size:12.5px;font-weight:700;color:#09090b;">8 月 19–21 日</span><span style="font-size:13.5px;color:#52525b;line-height:1.75;">安全公司 Wiz 独立发现同类问题，并连续验证：对 Drupal（8.20）、WordPress（8.21）实现未认证 RCE。</span></section>
+    <section style="margin-bottom:10px;"><span style="display:inline-block;width:108px;font-size:12.5px;font-weight:700;color:#09090b;">8 月 24 日</span><span style="font-size:13.5px;color:#52525b;line-height:1.75;">Wiz 正式向 PHP 安全团队提交报告。</span></section>
+    <section style="margin-bottom:10px;"><span style="display:inline-block;width:108px;font-size:12.5px;font-weight:700;color:#09090b;">9 月 21 日</span><span style="font-size:13.5px;color:#52525b;line-height:1.75;">PHP 安全团队确认报告，开始开发协同修复方案。</span></section>
+    <section style="margin-bottom:10px;"><span style="display:inline-block;width:108px;font-size:12.5px;font-weight:700;color:#09090b;">10 月 17 日</span><span style="font-size:13.5px;color:#52525b;line-height:1.75;"><b>亚马逊蜜罐捕捉到首次在野利用尝试</b>——此时漏洞仍处于保密期。</span></section>
+    <section style="margin-bottom:10px;"><span style="display:inline-block;width:108px;font-size:12.5px;font-weight:700;color:#09090b;">10 月 20 日</span><span style="font-size:13.5px;color:#52525b;line-height:1.75;">匿名消息在 Hacker News 泄露两个 CVE 编号与原定 10 月 22 日的披露计划；利用演示视频开始传播，watchTowr 确认复现。PHP 官方决定<b>将发布提前一天</b>。</span></section>
+    <section style="margin-bottom:10px;"><span style="display:inline-block;width:108px;font-size:12.5px;font-weight:700;color:#09090b;">10 月 21 日</span><span style="font-size:13.5px;color:#52525b;line-height:1.75;">协调披露进一步失控：镜像厂商 Chainguard 提前数小时发布了含补丁的镜像；Patchstack 收到多起在野利用通报。<b>13:34 UTC 安全公告上线，14:00 UTC 四个修复版本正式发布</b>。</span></section>
+    <section><span style="display:inline-block;width:108px;font-size:12.5px;font-weight:700;color:#09090b;">发布之后</span><span style="font-size:13.5px;color:#52525b;line-height:1.75;">攻击量指数级攀升，多国机构发布紧急预警，各国网站进入"关站—打补丁—恢复"的抢修周期。</span></section>
+  </section>
+
+  <section style="font-size:14.5px;color:#3f3f46;line-height:1.85;margin-bottom:14px;text-align:justify;">
+    值得注意的两个细节：其一，71 天在大型开源项目的协调披露里并不算慢——要给 4 个在维护分支 + 7.4/8.0/8.1 三个停服版本做源码级回移植，还要协调全球发行版厂商预备补丁；其二，这次真正失控的是<b>泄露</b>——原计划 10 月 22 日披露，结果细节提前流出，官方被迫抢跑一天发版，出现了"漏洞细节满天飞、补丁还没发布"的真空窗口期。
+  </section>
+
+  <!-- 四、启示 -->
+  <section style="font-size:17px;font-weight:700;color:#09090b;margin:30px 0 14px;letter-spacing:-0.3px;text-align:left;">四、给开发者的一些冷思考</section>
+
+  <section style="border-left:3px solid #18181b;background:#fafafa;border-radius:0 8px 8px 0;padding:14px 16px;margin-bottom:10px;text-align:left;">
+    <section style="font-size:14.5px;font-weight:600;color:#09090b;margin-bottom:3px;">「我的代码没问题」不再是护身符</section>
+    <section style="font-size:13.5px;color:#52525b;line-height:1.75;">过去十年的 Web 安全假设是：应用和插件打好补丁，就基本安全。PHP2Shell 直接击穿了这个假设——信任边界在运行时，在你监控不到的那一层。语言/运行时的供应链安全，值得被写进每家公司的安全清单。</section>
+  </section>
+
+  <section style="border-left:3px solid #18181b;background:#fafafa;border-radius:0 8px 8px 0;padding:14px 16px;margin-bottom:10px;text-align:left;">
+    <section style="font-size:14.5px;font-weight:600;color:#09090b;margin-bottom:3px;">AI 把攻防都按了快进键</section>
+    <section style="font-size:13.5px;color:#52525b;line-height:1.75;">这次漏洞由 AI 辅助研究被发现（Calif 用 GPT-5.6 Sol、Wiz 用 AI Agent + Gemini 4 Argon），也在泄露后加速了武器化。Wiz 的判断很直白：问题在代码里潜伏了十多年，过去不是不危险，而是人工把它变成可用攻击的成本太高。AI 把这个门槛砸掉了——<b>"存在漏洞"到"漏洞可被利用"的时间差，正在归零。</b></section>
+  </section>
+
+  <section style="border-left:3px solid #18181b;background:#fafafa;border-radius:0 8px 8px 0;padding:14px 16px;margin-bottom:10px;text-align:left;">
+    <section style="font-size:14.5px;font-weight:600;color:#09090b;margin-bottom:3px;">停服版本是最大的雷区</section>
+    <section style="font-size:13.5px;color:#52525b;line-height:1.75;">暴露面里最大的一块是 5.4～8.1 这些停服版本。官方这次罕见地为 7.4/8.0/8.1 提供了最小化源码回移植，但这只是应急——还在跑停服版本的系统，欠的不是一次升级，是一份技术债清偿计划。</section>
+  </section>
+
+  <!-- 五、行动清单 -->
+  <section style="font-size:17px;font-weight:700;color:#09090b;margin:30px 0 14px;letter-spacing:-0.3px;text-align:left;">五、现在该做什么？</section>
+
+  <section style="background:#fafafa;border:1px solid #e4e4e7;border-radius:8px;padding:16px 18px;margin-bottom:12px;text-align:left;">
+    <section style="font-size:13.5px;color:#3f3f46;line-height:2;">
+      <b style="color:#09090b;">第一优先级：升级</b> —— 8.5.12 / 8.4.27 / 8.3.36 / 8.2.35 任一对应分支的安全版本，这是唯一完整的解决方案；<br>
+      <b style="color:#09090b;">暂时无法升级</b> —— 按官方公告做临时缓解：memory_limit=-1（用 php_admin_value 固定）、post_max_size=8M（无上传需求时）、关闭 session.upload_progress、重启全部 Worker。注意：缓解措施只是收窄攻击路径，<b>不等于安全</b>；<br>
+      <b style="color:#09090b;">回溯排查</b> —— 由于首次在野利用（10 月 17 日）早于官方发布，日志排查窗口要往前翻，重点看异常 POST、Worker 崩溃重启、来历不明的进程与外联。
+    </section>
+  </section>
+
+  <!-- 链接 -->
+  <section style="font-size:17px;font-weight:700;color:#09090b;margin:30px 0 14px;letter-spacing:-0.3px;text-align:left;">官方仓库与参考来源</section>
+
+  <section style="background:#fafafa;border:1px solid #e4e4e7;border-radius:8px;padding:16px 18px;margin-bottom:12px;text-align:left;">
+    <section style="font-size:12.5px;color:#3f3f46;line-height:2.1;font-family:Consolas,monospace;">
+      PHP 官方源码（本次补丁所在仓库）：<br>
+      github.com/php/php-src<br>
+      <br>
+      修复版本发布页：<br>
+      github.com/php/php-src/releases<br>
+      <br>
+      官方安全公告（2026-10-21）：<br>
+      php.net/archive/2026.php#2026-10-21-5
+    </section>
+  </section>
+
+  <section style="background:#fafafa;border:1px solid #e4e4e7;border-radius:8px;padding:16px 18px;margin-bottom:12px;text-align:left;">
+    <section style="font-size:12px;color:#71717a;line-height:1.9;text-align:left;">
+      参考来源：PHP 官方安全公告；国家网络安全通报中心预警（CVE-2026-109618 / CVE-2026-109619）；CNVD 编号 CNVD-2026-41674 / 41675；TechTarget《PHP2Shell disclosure unravels after leaks forced early patch drop》；The Register；Recorded Future Insikt Group 时间线整理；经济参考报。本文事实性内容均来自公开报道与官方公告，仅供技术交流。
+    </section>
+  </section>
+
+  <section style="margin-top:26px;text-align:center;">
+    <span style="font-size:12px;color:#a1a1aa;">— 完 —</span>
+  </section>
+
+</section>
+<!-- ====== 复制终点 ====== -->
+
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Inter", -apple-system, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background: #52525b;
+  }
+  .cover {
+    width: 900px; height: 383px;
+    position: relative; overflow: hidden;
+    display: flex; align-items: center;
+  }
+  /* ---------- shared ---------- */
+  .grid-bg {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(to right, var(--grid) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: radial-gradient(720px 420px at 30% 40%, #000 30%, transparent 100%);
+    -webkit-mask-image: radial-gradient(720px 420px at 30% 40%, #000 30%, transparent 100%);
+  }
+  .glow {
+    position: absolute; width: 560px; height: 560px; border-radius: 50%;
+    background: radial-gradient(circle, var(--glow) 0%, transparent 65%);
+    top: -280px; right: -120px;
+  }
+  .content {
+    position: relative; width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+  }
+  .left { max-width: 480px; }
+  .tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1px solid var(--tag-br); border-radius: 9999px;
+    padding: 4px 14px; font-size: 11.5px; font-weight: 600;
+    letter-spacing: .14em; color: var(--tag-fg); margin-bottom: 18px;
+  }
+  .tag .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--dot); }
+  h1 {
+    font-size: 54px; font-weight: 800; letter-spacing: -0.035em;
+    line-height: 1.12; color: var(--fg); margin-bottom: 14px; white-space: nowrap;
+  }
+  h1 .num {
+    font-variant-numeric: tabular-nums;
+    color: var(--num); padding-right: 6px;
+  }
+  .sub {
+    font-size: 17px; line-height: 1.6; color: var(--muted); letter-spacing: .01em;
+  }
+  .sub b { color: var(--fg); font-weight: 600; }
+  .foot {
+    position: absolute; left: 48px; bottom: 26px;
+    font-size: 11.5px; letter-spacing: .1em; color: var(--foot);
+    font-variant-numeric: tabular-nums; display: flex; align-items: center; gap: 10px;
+  }
+  .foot::before { content: ""; width: 26px; height: 1px; background: var(--foot-line); }
+
+  /* ---------- terminal card ---------- */
+  .term {
+    width: 330px; flex: none;
+    border: 1px solid var(--term-br); border-radius: 14px;
+    background: var(--term-bg);
+    box-shadow: var(--term-shadow);
+    overflow: hidden;
+  }
+  .term-bar {
+    display: flex; align-items: center; gap: 6px;
+    padding: 10px 14px; border-bottom: 1px solid var(--term-br);
+  }
+  .term-bar i { width: 9px; height: 9px; border-radius: 50%; background: var(--tdot); display: block; }
+  .term-bar .ttl { margin-left: 8px; font-size: 10.5px; color: var(--term-muted); letter-spacing: .06em; font-family: "SFMono-Regular", Consolas, monospace; }
+  .term-body { padding: 14px 16px 16px; font-family: "SFMono-Regular", Consolas, "Courier New", monospace; font-size: 11.5px; line-height: 2.0; }
+  .term-body .cmd { color: var(--term-muted); margin-bottom: 6px; font-size: 10.5px; }
+  .term-body .cmd .p { color: var(--accent); }
+  .row { display: grid; grid-template-columns: 62px 1fr auto; align-items: center; gap: 10px; }
+  .row .st { color: var(--accent); font-weight: 600; }
+  .row .bar { height: 5px; border-radius: 9999px; background: var(--track); overflow: hidden; }
+  .row .bar i { display: block; height: 100%; background: var(--fill); border-radius: 9999px; }
+  .row .nm { color: var(--fg); font-weight: 600; width: 104px; text-align: right; font-size: 10.5px; }
+
+  /* ---------- dark theme vars ---------- */
+  .dark {
+    --grid: rgba(255,255,255,.045);
+    --glow: rgba(161,161,170,.10);
+    --fg: #fafafa; --muted: #a1a1aa; --num: #d4d4d8;
+    --tag-br: rgba(255,255,255,.16); --tag-fg: #d4d4d8; --dot: #fafafa;
+    --foot: #71717a; --foot-line: #3f3f46;
+    --term-bg: #111113; --term-br: #27272a; --term-muted: #71717a;
+    --term-shadow: 0 24px 60px rgba(0,0,0,.5);
+    --tdot: #3f3f46; --accent: #fafafa; --track: #232327; --fill: #d4d4d8;
+    background: #09090b;
+  }
+  /* ---------- light theme vars ---------- */
+  .light {
+    --grid: rgba(9,9,11,.05);
+    --glow: rgba(24,24,27,.06);
+    --fg: #09090b; --muted: #52525b; --num: #3f3f46;
+    --tag-br: #e4e4e7; --tag-fg: #3f3f46; --dot: #09090b;
+    --foot: #a1a1aa; --foot-line: #d4d4d8;
+    --term-bg: #ffffff; --term-br: #e4e4e7; --term-muted: #a1a1aa;
+    --term-shadow: 0 20px 50px rgba(9,9,11,.12);
+    --tdot: #d4d4d8; --accent: #09090b; --track: #f4f4f5; --fill: #18181b;
+    background: #fafafa;
+  }
+  .spacer { height: 40px; }
+</style>
+</head>
+<body>
+
+<!-- ============ 深色版 ============ -->
+<div class="cover dark" id="dark">
+  <div class="grid-bg"></div>
+  <div class="glow"></div>
+  <div class="content">
+    <div class="left">
+      <div class="tag"><span class="dot"></span>开源周报 · OPEN SOURCE WEEKLY</div>
+      <h1>GitHub 涨星<br><span class="num">TOP 10</span></h1>
+      <div class="sub">本周最值得安装的 <b>10 个 AI 开源项目</b></div>
+    </div>
+    <div class="term">
+      <div class="term-bar"><i></i><i></i><i></i><span class="ttl">trending — ai · weekly</span></div>
+      <div class="term-body">
+        <div class="cmd"><span class="p">$</span> gh trending --topic=ai --this-week</div>
+        <div class="row"><span class="st">★ 349.8k</span><span class="bar"><i style="width:100%"></i></span><span class="nm">REA</span></div>
+        <div class="row"><span class="st">★ 298.9k</span><span class="bar"><i style="width:85%"></i></span><span class="nm">skills</span></div>
+        <div class="row"><span class="st">★ 102.0k</span><span class="bar"><i style="width:29%"></i></span><span class="nm">claude-mem</span></div>
+        <div class="row"><span class="st">★ 70.4k</span><span class="bar"><i style="width:20%"></i></span><span class="nm">OpenMontage</span></div>
+        <div class="row"><span class="st">★ 59.1k</span><span class="bar"><i style="width:17%"></i></span><span class="nm">diagram-design</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="spacer"></div>
+
+<!-- ============ 浅色版 ============ -->
+<div class="cover light" id="light">
+  <div class="grid-bg"></div>
+  <div class="glow"></div>
+  <div class="content">
+    <div class="left">
+      <div class="tag"><span class="dot"></span>开源周报 · OPEN SOURCE WEEKLY</div>
+      <h1>GitHub 涨星<br><span class="num">TOP 10</span></h1>
+      <div class="sub">本周最值得安装的 <b>10 个 AI 开源项目</b></div>
+    </div>
+    <div class="term">
+      <div class="term-bar"><i></i><i></i><i></i><span class="ttl">trending — ai · weekly</span></div>
+      <div class="term-body">
+        <div class="cmd"><span class="p">$</span> gh trending --topic=ai --this-week</div>
+        <div class="row"><span class="st">★ 349.8k</span><span class="bar"><i style="width:100%"></i></span><span class="nm">REA</span></div>
+        <div class="row"><span class="st">★ 298.9k</span><span class="bar"><i style="width:85%"></i></span><span class="nm">skills</span></div>
+        <div class="row"><span class="st">★ 102.0k</span><span class="bar"><i style="width:29%"></i></span><span class="nm">claude-mem</span></div>
+        <div class="row"><span class="st">★ 70.4k</span><span class="bar"><i style="width:20%"></i></span><span class="nm">OpenMontage</span></div>
+        <div class="row"><span class="st">★ 59.1k</span><span class="bar"><i style="width:17%"></i></span><span class="nm">diagram-design</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
