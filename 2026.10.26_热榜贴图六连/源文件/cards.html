@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Inter", -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background: #333; }
+  .card {
+    width: 1080px; height: 1440px; position: relative; overflow: hidden; background: #0d1526;
+  }
+  .bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+  .veil { position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(8,12,22,.42) 0%, rgba(8,12,22,0) 24%, rgba(8,12,22,0) 46%, rgba(8,12,22,.86) 74%, rgba(8,12,22,.96) 100%); }
+  .frame { position: absolute; inset: 26px; border: 1px solid rgba(201,162,75,.4); pointer-events: none; }
+  .corner { position: absolute; width: 22px; height: 22px; border-color: #c9a24b; border-style: solid; }
+  .badge-row { position: absolute; top: 64px; left: 64px; display: flex; align-items: center; gap: 16px; }
+  .hot {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: #c9342b; color: #fff; font-weight: 800; font-size: 26px; letter-spacing: .18em;
+    padding: 10px 22px; border-radius: 8px; box-shadow: 0 6px 24px rgba(201,52,43,.45);
+  }
+  .rank { color: #f3ead2; font-weight: 800; font-size: 30px; letter-spacing: .1em;
+    text-shadow: 0 2px 14px rgba(0,0,0,.6); }
+  .topic {
+    position: absolute; left: 64px; right: 64px; bottom: 190px;
+  }
+  .title {
+    font-family: 'STZhongsong','STSong','SimSun',serif;
+    color: #f7f2e4; font-size: 52px; font-weight: 800; line-height: 1.32; letter-spacing: 1px;
+    text-shadow: 0 2px 18px rgba(0,0,0,.75);
+  }
+  .divider { width: 72px; height: 3px; background: #c9a24b; margin: 26px 0 24px; }
+  .take { color: #cfd4e2; font-size: 25px; line-height: 1.72; letter-spacing: .5px;
+    text-shadow: 0 1px 10px rgba(0,0,0,.7); }
+  .foot {
+    position: absolute; left: 64px; bottom: 72px; display: flex; align-items: center; gap: 14px;
+    color: #8a94ad; font-size: 20px; letter-spacing: .22em;
+  }
+  .foot::before { content: ""; width: 34px; height: 1px; background: #c9a24b; }
+  .spacer { height: 40px; }
+</style>
+</head>
+<body>
+
+<!-- 卡1 S16 -->
+<div class="card" id="c1">
+  <div class="bg" style="background-image:url('Vertical_esports_poster_illust_2026-10-26T01-16-22.png');"></div>
+  <div class="veil"></div><div class="frame"></div>
+  <div class="corner" style="top:26px;left:26px;border-width:2px 0 0 2px;"></div>
+  <div class="corner" style="top:26px;right:26px;border-width:2px 2px 0 0;"></div>
+  <div class="corner" style="bottom:26px;left:26px;border-width:0 0 2px 2px;"></div>
+  <div class="corner" style="bottom:26px;right:26px;border-width:0 2px 2px 0;"></div>
+  <div class="badge-row"><span class="hot">热榜 · 竞技场</span><span class="rank">TOP 1</span></div>
+  <div class="topic">
+    <div class="title">S16 瑞士轮 HLE 0-1 IG，如何评价这场比赛</div>
+    <div class="divider"></div>
+    <div class="take">瑞士轮没有退路，HLE 开局就把自己逼到墙角；IG 赢在敢打，前期节奏直接拉满。一局定不了生死，但足以定心态——下一轮才是真考试。</div>
+  </div>
+  <div class="foot">热点手记 · 第 1 期</div>
+</div>
+
+<div class="spacer"></div>
+
+<!-- 卡2 功夫女足 -->
+<div class="card" id="c2">
+  <div class="bg" style="background-image:url('Vertical_movie_poster_style_il_2026-10-26T01-17-21.png');"></div>
+  <div class="veil"></div><div class="frame"></div>
+  <div class="corner" style="top:26px;left:26px;border-width:2px 0 0 2px;"></div>
+  <div class="corner" style="top:26px;right:26px;border-width:2px 2px 0 0;"></div>
+  <div class="corner" style="bottom:26px;left:26px;border-width:0 0 2px 2px;"></div>
+  <div class="corner" style="bottom:26px;right:26px;border-width:0 2px 2px 0;"></div>
+  <div class="badge-row"><span class="hot">热榜 · 电影圈</span><span class="rank">TOP 2</span></div>
+  <div class="topic">
+    <div class="title">周星驰《功夫女足》烂番茄开分 0 分，情怀还能撑多久</div>
+    <div class="divider"></div>
+    <div class="take">0 分不代表一文不值，但代表专业影评人集体不买账。情怀能把观众请进影院，却留不住口碑——喜剧的内核是悲剧，电影的内核得是好电影。</div>
+  </div>
+  <div class="foot">热点手记 · 第 2 期</div>
+</div>
+
+<div class="spacer"></div>
+
+<!-- 卡3 水上漂 -->
+<div class="card" id="c3">
+  <div class="bg" style="background-image:url('Vertical_extreme_sports_illust_2026-10-26T01-17-41.png');"></div>
+  <div class="veil"></div><div class="frame"></div>
+  <div class="corner" style="top:26px;left:26px;border-width:2px 0 0 2px;"></div>
+  <div class="corner" style="top:26px;right:26px;border-width:2px 2px 0 0;"></div>
+  <div class="corner" style="bottom:26px;left:26px;border-width:0 0 2px 2px;"></div>
+  <div class="corner" style="bottom:26px;right:26px;border-width:0 2px 2px 0;"></div>
+  <div class="badge-row"><span class="hot">热榜 · 极限时刻</span><span class="rank">TOP 3</span></div>
+  <div class="topic">
+    <div class="title">摩托车水上漂 40 公里，这对硬件和技术的要求有多变态</div>
+    <div class="divider"></div>
+    <div class="take">吉尼斯纪录的背后是极致的减重、密封与动力调校，是把每个环节都算到极限的工程学。挑战极限从来不是莽——这一漂，漂出的是工程师的浪漫。</div>
+  </div>
+  <div class="foot">热点手记 · 第 3 期</div>
+</div>
+
+<div class="spacer"></div>
+
+<!-- 卡4 古偶 -->
+<div class="card" id="c4">
+  <div class="bg" style="background-image:url('Vertical_illustration__satiric_2026-10-26T01-18-01.png');"></div>
+  <div class="veil"></div><div class="frame"></div>
+  <div class="corner" style="top:26px;left:26px;border-width:2px 0 0 2px;"></div>
+  <div class="corner" style="top:26px;right:26px;border-width:2px 2px 0 0;"></div>
+  <div class="corner" style="bottom:26px;left:26px;border-width:0 0 2px 2px;"></div>
+  <div class="corner" style="bottom:26px;right:26px;border-width:0 2px 2px 0;"></div>
+  <div class="badge-row"><span class="hot">热榜 · 剧集观察</span><span class="rank">TOP 4</span></div>
+  <div class="topic">
+    <div class="title">憋死七万铁骑、冻死兵部尚书，古偶为什么总出现逆天剧情</div>
+    <div class="divider"></div>
+    <div class="take">观众不是不能接受戏剧夸张，是不能接受被当成傻子。历史可以架空，逻辑不能架空——逆天剧情刷屏的背后，是创作心气的集体躺平。</div>
+  </div>
+  <div class="foot">热点手记 · 第 4 期</div>
+</div>
+
+<div class="spacer"></div>
+
+<!-- 卡5 369 -->
+<div class="card" id="c5">
+  <div class="bg" style="background-image:url('Vertical_illustration__post_ma_2026-10-26T01-18-20.png');"></div>
+  <div class="veil"></div><div class="frame"></div>
+  <div class="corner" style="top:26px;left:26px;border-width:2px 0 0 2px;"></div>
+  <div class="corner" style="top:26px;right:26px;border-width:2px 2px 0 0;"></div>
+  <div class="corner" style="bottom:26px;left:26px;border-width:0 0 2px 2px;"></div>
+  <div class="corner" style="bottom:26px;right:26px;border-width:0 2px 2px 0;"></div>
+  <div class="badge-row"><span class="hot">热榜 · 电竞圈</span><span class="rank">TOP 5</span></div>
+  <div class="topic">
+    <div class="title">369 百胜赛后采访，这段话的信息量拉满</div>
+    <div class="divider"></div>
+    <div class="take">百胜是里程碑，采访是放大镜。职业选手的每一句表态都会被逐帧解读——这正是竞技体育的魅力：赛场内外，都是博弈。你怎么看？评论区聊聊。</div>
+  </div>
+  <div class="foot">热点手记 · 第 5 期</div>
+</div>
+
+<div class="spacer"></div>
+
+<!-- 卡6 鹤岗 -->
+<div class="card" id="c6">
+  <div class="bg" style="background-image:url('Vertical_illustration__slice_o_2026-10-26T01-18-46.png');"></div>
+  <div class="veil"></div><div class="frame"></div>
+  <div class="corner" style="top:26px;left:26px;border-width:2px 0 0 2px;"></div>
+  <div class="corner" style="top:26px;right:26px;border-width:2px 2px 0 0;"></div>
+  <div class="corner" style="bottom:26px;left:26px;border-width:0 0 2px 2px;"></div>
+  <div class="corner" style="bottom:26px;right:26px;border-width:0 2px 2px 0;"></div>
+  <div class="badge-row"><span class="hot">热榜 · 人间烟火</span><span class="rank">TOP 6</span></div>
+  <div class="topic">
+    <div class="title">江苏姑娘 3.8 万网购鹤岗房，入住后房顶漏水：问题出在哪</div>
+    <div class="divider"></div>
+    <div class="take">房价可以便宜到极致，生活的隐性成本不会消失——暖气、房顶、通勤、机会，每一项都在重新定价。鹤岗热潮至今，留下的人各有各的算法。</div>
+  </div>
+  <div class="foot">热点手记 · 第 6 期</div>
+</div>
+
+</body>
+</html>
