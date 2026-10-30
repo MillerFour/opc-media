@@ -25,11 +25,16 @@ TS=$(date '+%Y-%m-%d %H:%M')
 
 # 变更摘要：按顶层目录/文件分组统计（最多 8 行）
 SUMMARY=$(printf '%s\n' "$CHANGES" \
-  | sed -E 's/^.{2,3} ?//' \
-  | sed -E 's/^"(.*)"$/\1/' \
-  | awk -F/ '{ if (NF>1) print $1"/" else print $1 }' \
+  | cut -c4- \
+  | sed 's/.* -> //' \
+  | while IFS= read -r p; do
+      case "$p" in
+        */*) printf '%s/\n' "${p%%/*}" ;;
+        *)   printf '%s\n' "$p" ;;
+      esac
+    done \
   | sort | uniq -c | sort -rn | head -8 \
-  | awk '{ c=$1; $1=""; printf "- %s (%d)\n", substr($0,2), c }')
+  | awk '{ printf "- %s (%s)\n", $2, $1 }')
 
 git add -A -- . ':!scripts/.watch.pid' >/dev/null 2>&1 || git add -A >/dev/null 2>&1
 
