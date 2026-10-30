@@ -55,3 +55,14 @@ E:\Writing\wx-mp\
 - **AI 生成图自带合规水印（AI 内容标识法规），不可去除、不可裁剪规避**
 - 素材优先级：官方素材/新闻图/视频截图 > 可商用图库 > AI 生成兜底；热点与游戏题材尤其优先实拍素材
 - 使用官方/媒体图片时图注标明来源（如"图源：奥迪"）
+
+## Git 自动提交（强制，2026.10.30 起）
+
+- 仓库已有 remote：github.com/MillerFour/opc-media（默认只 commit 不 push）
+- **每完成一篇文章/一批素材，收尾必须执行 `bash scripts/autocommit.sh`**，别攒着（用户明确要求"生成完文件自动提交"）
+- 三层结构：`scripts/watch-commit.sh`（轮询监听 + 静默一轮再提交）/ `scripts/autocommit.sh`（一次性提交，msg 自动带顶层目录统计）/ `.githooks/*`（pre-commit 拦 >30MB 与 *.tmp/*.log，post-commit 记 `.git/autocommit.log`）
+- `git config core.hooksPath .githooks` 已设；新机器 clone 后需重设一次
+- 常驻监听：`scripts/start-watch.bat`（最小化）/ `scripts/stop-watch.bat`；开机自启丢快捷方式进 `shell:startup`
+- 想连 push 一起自动：`AUTO_PUSH=1`（默认关闭，push 属外部动作）
+- 细节见 `scripts/README.md`
+
