@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif; background: #e4e4e7; -webkit-font-smoothing: antialiased; }
+  .canvas { width: 1400px; height: 960px; background: #fafafa; position: relative; padding: 44px 56px; }
+  .grid-bg { position: absolute; inset: 0; background-image:
+      linear-gradient(to right, rgba(9,9,11,.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(9,9,11,.04) 1px, transparent 1px);
+    background-size: 44px 44px; }
+  .wrap { position: relative; height: 100%; display: flex; flex-direction: column; padding-bottom: 42px; }
+  .head { display: flex; align-items: baseline; gap: 16px; margin-bottom: 26px; }
+  .head .t { font-size: 26px; font-weight: 800; color: #09090b; letter-spacing: -0.02em; }
+  .head .s { font-size: 14px; color: #71717a; font-family: Consolas, monospace; }
+  .cols { display: flex; gap: 24px; flex: 1; }
+  .col { flex: 1; border: 1.5px solid #18181b; border-radius: 14px; background: #ffffff; padding: 22px 24px; display: flex; flex-direction: column; }
+  .col .lh { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
+  .col .lh .nm { font-size: 17px; font-weight: 700; color: #09090b; }
+  .col .lh .pill { font-size: 11px; color: #71717a; border: 1px solid #e4e4e7; border-radius: 99px; padding: 2px 10px; font-family: Consolas, monospace; }
+  .step { display: flex; gap: 14px; align-items: flex-start; }
+  .step .idx { flex: none; width: 30px; height: 30px; border-radius: 50%; background: #09090b; color: #fafafa; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+  .step .bd { flex: 1; padding-bottom: 20px; border-left: 2px solid #e4e4e7; margin-left: -16px; padding-left: 30px; position: relative; }
+  .step:last-child .bd { border-left: 2px solid transparent; padding-bottom: 0; }
+  .step .a { font-size: 15px; font-weight: 700; color: #09090b; margin-bottom: 4px; }
+  .step .b { font-size: 12.5px; color: #71717a; line-height: 1.7; }
+  .step .b .mono, .mono { font-family: Consolas, monospace; font-size: 11.5px; }
+  .step .b b { color: #09090b; }
+  .gate { border: 1px solid #e4e4e7; border-left: 4px solid #18181b; border-radius: 0 10px 10px 0; background: #fafafa; padding: 14px 16px; margin-bottom: 14px; }
+  .gate .a { font-size: 15px; font-weight: 700; color: #09090b; margin-bottom: 5px; display: flex; align-items: center; gap: 10px; }
+  .gate .a .no { font-family: Consolas, monospace; font-size: 12px; color: #fafafa; background: #09090b; border-radius: 4px; padding: 1px 7px; }
+  .gate .b { font-size: 12.5px; color: #52525b; line-height: 1.75; }
+  .gate .b .mono { color: #71717a; }
+  .veto { margin-top: auto; background: #09090b; border-radius: 10px; padding: 16px 18px; }
+  .veto .a { font-size: 13px; font-weight: 700; color: #fafafa; margin-bottom: 8px; }
+  .veto .b { font-family: Consolas, monospace; font-size: 12px; color: #a1a1aa; line-height: 2; }
+  .veto .b s { text-decoration: line-through; color: #71717a; }
+  .veto .b .hit { color: #fafafa; font-weight: 600; }
+  .foot { position: absolute; left: 56px; bottom: 26px; font-size: 12px; color: #a1a1aa; letter-spacing: .08em; font-family: Consolas, monospace; }
+</style>
+</head>
+<body>
+<div class="canvas" id="diagram2">
+  <div class="grid-bg"></div>
+  <div class="wrap">
+    <div class="head">
+      <span class="t">API Key 的边界：浏览器持有 · 请求即焚 · 连接层堵 SSRF</span>
+      <span class="s">generator.go / tryon.go</span>
+    </div>
+
+    <div class="cols">
+      <!-- 左：Key 生命周期 -->
+      <div class="col">
+        <div class="lh"><span class="nm">Key 生命周期</span><span class="pill">client_config</span></div>
+        <div class="step">
+          <div class="idx">1</div>
+          <div class="bd"><div class="a">存在浏览器，不进后端</div><div class="b">设置中心保存 <span class="mono">provider / baseURL / apiKey / model</span>，只落在当前浏览器；<b>共享设备用完点"清除本地配置"</b>。</div></div>
+        </div>
+        <div class="step">
+          <div class="idx">2</div>
+          <div class="bd"><div class="a">随单次请求发送</div><div class="b">请求体带上 <span class="mono">client_config</span>，后端 <span class="mono">NewGeneratorFromClientConfig()</span> 只在本请求内存里构造适配器。</div></div>
+        </div>
+        <div class="step">
+          <div class="idx">3</div>
+          <div class="bd"><div class="a">不落任何持久层</div><div class="b">不进配置文件、不进数据库、不进业务日志；ComfyUI 分支干脆不接受 <span class="mono">client_config</span>——本地工作流一旦允许用户填地址，就是给人递内网跳板。</div></div>
+        </div>
+        <div class="step">
+          <div class="idx">4</div>
+          <div class="bd"><div class="a">错误即焚</div><div class="b">生成失败只回 <b>"换装生成失败，请稍后重试"</b>，原始 error 不透传——供应商报错体可能带着完整 Base URL。</div></div>
+        </div>
+        <div class="veto">
+          <div class="a">同样的问题，两种解法</div>
+          <div class="b">用户自备模型 → 配置校验 + 连接层封锁<br>本地 ComfyUI → <span class="hit">不接受用户配置</span>，只认服务端</div>
+        </div>
+      </div>
+
+      <!-- 右：三层校验 -->
+      <div class="col">
+        <div class="lh"><span class="nm">用户可控 Base URL 的三层校验</span><span class="pill">validateClientModelConfig + DialContext</span></div>
+        <div class="gate">
+          <div class="a"><span class="no">①</span>字符串层</div>
+          <div class="b">必须 http/https · 不允许带账号、查询参数、片段 · 不允许 <span class="mono">localhost / *.localhost</span> · 长度上限（Key 4096 / URL 2048）</div>
+        </div>
+        <div class="gate">
+          <div class="a"><span class="no">②</span>IP 层</div>
+          <div class="b">域名先解析成 IP 再逐个判：<span class="mono">loopback / 私网 / 链路本地 / 未指定地址</span>——全是私网直接拒绝，不给"部分命中"留口子</div>
+        </div>
+        <div class="gate">
+          <div class="a"><span class="no">③</span>连接层（兜底）</div>
+          <div class="b">在 <span class="mono">DialContext</span> 里重新解析、直接拨 IP，绕过一切上层缓存；<span class="mono">transport.Proxy = nil</span> —— <b>用户可控地址走系统代理，代理会替你去访问内网，前两层全白做</b></div>
+        </div>
+        <div class="veto">
+          <div class="a">会被拒绝的地址（示例）</div>
+          <div class="b"><s>http://localhost:11434</s>　<s>http://127.0.0.1:8188</s><br><s>http://192.168.1.10:8000</s>　<s>http://10.0.0.5:9000</s>　<s>169.254.x.x</s></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="foot">图 2 · Key 流转与 SSRF 三层校验 — 用户可控 URL 是入口，不是漏洞 · 2026.10.30</div>
+  </div>
+</div>
+</body>
+</html>

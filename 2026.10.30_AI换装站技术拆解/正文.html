@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>公众号适配版 · 一个 index.html 装下 1407 张图</title>
+<style>
+  /* 此样式块仅供本地预览，粘贴到公众号编辑器时会被丢弃，不影响排版 */
+  body { background: #f4f4f5; margin: 0; padding: 24px 0; }
+</style>
+</head>
+<body>
+
+<!-- 外层容器：复制时从这一行下方开始全选 -->
+<section style="text-align:left;max-width:677px;margin:0 auto;background:#ffffff;padding:28px 20px 36px;font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;">
+
+  <!-- ===== 头部 ===== -->
+  <section style="text-align:left;background:#09090b;border-radius:12px;padding:30px 26px 26px;margin-bottom:24px;">
+    <section style="text-align:left;font-size:12px;font-weight:600;letter-spacing:3px;color:#a1a1aa;margin-bottom:12px;">技术拆解 · TECH BREAKDOWN</section>
+    <section style="text-align:left;font-size:24px;font-weight:700;color:#fafafa;line-height:1.35;letter-spacing:-0.5px;margin-bottom:10px;">一个 index.html 装下 1407 张图：这个开源 AI 换装站的技术选择</section>
+    <section style="text-align:left;font-size:13px;color:#71717a;line-height:1.8;">项目：GitHub paipiange/nvzhuang · MIT · 2026-10-29 建仓，28 小时 269 star / 104 fork。本文只拆工程结构：前端为什么敢不用构建、后端怎么用一个两方法接口吃掉四家模型、以及它怎么把用户自己的 API Key 接进来又不变成内网跳板。</section>
+  </section>
+
+  <!-- ===== 核心要点 ===== -->
+  <section style="text-align:left;font-size:17px;font-weight:700;color:#09090b;margin:28px 0 14px;letter-spacing:-0.3px;">一、核心要点</section>
+
+  <section style="text-align:left;border-left:3px solid #18181b;background:#fafafa;border-radius:0 8px 8px 0;padding:14px 16px;margin-bottom:10px;">
+    <section style="text-align:left;font-size:14.5px;font-weight:600;color:#09090b;margin-bottom:3px;">01 · 前端零构建，是分发策略不是偷懒</section>
+    <section style="text-align:left;font-size:13.5px;color:#52525b;line-height:1.75;">整个站点只有一个 125KB 的 index.html，页面结构、样式、交互、中英双语字典、试穿搭配台全塞在里面；再加一份 285KB 的 data.js 存 1407 条记录。没有 package.json、没有构建产物。首屏只有两个请求，代价是可维护性。</section>
+  </section>
+
+  <section style="text-align:left;border-left:3px solid #18181b;background:#fafafa;border-radius:0 8px 8px 0;padding:14px 16px;margin-bottom:10px;">
+    <section style="text-align:left;font-size:14.5px;font-weight:600;color:#09090b;margin-bottom:3px;">02 · 图片分三层，仓库体积不跟着原图走</section>
+    <section style="text-align:left;font-size:13.5px;color:#52525b;line-height:1.75;">缩略图 webp 给网格、展示图 webp 给弹窗、原尺寸 PNG（1GB 以上）根本不进仓库，下载按钮直接指向原始站点。仓库最终 124MB——如果原图入库，克隆它的人要先付 1.1GB 的流量。</section>
+  </section>
+
+  <section style="text-align:left;border-left:3px solid #18181b;background:#fafafa;border-radius:0 8px 8px 0;padding:14px 16px;margin-bottom:10px;">
+    <section style="text-align:left;font-size:14.5px;font-weight:600;color:#09090b;margin-bottom:3px;">03 · 后端只暴露一个两方法接口</section>
+    <section style="text-align:left;font-size:13.5px;color:#52525b;line-height:1.75;">ImageGenerator 只有 Generate() 和 Name()：两张图进、一张图出，模型差异全部关在实现里。provider 用别名归一，加一个国内模型是三行配置，不是第三个适配器。</section>
+  </section>
+
+  <section style="text-align:left;border-left:3px solid #18181b;background:#fafafa;border-radius:0 8px 8px 0;padding:14px 16px;margin-bottom:10px;">
+    <section style="text-align:left;font-size:14.5px;font-weight:600;color:#09090b;margin-bottom:3px;">04 · Key 交给浏览器，然后在连接层堵 SSRF</section>
+    <section style="text-align:left;font-size:13.5px;color:#52525b;line-height:1.75;">用户自填的 Base URL / API Key 只存在当前浏览器，随单次请求发给后端，不进配置、不进数据库、不进日志；同时用户可控的地址必须在字符串层、IP 层、连接层各过一遍校验。</section>
+  </section>
+
+  <!-- ===== 数据一览 ===== -->
+  <section style="text-align:left;font-size:17px;font-weight:700;color:#09090b;margin:30px 0 14px;letter-spacing:-0.3px;">二、项目速览</section>
+
+  <section style="text-align:left;font-size:13.5px;color:#52525b;line-height:1.8;margin-bottom:14px;">建仓到本文写作不到 30 小时：<b style="color:#09090b;">269 star、104 fork</b>，fork/star 比 38.7%。这个比例在纯展示型项目里偏高——说明相当一部分人不是点个星就走，是真把它 clone 下来跑了一遍。仓库 2895 个文件、124MB，主语言是 HTML（前端静态站），后端 GoFrame v2 在 backend/ 里。</section>
+
+  <section style="text-align:left;border:1px solid #e4e4e7;border-radius:8px;padding:16px;background:#ffffff;margin-bottom:12px;">
+    <section style="text-align:left;font-size:12.5px;color:#71717a;margin-bottom:12px;font-family:Consolas,monospace;">图集分类分布 · 共 1407 条</section>
+
+    <section style="text-align:left;font-size:12.5px;margin-bottom:8px;"><span style="display:inline-block;width:76px;color:#09090b;font-weight:600;">夏</span><span style="display:inline-block;width:44px;color:#71717a;">254</span><span style="display:inline-block;vertical-align:middle;width:220px;height:6px;background:#f4f4f5;border-radius:99px;"><span style="display:block;width:100%;height:6px;background:#18181b;border-radius:99px;">&nbsp;</span></span></section>
+    <section style="text-align:left;font-size:12.5px;margin-bottom:8px;"><span style="display:inline-block;width:76px;color:#09090b;font-weight:600;">冬</span><span style="display:inline-block;width:44px;color:#71717a;">253</span><span style="display:inline-block;vertical-align:middle;width:220px;height:6px;background:#f4f4f5;border-radius:99px;"><span style="display:block;width:99%;height:6px;background:#18181b;border-radius:99px;">&nbsp;</span></span></section>
+    <section style="text-align:left;font-size:12.5px;margin-bottom:8px;"><span style="display:inline-block;width:76px;color:#09090b;font-weight:600;">秋</span><span style="display:inline-block;width:44px;color:#71717a;">244</span><span style="display:inline-block;vertical-align:middle;width:220px;height:6px;background:#f4f4f5;border-radius:99px;"><span style="display:block;width:96%;height:6px;background:#18181b;border-radius:99px;">&nbsp;</span></span></section>
+    <section style="text-align:left;font-size:12.5px;"><span style="display:inline-block;width:76px;color:#09090b;font-weight:600;">春</span><span style="display:inline-block;width:44px;color:#71717a;">215</span><span style="display:inline-block;vertical-align:middle;width:220px;height:6px;background:#f4f4f5;border-radius:99px;"><span style="display:block;width:85%;height:6px;background:#18181b;border-radius:99px;">&nbsp;</span></span></section>
+
+    <section style="text-align:left;font-size:12px;color:#a1a1aa;line-height:1.7;margin-top:12px;">另有 4 个主题分类合计 441 条，本文不展开。</section>
+  </section>
+
+  <section style="text-align:left;background:#fafafa;border:1px solid #e4e4e7;border-radius:8px;padding:16px 18px;margin-bottom:12px;">
+    <section style="text-align:left;font-size:12.5px;color:#52525b;line-height:2;font-family:Consolas,monospace;">
+      stars       269<br>
+      forks       104<br>
+      created     2026-10-29<br>
+      license     MIT<br>
+      records     1407<br>
+      repo size   124 MB / 2895 files
+    </section>
+  </section>
+
+  <!-- ===== 关键设计 ===== -->
+  <section style="text-align:left;font-size:17px;font-weight:700;color:#09090b;margin:30px 0 14px;letter-spacing:-0.3px;">三、六个值得拆的设计</section>
+
+  <section style="text-align:left;border:1px solid #e4e4e7;border-radius:8px;margin-bottom:12px;background:#ffffff;">
+    <img src="插图_1_架构图.jpg" alt="" style="display:block;width:100%;height:auto;">
+    <section style="text-align:left;font-size:11.5px;color:#a1a1aa;padding:7px 12px;background:#fafafa;border-top:1px solid #e4e4e7;font-family:Consolas,monospace;">▲ 整体架构：前端零构建 / 后端一接口 / 模型四实现</section>
+  </section>
+
+  <!-- 01 -->
+  <section style="text-align:left;border:1px solid #e4e4e7;border-radius:10px;padding:16px 18px;margin-bottom:12px;background:#ffffff;">
+    <section style="text-align:left;margin-bottom:8px;"><span style="font-size:20px;font-weight:700;color:#d4d4d8;margin-right:10px;">01</span><span style="font-size:16px;font-weight:700;color:#09090b;">单文件前端</span><span style="display:inline-block;font-size:11px;color:#71717a;border:1px solid #e4e4e7;border-radius:99px;padding:1px 8px;margin-left:8px;">HTML 125KB</span><span style="font-size:12.5px;font-weight:600;color:#09090b;float:right;margin-top:4px;">0 依赖</span></section>
+    <section style="text-align:left;font-size:14px;color:#09090b;line-height:1.75;margin-bottom:6px;"><b>一个文件里同时住着页面结构、样式、交互逻辑、中英双语字典和试穿搭配台。</b>克隆下来起个静态服务器就能用，不需要装环境、不需要等构建。</section>
+    <section style="text-align:left;font-size:13px;color:#71717a;line-height:1.75;margin-bottom:8px;"><b style="color:#09090b;">为什么敢这么干：</b>这是个单人维护、以"别人一打开就能用"为首要目标的展示站。构建链的价值在多人协作和长周期演进，这里的最短路径是零依赖。代价得认——改一处样式要全文搜索，第二个人接手会立刻难受。取舍是清醒的，不是无知。</section>
+    <section style="text-align:left;font-size:12px;color:#a1a1aa;font-family:Consolas,monospace;">首屏请求 2 个：index.html + data.js，其余图片懒加载</section>
+  </section>
+
+  <!-- 02 -->
+  <section style="text-align:left;border:1px solid #e4e4e7;border-radius:10px;padding:16px 18px;margin-bottom:12px;background:#ffffff;">
+    <section style="text-align:left;margin-bottom:8px;"><span style="font-size:20px;font-weight:700;color:#d4d4d8;margin-right:10px;">02</span><span style="font-size:16px;font-weight:700;color:#09090b;">图片分三层</span><span style="display:inline-block;font-size:11px;color:#71717a;border:1px solid #e4e4e7;border-radius:99px;padding:1px 8px;margin-left:8px;">assets/</span><span style="font-size:12.5px;font-weight:600;color:#09090b;float:right;margin-top:4px;">124 MB</span></section>
+    <section style="text-align:left;font-size:14px;color:#09090b;line-height:1.75;margin-bottom:6px;"><b>缩略图给网格、展示图给弹窗、原尺寸 PNG 干脆不进仓库。</b>thumbs/ 和 img/ 各存一份 webp，下载原尺寸的按钮直接指向原始站点，仓库里只留一条外链路径。</section>
+    <section style="text-align:left;font-size:13px;color:#71717a;line-height:1.75;margin-bottom:8px;"><b style="color:#09090b;">判断点：</b>"展示要快"和"下载要全"是两个问题。前者可以用体积换首屏，后者不该让克隆仓库的人替你付流量。仓库因此停在 124MB，而如果把 1GB 以上的原图塞进 Git，这个项目大概率不会有 104 个 fork。</section>
+    <section style="text-align:left;font-size:12px;color:#a1a1aa;font-family:Consolas,monospace;">assets/thumbs/ · assets/img/ · 原寸 → 外链</section>
+  </section>
+
+  <!-- 03 -->
+  <section style="text-align:left;border:1px solid #e4e4e7;border-radius:10px;padding:16px 18px;margin-bottom:12px;background:#ffffff;">
+    <section style="text-align:left;margin-bottom:8px;"><span style="font-size:20px;font-weight:700;color:#d4d4d8;margin-right:10px;">03</span><span style="font-size:16px;font-weight:700;color:#09090b;">适配器只有两个方法</span><span style="display:inline-block;font-size:11px;color:#71717a;border:1px solid #e4e4e7;border-radius:99px;padding:1px 8px;margin-left:8px;">Go</span><span style="font-size:12.5px;font-weight:600;color:#09090b;float:right;margin-top:4px;">4 实现 / 3 协议</span></section>
+    <section style="text-align:left;font-size:14px;color:#09090b;line-height:1.75;margin-bottom:6px;"><b>接口窄到不能再窄：Generate(ctx, 人像, 服装, 提示词, 尺寸) 返回一张图，加一个 Name()。</b>换装这件事的输入输出被固定成"两张图进、一张图出"，模型的一切差异都关在实现里。</section>
+    <section style="text-align:left;font-size:13px;color:#71717a;line-height:1.75;margin-bottom:8px;"><b style="color:#09090b;">别名归一：</b>doubao / ark / volc / volcengine / huoshan 落到同一个豆包适配器；openai / qwen / wanx / zhipu / siliconflow 落到同一个 OpenAI Images 适配器。所以"支持通义万相、智谱、硅基流动"不是写了三个适配器，而是三行配置。</section>
+    <section style="text-align:left;font-size:13px;color:#71717a;line-height:1.75;margin-bottom:8px;"><b style="color:#09090b;">一个容易踩的坑：</b>豆包用的也是 /images/generations 这个路径，但请求体是火山自己的格式。<b style="color:#09090b;">路径相同不等于协议相同</b>——它必须单独实现，不能挂在 OpenAI 兼容分支下面。</section>
+    <section style="text-align:left;font-size:12px;color:#a1a1aa;font-family:Consolas,monospace;">backend/internal/logic/tryon/generator.go</section>
+  </section>
+
+  <!-- 04 -->
+  <section style="text-align:left;border:1px solid #e4e4e7;border-radius:10px;padding:16px 18px;margin-bottom:12px;background:#ffffff;">
+    <section style="text-align:left;margin-bottom:8px;"><span style="font-size:20px;font-weight:700;color:#d4d4d8;margin-right:10px;">04</span><span style="font-size:16px;font-weight:700;color:#09090b;">提示词按模型的脾气分流</span><span style="display:inline-block;font-size:11px;color:#71717a;border:1px solid #e4e4e7;border-radius:99px;padding:1px 8px;margin-left:8px;">prompt.go</span><span style="font-size:12.5px;font-weight:600;color:#09090b;float:right;margin-top:4px;">3 套模板</span></section>
+    <section style="text-align:left;font-size:14px;color:#09090b;line-height:1.75;margin-bottom:6px;"><b>代码注释里写着最实在的一句话：默认模型选 Gemini，因为 GPT Image 系列对真人换装会被官方安全审核拦下。</b>于是提示词拆成三套：GPT 走防拦截的保守话术，Gemini 用稳定的英文长提示，其余按语言选默认模板。</section>
+    <section style="text-align:left;font-size:13px;color:#71717a;line-height:1.75;margin-bottom:8px;"><b style="color:#09090b;">这不是玄学调 prompt</b>，而是把"各家审核尺度不同"当成工程约束写进代码——哪个模型会因为哪个词被拒，是要靠实测摸出来的，写下来才不会第二次踩。</section>
+    <section style="text-align:left;font-size:12px;color:#a1a1aa;font-family:Consolas,monospace;">BuildGPTSafety / BuildGemini / BuildDefault</section>
+  </section>
+
+  <!-- 05 -->
+  <section style="text-align:left;border:1px solid #e4e4e7;border-radius:10px;padding:16px 18px;margin-bottom:12px;background:#ffffff;">
+    <section style="text-align:left;margin-bottom:8px;"><span style="font-size:20px;font-weight:700;color:#d4d4d8;margin-right:10px;">05</span><span style="font-size:16px;font-weight:700;color:#09090b;">Key 交给浏览器，SSRF 在连接层堵</span><span style="display:inline-block;font-size:11px;color:#09090b;border:1px solid #09090b;border-radius:99px;padding:1px 8px;margin-left:8px;">本文最硬的一段</span><span style="font-size:12.5px;font-weight:600;color:#09090b;float:right;margin-top:4px;">3 层校验</span></section>
+    <section style="text-align:left;font-size:14px;color:#09090b;line-height:1.75;margin-bottom:6px;"><b>用户在设置中心填自己的 Base URL、API Key、模型名，只存在当前浏览器。</b>请求时随 client_config 一起发，后端只在本请求内存里用一次：不进配置文件、不进数据库、不进业务日志。</section>
+    <section style="text-align:left;font-size:13.5px;color:#52525b;line-height:1.85;margin-bottom:6px;">但"用户可控的 URL"天生是 SSRF 入口，所以校验做了三层：</section>
+    <section style="text-align:left;font-size:13px;color:#71717a;line-height:1.85;margin-bottom:8px;">
+      <b style="color:#09090b;">① 字符串层</b>　必须 http/https，不能带账号、查询参数、片段，不能是 localhost 或 *.localhost；<br>
+      <b style="color:#09090b;">② IP 层</b>　把域名解析成 IP 后逐个判 loopback / 私网 / 链路本地 / 未指定地址，全是私网直接拒；<br>
+      <b style="color:#09090b;">③ 连接层</b>　在 DialContext 里重新解析、直接拨 IP，绕过一切上层缓存。
+    </section>
+    <section style="text-align:left;font-size:13px;color:#71717a;line-height:1.75;margin-bottom:8px;"><b style="color:#09090b;">最容易漏掉的一行是 transport.Proxy = nil。</b>用户可控地址如果走系统代理，代理会替你去访问内网，前面两层校验全白做。这种漏洞不会在功能测试里暴露，只会在某天被打穿。</section>
+    <section style="text-align:left;font-size:13px;color:#71717a;line-height:1.75;margin-bottom:8px;"><b style="color:#09090b;">错误处理同理：</b>返给前端的只有"换装生成失败，请稍后重试"，原始 error 不透传——供应商的报错体里可能带着完整的 Base URL，拼进日志等于把用户的 Key 地址漏出去。</section>
+    <section style="text-align:left;font-size:12px;color:#a1a1aa;font-family:Consolas,monospace;">validateClientModelConfig + newModelHTTPClient</section>
+  </section>
+
+  <section style="text-align:left;border:1px solid #e4e4e7;border-radius:8px;margin-bottom:12px;background:#ffffff;">
+    <img src="插图_2_SSRF校验.jpg" alt="" style="display:block;width:100%;height:auto;">
+    <section style="text-align:left;font-size:11.5px;color:#a1a1aa;padding:7px 12px;background:#fafafa;border-top:1px solid #e4e4e7;font-family:Consolas,monospace;">▲ Key 流转与 SSRF 三层校验：用户可控 URL 是入口，不是漏洞</section>
+  </section>
+
+  <!-- 06 -->
+  <section style="text-align:left;border:1px solid #e4e4e7;border-radius:10px;padding:16px 18px;margin-bottom:12px;background:#ffffff;">
+    <section style="text-align:left;margin-bottom:8px;"><span style="font-size:20px;font-weight:700;color:#d4d4d8;margin-right:10px;">06</span><span style="font-size:16px;font-weight:700;color:#09090b;">本地 ComfyUI：固定工作流 + 自动回退</span><span style="display:inline-block;font-size:11px;color:#71717a;border:1px solid #e4e4e7;border-radius:99px;padding:1px 8px;margin-left:8px;">零成本离线</span><span style="font-size:12.5px;font-weight:600;color:#09090b;float:right;margin-top:4px;">900s 超时</span></section>
+    <section style="text-align:left;font-size:14px;color:#09090b;line-height:1.75;margin-bottom:6px;"><b>ComfyUI 适配器只认服务端配置里的工作流文件，节点映射也全部来自服务端。</b>用户不能指定地址，因为这个分支一开放，后端就成了内网请求跳板——和上面那条 SSRF 是同一个问题的两种解法。</section>
+    <section style="text-align:left;font-size:13px;color:#71717a;line-height:1.75;margin-bottom:8px;"><b style="color:#09090b;">细节：</b>默认优先 Qwen-Image-Edit-2511 配 4 步 Lightning LoRA；模型没就绪自动回退到视频模型 H3，抽第 31 帧定格成图。轮询间隔 1 秒，超时给到 900 秒——视频模型确实慢，按图片接口的 30 秒会把正常请求判死。另有 GET /comfyui/health 只检查工作流和模型是否可用，不上传图片、不执行生成。</section>
+    <section style="text-align:left;font-size:12px;color:#a1a1aa;font-family:Consolas,monospace;">workflows/comfyui_qwen_image_edit_2511_api.json</section>
+  </section>
+
+  <!-- ===== 跑一遍 ===== -->
+  <section style="text-align:left;font-size:17px;font-weight:700;color:#09090b;margin:30px 0 14px;letter-spacing:-0.3px;">四、自己跑一遍</section>
+
+  <section style="text-align:left;font-size:13.5px;color:#52525b;line-height:1.8;margin-bottom:14px;">前端是纯静态，后端可选。只想看图集，起个静态服务器就够了；要试穿再启后端。</section>
+
+  <section style="text-align:left;background:#fafafa;border:1px solid #e4e4e7;border-radius:8px;padding:16px 18px;margin-bottom:12px;">
+    <section style="text-align:left;font-size:12.5px;color:#52525b;line-height:2;font-family:Consolas,monospace;">
+      # 前端：零构建<br>
+      python3 -m http.server 3000<br><br>
+      # 后端：Docker 优先<br>
+      cd backend &amp;&amp; cp .env.example .env<br>
+      docker compose up -d&nbsp;&nbsp;&nbsp;# 监听 :8000<br><br>
+      # 无 Docker<br>
+      go run main.go
+    </section>
+  </section>
+
+  <section style="text-align:left;font-size:13.5px;color:#52525b;line-height:1.8;margin-bottom:14px;">前端找后端有四段优先级，依次是：设置中心里保存的地址 → HTML 加载前的 window.AI_API_URL → URL 参数 ?tryon=… → 本地访问时自动回退到 127.0.0.1:8000。前两个是配置，后两个是"本地开发不用配"的体贴。</section>
+
+  <!-- ===== 说明 ===== -->
+  <section style="text-align:left;background:#fafafa;border:1px solid #e4e4e7;border-radius:8px;padding:16px 18px;margin-top:18px;">
+    <section style="text-align:left;font-size:13px;font-weight:600;color:#09090b;margin-bottom:6px;">数据与口径说明</section>
+    <section style="text-align:left;font-size:12.5px;color:#71717a;line-height:1.9;">
+      · star / fork / 建仓时间取自 GitHub API，查询于 2026-10-30 上午，数字随时在变；<br>
+      · 代码结论来自主分支源码（generator.go、tryon.go、backend/README.MD），项目为 MIT 协议；<br>
+      · 站点图像均为 AI 生成的概念服装设计，非真实品牌商品；本文只讨论工程结构，不涉及图集内容；<br>
+      · 涉及第三方模型的审核策略，以各家官方规则为准。
+    </section>
+  </section>
+
+  <section style="margin-top:26px;text-align:center;">
+    <span style="font-size:12px;color:#a1a1aa;">— 完 —</span>
+  </section>
+
+</section>
+<!-- 复制到此行为止 -->
+
+</body>
+</html>

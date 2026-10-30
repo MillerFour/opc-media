@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Inter", -apple-system, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background: #52525b;
+  }
+  .cover {
+    width: 900px; height: 383px;
+    position: relative; overflow: hidden;
+    display: flex; align-items: center;
+  }
+  .grid-bg {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(to right, var(--grid) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+    background-size: 44px 44px;
+    -webkit-mask-image: radial-gradient(720px 420px at 30% 40%, #000 30%, transparent 100%);
+    mask-image: radial-gradient(720px 420px at 30% 40%, #000 30%, transparent 100%);
+  }
+  .glow {
+    position: absolute; width: 560px; height: 560px; border-radius: 50%;
+    background: radial-gradient(circle, var(--glow) 0%, transparent 65%);
+    top: -280px; right: -120px;
+  }
+  .content {
+    position: relative; width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+  }
+  .left { max-width: 470px; }
+  .tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1px solid var(--tag-br); border-radius: 9999px;
+    padding: 4px 14px; font-size: 11.5px; font-weight: 600;
+    letter-spacing: .14em; color: var(--tag-fg); margin-bottom: 18px;
+  }
+  .tag .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--dot); }
+  h1 {
+    font-size: 46px; font-weight: 800; letter-spacing: -0.04em;
+    line-height: 1.14; color: var(--fg); margin-bottom: 14px; white-space: nowrap;
+  }
+  h1 .num { font-variant-numeric: tabular-nums; color: var(--num); padding-right: 2px; }
+  .sub { font-size: 16.5px; line-height: 1.6; color: var(--muted); letter-spacing: .01em; }
+  .sub b { color: var(--fg); font-weight: 600; }
+  .foot {
+    position: absolute; left: 48px; bottom: 24px;
+    font-size: 11.5px; letter-spacing: .1em; color: var(--foot);
+    font-variant-numeric: tabular-nums; display: flex; align-items: center; gap: 10px;
+  }
+  .foot::before { content: ""; width: 26px; height: 1px; background: var(--foot-line); }
+
+  /* ---------- terminal card ---------- */
+  .term {
+    width: 322px; flex: none;
+    border: 1px solid var(--term-br); border-radius: 14px;
+    background: var(--term-bg);
+    box-shadow: var(--term-shadow);
+    overflow: hidden;
+  }
+  .term-bar {
+    display: flex; align-items: center; gap: 6px;
+    padding: 10px 14px; border-bottom: 1px solid var(--term-br);
+  }
+  .term-bar i { width: 9px; height: 9px; border-radius: 50%; background: var(--tdot); display: block; }
+  .term-bar .ttl { margin-left: 8px; font-size: 10.5px; color: var(--term-muted); letter-spacing: .06em; font-family: "SFMono-Regular", Consolas, monospace; }
+  .term-body { padding: 13px 16px 15px; font-family: "SFMono-Regular", Consolas, "Courier New", monospace; font-size: 11px; line-height: 2.05; }
+  .cmd { color: var(--term-muted); font-size: 10.5px; margin-bottom: 5px; }
+  .cmd .p { color: var(--accent); }
+  .ln { display: flex; align-items: center; color: var(--fg); }
+  .ln .md { width: 86px; }
+  .ln .ld { flex: 1; border-bottom: 1px dotted var(--term-br); margin: 0 8px 4px; }
+  .ln .stt { font-size: 10px; color: var(--term-muted); letter-spacing: .02em; }
+  .ln .stt.ok { color: var(--accent); font-weight: 600; }
+  .ln .stt.err { color: var(--term-muted); text-decoration: line-through; }
+
+  /* ---------- themes ---------- */
+  .light {
+    --grid: rgba(9,9,11,.05);
+    --glow: rgba(24,24,27,.06);
+    --fg: #09090b; --muted: #52525b; --num: #3f3f46;
+    --tag-br: #e4e4e7; --tag-fg: #3f3f46; --dot: #09090b;
+    --foot: #a1a1aa; --foot-line: #d4d4d8;
+    --term-bg: #ffffff; --term-br: #e4e4e7; --term-muted: #a1a1aa;
+    --term-shadow: 0 20px 50px rgba(9,9,11,.12);
+    --tdot: #d4d4d8; --accent: #09090b;
+    background: #fafafa;
+  }
+  .spacer { height: 40px; }
+
+  /* ---------- square ---------- */
+  .sq {
+    width: 900px; height: 900px;
+    position: relative; overflow: hidden;
+    padding: 62px 56px 54px;
+    display: flex; flex-direction: column;
+  }
+  .sq .grid-bg { background-size: 52px 52px;
+    -webkit-mask-image: radial-gradient(900px 700px at 20% 18%, #000 35%, transparent 100%);
+    mask-image: radial-gradient(900px 700px at 20% 18%, #000 35%, transparent 100%); }
+  .sq .glow { width: 700px; height: 700px; top: -360px; right: -180px; }
+  .sq h1 { font-size: 62px; line-height: 1.1; margin-bottom: 16px; white-space: normal; }
+  .sq .tag { margin-bottom: 26px; }
+  .sq .sub { font-size: 19px; max-width: 660px; }
+  .sq .term { width: 100%; margin-top: auto; }
+  .sq .term-body { font-size: 13px; line-height: 2.15; padding: 16px 20px 18px; }
+  .sq .ln .md { width: 110px; }
+  .sq .term-bar .ttl { font-size: 11.5px; }
+  .sq .cmd { font-size: 12px; }
+  .sq-foot {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 22px; font-size: 12px; letter-spacing: .1em; color: var(--foot);
+    font-variant-numeric: tabular-nums;
+  }
+  .sq-foot .l { display: flex; align-items: center; gap: 10px; }
+  .sq-foot .l::before { content: ""; width: 26px; height: 1px; background: var(--foot-line); }
+</style>
+</head>
+<body>
+
+<!-- ============ 2.3 浅色版 ============ -->
+<div class="cover light" id="light">
+  <div class="grid-bg"></div>
+  <div class="glow"></div>
+  <div class="content">
+    <div class="left">
+      <div class="tag"><span class="dot"></span>技术拆解 · TECH BREAKDOWN</div>
+      <h1><span class="num">1407</span> 张图<br>一个 HTML</h1>
+      <div class="sub">纯静态图集站，怎么接上 <b>AI 虚拟试穿</b></div>
+    </div>
+    <div class="term">
+      <div class="term-bar"><i></i><i></i><i></i><span class="ttl">tryon — adapters</span></div>
+      <div class="term-body">
+        <div class="cmd"><span class="p">$</span> curl -X POST /tryon</div>
+        <div class="ln"><span class="md">gemini</span><span class="ld"></span><span class="stt ok">200</span></div>
+        <div class="ln"><span class="md">doubao</span><span class="ld"></span><span class="stt ok">200</span></div>
+        <div class="ln"><span class="md">gpt-image</span><span class="ld"></span><span class="stt err">moderation</span></div>
+        <div class="ln"><span class="md">comfyui</span><span class="ld"></span><span class="stt ok">4 steps</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot">2026.10.30 · paipiange/nvzhuang · MIT</div>
+</div>
+
+<div class="spacer"></div>
+
+<!-- ============ 方版 1:1 ============ -->
+<div class="sq light" id="sq">
+  <div class="grid-bg"></div>
+  <div class="glow"></div>
+  <div class="tag"><span class="dot"></span>技术拆解 · TECH BREAKDOWN</div>
+  <h1><span class="num">1407</span> 张图<br>一个 HTML</h1>
+  <div class="sub">纯静态图集站，怎么接上 <b>AI 虚拟试穿</b><br>四个模型 / 三种协议 / 一个两方法接口</div>
+  <div class="term">
+    <div class="term-bar"><i></i><i></i><i></i><span class="ttl">tryon — adapters</span></div>
+    <div class="term-body">
+      <div class="cmd"><span class="p">$</span> curl -X POST /tryon</div>
+      <div class="ln"><span class="md">gemini</span><span class="ld"></span><span class="stt ok">200 · 默认</span></div>
+      <div class="ln"><span class="md">doubao</span><span class="ld"></span><span class="stt ok">200</span></div>
+      <div class="ln"><span class="md">gpt-image</span><span class="ld"></span><span class="stt err">moderation</span></div>
+      <div class="ln"><span class="md">comfyui</span><span class="ld"></span><span class="stt ok">4 steps</span></div>
+    </div>
+  </div>
+  <div class="sq-foot"><span class="l">2026.10.30 · paipiange/nvzhuang</span><span>MIT</span></div>
+</div>
+
+</body>
+</html>

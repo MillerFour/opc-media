@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif; background: #e4e4e7; -webkit-font-smoothing: antialiased; }
+  .canvas { width: 1400px; height: 960px; background: #fafafa; position: relative; padding: 44px 56px; }
+  .grid-bg { position: absolute; inset: 0; background-image:
+      linear-gradient(to right, rgba(9,9,11,.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(9,9,11,.04) 1px, transparent 1px);
+    background-size: 44px 44px; }
+  .wrap { position: relative; height: 100%; display: flex; flex-direction: column; }
+  .head { display: flex; align-items: baseline; gap: 16px; margin-bottom: 26px; }
+  .head .t { font-size: 26px; font-weight: 800; color: #09090b; letter-spacing: -0.02em; }
+  .head .s { font-size: 14px; color: #71717a; font-family: Consolas, monospace; }
+  .layer { border: 1.5px solid #18181b; border-radius: 14px; background: #ffffff; padding: 20px 24px; }
+  .layer .lh { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .layer .lh .nm { font-size: 17px; font-weight: 700; color: #09090b; }
+  .layer .lh .pill { font-size: 11px; color: #71717a; border: 1px solid #e4e4e7; border-radius: 99px; padding: 2px 10px; font-family: Consolas, monospace; }
+  .layer .lh .rt { margin-left: auto; font-size: 12px; color: #a1a1aa; font-family: Consolas, monospace; }
+  .cards { display: flex; gap: 12px; }
+  .cell { flex: 1; border: 1px solid #e4e4e7; background: #fafafa; border-radius: 10px; padding: 12px 14px; }
+  .cell .a { font-size: 14.5px; font-weight: 700; color: #09090b; margin-bottom: 3px; }
+  .cell .b { font-size: 12px; color: #71717a; line-height: 1.6; }
+  .cell.dark { background: #09090b; border-color: #09090b; }
+  .cell.dark .a { color: #fafafa; }
+  .cell.dark .b { color: #71717a; }
+  .cell .mono { font-family: Consolas, monospace; font-size: 11.5px; color: #52525b; }
+  .arrow { display: flex; align-items: center; gap: 14px; padding: 14px 6px; }
+  .arrow .line { flex: none; width: 2px; height: 34px; background: #18181b; margin-left: 60px; position: relative; }
+  .arrow .line::after { content: ""; position: absolute; bottom: -1px; left: -5px; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 9px solid #18181b; }
+  .arrow .lbl { font-family: Consolas, monospace; font-size: 12.5px; color: #52525b; }
+  .arrow .lbl b { color: #09090b; }
+  .adapters { display: flex; gap: 12px; }
+  .adapter { flex: 1; border: 1px solid #e4e4e7; border-top: 3px solid #18181b; border-radius: 10px; background: #ffffff; padding: 13px 14px; }
+  .adapter .a { font-size: 14px; font-weight: 700; color: #09090b; font-family: Consolas, monospace; margin-bottom: 5px; }
+  .adapter .b { font-size: 12px; color: #71717a; line-height: 1.65; }
+  .adapter .tag { display: inline-block; margin-top: 8px; font-size: 10.5px; color: #52525b; background: #f4f4f5; border-radius: 4px; padding: 2px 7px; font-family: Consolas, monospace; }
+  .note { display: flex; gap: 12px; margin-top: 18px; }
+  .note .n { flex: 1; border-left: 3px solid #18181b; background: #f4f4f5; border-radius: 0 8px 8px 0; padding: 10px 14px; font-size: 12.5px; color: #52525b; line-height: 1.7; }
+  .note .n b { color: #09090b; }
+  .iface { display: flex; align-items: center; gap: 12px; background: #09090b; border-radius: 10px; padding: 12px 16px; margin-top: 2px; }
+  .iface .k { font-family: Consolas, monospace; font-size: 13px; color: #fafafa; }
+  .iface .k .p { color: #a1a1aa; }
+  .foot { position: absolute; left: 56px; bottom: 26px; font-size: 12px; color: #a1a1aa; letter-spacing: .08em; font-family: Consolas, monospace; }
+</style>
+</head>
+<body>
+<div class="canvas" id="diagram1">
+  <div class="grid-bg"></div>
+  <div class="wrap">
+    <div class="head">
+      <span class="t">整体架构：前端零构建 · 后端一接口</span>
+      <span class="s">paipiange/nvzhuang</span>
+    </div>
+
+    <!-- 浏览器层 -->
+    <div class="layer">
+      <div class="lh"><span class="nm">浏览器 · 纯静态前端</span><span class="pill">无构建 · 无 node_modules</span><span class="rt">首屏请求 = 2</span></div>
+      <div class="cards">
+        <div class="cell"><div class="a">index.html</div><div class="b">页面 + 样式 + 交互 + 中英双语字典 + 试穿台<br><span class="mono">125 KB · 单文件</span></div></div>
+        <div class="cell"><div class="a">data.js</div><div class="b">1407 条记录：id / 分类 / 关键词 / 图片路径<br><span class="mono">285 KB · 纯数据</span></div></div>
+        <div class="cell"><div class="a">设置中心</div><div class="b">Base URL / API Key / 模型名<br><span class="mono">只存当前浏览器</span></div></div>
+        <div class="cell"><div class="a">生成记录</div><div class="b">AI 换装历史可查看 / 下载 / 删除<br><span class="mono">IndexedDB · 不上传</span></div></div>
+        <div class="cell dark"><div class="a">图片三层</div><div class="b">thumbs / img 各一份 webp<br><span class="mono">原寸 PNG 1GB+ 不入库</span></div></div>
+      </div>
+    </div>
+
+    <div class="arrow"><div class="line"></div><div class="lbl"><b>POST /tryon</b>　{ person_image, garment_image, model, client_config? }　·　base64 进出</div></div>
+
+    <!-- 后端层 -->
+    <div class="layer">
+      <div class="lh"><span class="nm">GoFrame v2 后端</span><span class="pill">:8000 · 可 Docker</span><span class="rt">client_config 只活在本次请求内存里</span></div>
+      <div class="cards">
+        <div class="cell"><div class="a">参数校验</div><div class="b">两图 base64 必填且可解码<br><span class="mono">size / lang 有默认值</span></div></div>
+        <div class="cell"><div class="a">提示词分流</div><div class="b">GPT 走防拦截话术 · Gemini 稳定长提示 · 其余默认<br><span class="mono">BuildGPTSafety / BuildGemini / BuildDefault</span></div></div>
+        <div class="cell"><div class="a">错误收敛</div><div class="b">原始 error 不透传给前端、不进日志<br><span class="mono">防泄漏用户 Base URL</span></div></div>
+      </div>
+      <div class="iface"><span class="k"><span class="p">interface</span> ImageGenerator { Generate(ctx, person, garment, prompt, size) (string, error); Name() string }</span></div>
+    </div>
+
+    <div class="arrow"><div class="line"></div><div class="lbl">provider 别名归一 → 加新模型是<b>加配置</b>，不是加适配器</div></div>
+
+    <!-- 模型层 -->
+    <div class="adapters">
+      <div class="adapter"><div class="a">openai-compatible</div><div class="b">OpenAI Images 协议</div><span class="tag">gpt-image · 通义万相 · 智谱 · 硅基流动</span></div>
+      <div class="adapter"><div class="a">doubao</div><div class="b">火山方舟自有格式<br>同路径 ≠ 同协议，须单独实现</div><span class="tag">Seedream · 国内免代理</span></div>
+      <div class="adapter"><div class="a">gemini</div><div class="b">Google generateContent<br>默认模型：对真人换装无审核拦截</div><span class="tag">gemini-3.1-flash-image</span></div>
+      <div class="adapter"><div class="a">comfyui</div><div class="b">本机固定工作流，不接受 client_config<br>Qwen-Edit-2511 四步 → H3 自动回退</div><span class="tag">127.0.0.1:8188 · 零成本</span></div>
+    </div>
+
+    <div class="note">
+      <div class="n"><b>接口为什么窄：</b>换装的输入输出被固定成"两张图进、一张图出"，模型的一切差异都关在四个实现里，主流程不感知模型存在。</div>
+      <div class="n"><b>仓库体积：</b>2895 个文件共 124 MB——原图如果入库会变成 1.1GB 以上，"下载原尺寸"直接指向外链。</div>
+    </div>
+
+    <div class="foot">图 1 · 整体架构 — 前端零构建 / 后端一接口 · 2026.10.30</div>
+  </div>
+</div>
+</body>
+</html>

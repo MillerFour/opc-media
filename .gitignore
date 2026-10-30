@@ -1,1 +1,5 @@
 .playwright-cli/
+scripts/.watch.pid
+scripts/.watch.log
+*.tmp
+.tmp-*

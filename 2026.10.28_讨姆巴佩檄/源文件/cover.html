@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Inter", -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background: #55503f; }
+  .serif { font-family: 'STZhongsong','STSong','SimSun',serif; }
+  .paper { width: 900px; height: 383px; position: relative; overflow: hidden; background: #f5edd8; border: 3px double #141210; }
+  .paper-sq { width: 900px; height: 900px; position: relative; overflow: hidden; background: #f5edd8; border: 3px double #141210; }
+  .grain { position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(to bottom, transparent 0 5px, rgba(20,18,16,.025) 5px 6px); }
+  .wm { position: absolute; font-weight: 900; color: rgba(20,18,16,.05); line-height: 1;
+    writing-mode: vertical-rl; font-family: 'STZhongsong','STSong','SimSun',serif; pointer-events: none; }
+  .bar { position: absolute; left: 48px; right: 48px; border-top: 4px solid #141210; }
+  .bar-thin { position: absolute; left: 48px; right: 48px; border-top: 1.5px solid #141210; }
+  .stamp {
+    position: absolute; border: 5px solid #b53225; color: #b53225; border-radius: 8px;
+    font-weight: 900; font-family: 'STZhongsong','STSong','SimSun',serif;
+    display: flex; align-items: center; justify-content: center; transform: rotate(9deg);
+    background: rgba(181,50,37,.05); box-shadow: 3px 3px 0 rgba(20,18,16,.18);
+  }
+  .badge { display: inline-block; background: #b53225; color: #f5edd8; font-weight: 900;
+    letter-spacing: .4em; padding: 8px 16px 8px 20px; font-size: 16px; border-radius: 4px;
+    box-shadow: 2px 2px 0 rgba(20,18,16,.25); }
+  .headline { color: #141210; font-weight: 900; line-height: 1.25; }
+  .hl { color: #b53225; }
+  .subbar { color: #3a3327; font-size: 19px; font-weight: 600; letter-spacing: .05em; }
+  .crime { display: inline-flex; align-items: center; gap: 8px; margin-right: 10px;
+    border: 2px solid #141210; background: #efe5c9; padding: 5px 12px; font-size: 13.5px; font-weight: 700; color: #141210; }
+  .crime b { color: #b53225; font-weight: 900; }
+  .seal-end { position: absolute; border: 3px solid #b53225; color: #b53225; font-weight: 900;
+    border-radius: 50% 50% 50% 4px; transform: rotate(-8deg); background: #f5edd8;
+    font-family: 'STZhongsong','STSong','SimSun',serif; display: flex; align-items: center; justify-content: center; }
+  .spacer { height: 40px; }
+</style>
+</head>
+<body>
+
+<!-- ============ 2.3 檄文榜 ============ -->
+<div class="paper" id="paper">
+  <div class="grain"></div>
+  <div class="wm" style="right:-14px;top:20px;font-size:190px;">檄</div>
+  <div class="bar" style="top:30px;"></div>
+  <div style="position:absolute;top:52px;left:48px;">
+    <span class="badge">奉热榜之名 · 讨伐檄</span>
+  </div>
+  <div class="stamp" style="top:50px;right:52px;width:88px;height:88px;font-size:38px;">檄</div>
+  <div style="position:absolute;left:48px;top:120px;width:660px;">
+    <div class="headline serif" style="font-size:54px;">讨「<span class="hl">姆巴佩</span>」檄</div>
+    <div class="subbar" style="margin-top:14px;">吃中国人的饭，砸中国人的碗——其罪有三，其心可诛</div>
+  </div>
+  <div class="bar-thin" style="bottom:92px;"></div>
+  <div style="position:absolute;left:48px;bottom:36px;display:flex;gap:12px;">
+    <span class="crime"><b>罪一</b>吃饭砸锅</span>
+    <span class="crime"><b>罪二</b>双标忘恩</span>
+    <span class="crime"><b>罪三</b>道歉过场</span>
+  </div>
+</div>
+
+<div class="spacer"></div>
+
+<!-- ============ 方版 檄文榜 ============ -->
+<div class="paper-sq" id="paper-sq">
+  <div class="grain"></div>
+  <div class="wm" style="right:-20px;top:60px;font-size:330px;">檄</div>
+  <div class="bar" style="top:40px;left:64px;right:64px;"></div>
+  <div style="position:absolute;top:68px;left:64px;">
+    <span class="badge" style="font-size:18px;">奉热榜之名 · 讨伐檄</span>
+  </div>
+  <div class="stamp" style="top:66px;right:72px;width:120px;height:120px;font-size:52px;">檄</div>
+  <div style="position:absolute;left:64px;top:150px;width:700px;">
+    <div class="headline serif" style="font-size:68px;">讨「<span class="hl">姆巴佩</span>」檄</div>
+    <div class="subbar" style="margin-top:20px;font-size:22px;">吃中国人的饭，砸中国人的碗</div>
+  </div>
+  <div style="position:absolute;left:64px;top:400px;width:700px;">
+    <span class="crime" style="font-size:16px;padding:8px 16px;"><b>罪一</b>吃饭砸锅</span>
+    <span class="crime" style="font-size:16px;padding:8px 16px;"><b>罪二</b>双标忘恩</span>
+    <span class="crime" style="font-size:16px;padding:8px 16px;"><b>罪三</b>道歉过场</span>
+  </div>
+  <div style="position:absolute;left:64px;bottom:120px;background:#141210;padding:20px 24px;width:640px;">
+    <div style="font-size:13px;color:#b53225;letter-spacing:.3em;font-weight:800;margin-bottom:10px;">檄 曰</div>
+    <div class="serif" style="font-size:21px;color:#f5edd8;font-weight:700;line-height:1.7;">"没钱的时候身体当狗用，有钱之后脑子当狗用。"</div>
+  </div>
+  <div class="seal-end" style="right:78px;bottom:150px;width:96px;height:96px;font-size:24px;">传阅</div>
+  <div class="bar-thin" style="left:64px;right:64px;bottom:64px;"></div>
+  <div style="position:absolute;left:64px;bottom:28px;font-size:14px;color:#7a6f55;letter-spacing:.3em;font-family:Consolas,monospace;">讨伐檄 · 第 1 号 · 2026.10.28</div>
+  <div style="position:absolute;right:64px;bottom:28px;font-size:14px;color:#7a6f55;letter-spacing:.3em;font-family:Consolas,monospace;">天下共讨</div>
+</div>
+
+</body>
+</html>

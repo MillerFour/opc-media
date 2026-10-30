@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Inter", -apple-system, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif; -webkit-font-smoothing: antialiased; background: #52525b; }
+  .cover { width: 900px; height: 383px; position: relative; overflow: hidden; background: #fafafa; }
+  .grid-bg { position: absolute; inset: 0; background-image:
+      linear-gradient(to right, rgba(9,9,11,.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(9,9,11,.05) 1px, transparent 1px);
+    background-size: 44px 44px;
+    -webkit-mask-image: radial-gradient(620px 420px at 26% 40%, #000 30%, transparent 100%);
+    mask-image: radial-gradient(620px 420px at 26% 40%, #000 30%, transparent 100%); }
+  .photo { position: absolute; right: 0; top: 0; height: 383px; width: 306px; object-fit: cover; object-position: 50% 18%; border-left: 1px solid #e4e4e7; }
+  .txt { position: absolute; left: 48px; top: 50%; transform: translateY(-50%); max-width: 500px; }
+  .tag { display: inline-flex; align-items: center; gap: 8px; border: 1px solid #e4e4e7; border-radius: 9999px; padding: 4px 14px; font-size: 11.5px; font-weight: 600; letter-spacing: .14em; color: #3f3f46; margin-bottom: 16px; }
+  .tag .dot { width: 6px; height: 6px; border-radius: 50%; background: #09090b; }
+  h1 { font-size: 40px; font-weight: 800; letter-spacing: -0.04em; line-height: 1.14; color: #09090b; margin-bottom: 12px; white-space: nowrap; }
+  h1 .num { font-variant-numeric: tabular-nums; color: #3f3f46; padding-right: 2px; }
+  .sub { font-size: 15.5px; line-height: 1.6; color: #52525b; letter-spacing: .01em; }
+  .sub b { color: #09090b; font-weight: 600; }
+  .foot { position: absolute; left: 48px; bottom: 22px; font-size: 11px; letter-spacing: .1em; color: #a1a1aa; font-variant-numeric: tabular-nums; display: flex; align-items: center; gap: 10px; }
+  .foot::before { content: ""; width: 26px; height: 1px; background: #d4d4d8; }
+
+  .spacer { height: 40px; }
+
+  /* 方版 */
+  .sq { width: 900px; height: 900px; position: relative; overflow: hidden; background: #fafafa; }
+  .sq .photo { height: 660px; width: 528px; object-position: 50% 12%; border-left: 1px solid #e4e4e7; bottom: 0; top: auto; }
+  .sq .txt { left: 56px; top: 64px; transform: none; max-width: 640px; }
+  .sq h1 { font-size: 58px; margin-bottom: 14px; }
+  .sq .tag { margin-bottom: 24px; }
+  .sq .sub { font-size: 18px; }
+  .sq .card { position: absolute; left: 56px; bottom: 64px; border: 1px solid #e4e4e7; border-radius: 12px; background: #ffffff; box-shadow: 0 16px 40px rgba(9,9,11,.10); padding: 14px 18px; font-family: "SFMono-Regular", Consolas, monospace; font-size: 12px; line-height: 2.05; color: #09090b; width: 300px; }
+  .sq .card .h { color: #a1a1aa; font-size: 10.5px; letter-spacing: .06em; margin-bottom: 4px; }
+  .sq .card .r { display: flex; justify-content: space-between; }
+  .sq .card .r .v { color: #52525b; }
+  .sq-foot { position: absolute; left: 56px; bottom: 26px; font-size: 11.5px; letter-spacing: .1em; color: #a1a1aa; font-variant-numeric: tabular-nums; display: flex; align-items: center; gap: 10px; }
+  .sq-foot::before { content: ""; width: 26px; height: 1px; background: #d4d4d8; }
+</style>
+</head>
+<body>
+
+<!-- ============ 2.3 图文版 ============ -->
+<div class="cover" id="light">
+  <div class="grid-bg"></div>
+  <img class="photo" src="模特原图.jpg" alt="">
+  <div class="txt">
+    <div class="tag"><span class="dot"></span>技术拆解 · TECH BREAKDOWN</div>
+    <h1><span class="num">1407</span> 张图<br>一个 HTML</h1>
+    <div class="sub">纯静态图集站，怎么接上 <b>AI 虚拟试穿</b></div>
+  </div>
+  <div class="foot">2026.10.30 · paipiange/nvzhuang · MIT</div>
+</div>
+
+<div class="spacer"></div>
+
+<!-- ============ 方版 1:1 图文版 ============ -->
+<div class="sq" id="sq">
+  <div class="grid-bg"></div>
+  <img class="photo" src="模特原图.jpg" alt="">
+  <div class="txt">
+    <div class="tag"><span class="dot"></span>技术拆解 · TECH BREAKDOWN</div>
+    <h1><span class="num">1407</span> 张图<br>一个 HTML</h1>
+    <div class="sub">纯静态图集站，怎么接上 <b>AI 虚拟试穿</b><br>四个模型 / 三种协议 / 一个两方法接口</div>
+  </div>
+  <div class="card">
+    <div class="h">tryon — adapters</div>
+    <div class="r"><span>gemini</span><span class="v">200 · 默认</span></div>
+    <div class="r"><span>doubao</span><span class="v">200</span></div>
+    <div class="r"><span>comfyui</span><span class="v">4 steps</span></div>
+  </div>
+  <div class="sq-foot">2026.10.30 · paipiange/nvzhuang · MIT</div>
+</div>
+
+</body>
+</html>
