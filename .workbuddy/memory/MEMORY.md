@@ -62,7 +62,9 @@ E:\Writing\wx-mp\
 - **每完成一篇文章/一批素材，收尾必须执行 `bash scripts/autocommit.sh`**，别攒着（用户明确要求"生成完文件自动提交"）
 - 三层结构：`scripts/watch-commit.sh`（轮询监听 + 静默一轮再提交）/ `scripts/autocommit.sh`（一次性提交，msg 自动带顶层目录统计）/ `.githooks/*`（pre-commit 拦 >30MB 与 *.tmp/*.log，post-commit 记 `.git/autocommit.log`）
 - `git config core.hooksPath .githooks` 已设；新机器 clone 后需重设一次
-- 常驻监听：`scripts/start-watch.bat`（最小化）/ `scripts/stop-watch.bat`；开机自启丢快捷方式进 `shell:startup`
+- 常驻监听：`scripts/start-watch.bat`（最小化）/ `scripts/stop-watch.bat`；**不做开机自启**（用户 2026.10.30 明确否掉），由 agent 会话内手动拉起，会话结束即失效
+- 因此真正兜底的是「每篇收尾调 autocommit.sh」，不依赖常驻进程
+
 - 想连 push 一起自动：`AUTO_PUSH=1`（默认关闭，push 属外部动作）
 - 细节见 `scripts/README.md`
 

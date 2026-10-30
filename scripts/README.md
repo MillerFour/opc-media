@@ -34,7 +34,11 @@ Windows 双击启动 / 停止：
 - `scripts/start-watch.bat` — 最小化窗口启动监听器
 - `scripts/stop-watch.bat` — 按 `scripts/.watch.pid` 杀掉
 
-想开机自启：`Win+R` → `shell:startup` → 把 `start-watch.bat` 的快捷方式丢进去。
+**不开机自启**（用户 2026.10.30 明确要求）。监听器由 agent 在会话内手动拉起即可：
+
+- 进程跟着当前会话活，会话结束即退出，所以别指望它跨会话值守
+- 真正可靠的兜底是「每做完一篇就调一次 `autocommit.sh`」——不依赖任何常驻进程
+- 想看监听是否在跑：`cat scripts/.watch.pid`，再 `kill -0 <pid>`
 
 ## commit message 长什么样
 
