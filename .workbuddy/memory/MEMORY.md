@@ -65,6 +65,6 @@ E:\Writing\wx-mp\
 - 常驻监听：`scripts/start-watch.bat`（最小化）/ `scripts/stop-watch.bat`；**不做开机自启**（用户 2026.10.30 明确否掉），由 agent 会话内手动拉起，会话结束即失效
 - 因此真正兜底的是「每篇收尾调 autocommit.sh」，不依赖常驻进程
 
-- 想连 push 一起自动：`AUTO_PUSH=1`（默认关闭，push 属外部动作）
+- 想连 push 一起自动：`AUTO_PUSH=1`（默认关闭；加了会判断本地领先几个 commit，领先才推，干净工作区也补推）。2026.10.30 实测通过，7 个 commit 成功推到 origin
 - 细节见 `scripts/README.md`
 

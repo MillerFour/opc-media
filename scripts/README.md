@@ -23,10 +23,13 @@
 bash scripts/autocommit.sh
 bash scripts/autocommit.sh -v      # 无变更时也打印提示
 
+# 连 push 一起（本地领先几个就推几个，无新变更也会补推）
+AUTO_PUSH=1 bash scripts/autocommit.sh
+
 # 常驻监听（默认 15 秒一轮，两轮无变化才提交，避免图片写一半就落库）
 bash scripts/watch-commit.sh
 INTERVAL=10 bash scripts/watch-commit.sh
-AUTO_PUSH=1 bash scripts/watch-commit.sh   # 提交后顺带 push 到 origin
+AUTO_PUSH=1 bash scripts/watch-commit.sh   # 监听器触发的提交也自动推
 ```
 
 Windows 双击启动 / 停止：
@@ -55,4 +58,5 @@ auto: 2026-10-30 10:35 · 16 项变更
 - 单文件 >30MB 会被 `pre-commit` 拦下；本仓库是图文项目，别让 4K 原图进来。确需入库：`git commit --no-verify`。
 - `*.tmp` / `*.log` / `.tmp-*` 已在 `.gitignore` 里，正常情况下根本进不了暂存区，钩子是第二道保险。
 - 监听器是轮询不是 inotify（Windows 下 Git Bash 没有 inotify），间隔越小越灵敏，代价是 CPU 唤醒更频繁。15 秒够用。
-- 只 commit 不 push：push 是外部动作，默认要你点头。要自动推就加 `AUTO_PUSH=1`。
+- 只 commit 不 push 是默认；push 是外部动作，要自动推就加 `AUTO_PUSH=1`。
+- `AUTO_PUSH=1` 时会先看本地领先几个 commit：领先才推，工作区干净也会补推，不会空跑。
