@@ -11,10 +11,28 @@ if [ ! -d .git ]; then
   exit 1
 fi
 
+# 有本地领先的 commit 才推，避免空跑
+push_if_needed() {
+  [ "${AUTO_PUSH:-0}" = "1" ] || return 0
+  if ! git rev-parse --abbrev-ref '@{u}' >/dev/null 2>&1; then
+    echo "[autocommit] 当前分支没有上游，跳过 push" >&2
+    return 0
+  fi
+  AHEAD=$(git rev-list --count '@{u}..HEAD' 2>/dev/null || echo 0)
+  [ "${AHEAD:-0}" = "0" ] && return 0
+  if git push -q origin HEAD 2>/dev/null; then
+    echo "[autocommit] 已推送 ${AHEAD} 个 commit 到 origin"
+  else
+    echo "[autocommit] push 失败（检查网络或凭据）" >&2
+    return 1
+  fi
+}
+
 CHANGES=$(git -c core.quotepath=false status --porcelain)
 if [ -z "$CHANGES" ]; then
-  [ "${1:-}" = "-v" ] && echo "[autocommit] 无变更，跳过"
-  exit 0
+  [ "${1:-}" = "-v" ] && echo "[autocommit] 无变更"
+  push_if_needed
+  exit $?
 fi
 
 # 排除 watcher 自身产生的临时文件
@@ -49,10 +67,4 @@ git commit -q -m "auto: ${TS} · ${COUNT} 项变更" -m "${SUMMARY}" || {
 
 echo "[autocommit] 已提交 ${COUNT} 项变更 · ${TS}"
 
-if [ "${AUTO_PUSH:-0}" = "1" ]; then
-  if git push -q origin HEAD 2>/dev/null; then
-    echo "[autocommit] 已推送到 origin"
-  else
-    echo "[autocommit] push 失败（检查网络或凭据）" >&2
-  fi
-fi
+push_if_needed
