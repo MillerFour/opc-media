@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# 一次性提交：把当前工作区所有变更提交为一个 commit
+# 一次性提交：把当前工作区所有变更提交为一个 commit，并推送到 origin
 # 用法：bash scripts/autocommit.sh [-v]
-#       可选环境变量 AUTO_PUSH=1 提交后自动 push
+#       默认提交后自动 push；AUTO_PUSH=0 可临时关掉推送
 set -uo pipefail
 
 cd "$(dirname "$0")/.." || exit 1
@@ -11,9 +11,9 @@ if [ ! -d .git ]; then
   exit 1
 fi
 
-# 有本地领先的 commit 才推，避免空跑
+# 有本地领先的 commit 才推，避免空跑（默认推，AUTO_PUSH=0 关闭）
 push_if_needed() {
-  [ "${AUTO_PUSH:-0}" = "1" ] || return 0
+  [ "${AUTO_PUSH:-1}" = "1" ] || return 0
   if ! git rev-parse --abbrev-ref '@{u}' >/dev/null 2>&1; then
     echo "[autocommit] 当前分支没有上游，跳过 push" >&2
     return 0
