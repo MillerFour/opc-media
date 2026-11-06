@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #e8e4d8; font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+  .serif { font-family: 'STZhongsong','STSong','SimSun',serif; }
+  #diagram1 { width: 1500px; height: 900px; background: #f3edde; position: relative; overflow: hidden; }
+  .grain { position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(0deg, rgba(120,100,60,.05) 0 1px, transparent 1px 7px); }
+  .frame { position: absolute; inset: 26px; border: 2px solid #cbb98a; outline: 1px solid rgba(168,132,52,.35); outline-offset: -8px; }
+  .head { position: absolute; top: 62px; left: 0; right: 0; text-align: center; }
+  .head .kicker { font-size: 15px; font-weight: 700; letter-spacing: 6px; color: #a88434; margin-bottom: 12px; }
+  .head h2 { font-size: 40px; font-weight: 700; color: #211d15; letter-spacing: 2px; }
+  .head .rule { width: 340px; height: 1px; background: #cbb98a; margin: 16px auto 0; }
+  .house { position: absolute; top: 380px; left: 50%; transform: translateX(-50%); width: 380px;
+    background: #0d1526; border: 1px solid #2a3550; border-radius: 12px; padding: 26px 28px 22px; }
+  .house .yr { font-size: 13px; letter-spacing: 3px; color: #c9a24b; font-weight: 700; }
+  .house h3 { font-size: 26px; color: #f3ead2; font-weight: 700; margin-top: 8px; letter-spacing: 2px; }
+  .house p { font-size: 15px; color: #8a94ad; line-height: 1.8; margin-top: 10px; }
+  .house p b { color: #f3ead2; }
+  .wing { position: absolute; top: 380px; width: 400px; background: #faf6ea; border: 1px solid #d8caa2; border-radius: 12px; padding: 22px 24px; }
+  .wing .wk { font-size: 13px; font-weight: 700; letter-spacing: 4px; color: #a88434; margin-bottom: 14px; }
+  .item { display: flex; align-items: baseline; gap: 12px; margin-bottom: 13px; }
+  .item:last-child { margin-bottom: 0; }
+  .item .nm { flex: none; font-size: 16px; font-weight: 700; color: #211d15; min-width: 96px; }
+  .item .ds { font-size: 13.5px; color: #6b6552; line-height: 1.6; }
+  .item .ds b { color: #211d15; }
+  .wing-l { left: 96px; }
+  .wing-r { right: 96px; }
+  .conn { position: absolute; top: 480px; height: 1px; background: #cbb98a; }
+  .cap { position: absolute; font-size: 12.5px; color: #a88434; letter-spacing: 2px; font-weight: 600; }
+  .foot { position: absolute; bottom: 46px; left: 0; right: 0; text-align: center; }
+  .foot .q { font-size: 19px; color: #6b6552; letter-spacing: 1.5px; }
+  .foot .q b { color: #211d15; }
+  .foot .src { margin-top: 14px; font-size: 12px; color: #9c937e; letter-spacing: 1px; }
+</style>
+</head>
+<body>
+<div id="diagram1">
+  <div class="grain"></div>
+  <div class="frame"></div>
+
+  <div class="head">
+    <div class="kicker">章一背景 · 昨日世界</div>
+    <h2 class="serif">一座宅邸的两面：黄金大厅与家族暗面</h2>
+    <div class="rule"></div>
+  </div>
+
+  <div class="wing wing-l">
+    <div class="wk">艺 术 之 面</div>
+    <div class="item"><span class="nm">勃拉姆斯</span><span class="ds">两代人的<b>挚友</b>，常在府邸即兴演奏</span></div>
+    <div class="item"><span class="nm">马勒</span><span class="ds">常客，家庭音乐会的座上宾</span></div>
+    <div class="item"><span class="nm">克里姆特</span><span class="ds">为姐姐格蕾特尔画婚纱肖像，称老卡尔为"艺术部长"</span></div>
+    <div class="item"><span class="nm">保罗（兄）</span><span class="ds">一战失右臂，以<b>单手钢琴</b>重登世界舞台；拉威尔《左手协奏曲》为他而作</span></div>
+  </div>
+
+  <div class="wing wing-r">
+    <div class="wk">阴 影 之 面</div>
+    <div class="item"><span class="nm">汉斯（兄）</span><span class="ds">音乐神童，早年<b>自杀身亡</b></span></div>
+    <div class="item"><span class="nm">鲁迪（兄）</span><span class="ds">1902 年<b>自杀身亡</b></span></div>
+    <div class="item"><span class="nm">库尔特（兄）</span><span class="ds">1918 年前线溃败之际，拒降自尽</span></div>
+    <div class="item"><span class="nm">路德维希</span><span class="ds">少年时同样被自杀念头缠身多年</span></div>
+  </div>
+
+  <div class="conn" style="left:496px; width:64px;"></div>
+  <div class="conn" style="right:496px; width:64px;"></div>
+
+  <div class="house">
+    <div class="yr">VIENNA · 1889</div>
+    <h3 class="serif">卡尔·维特根斯坦之家</h3>
+    <p>父亲是欧洲钢铁巨头，人称<b>"奥地利的卡内基"</b>；八个孩子中最小的，就是路德维希。</p>
+  </div>
+
+  <div class="foot">
+    <div class="q">物质的极致丰裕，与精神的极致高压，<b>并存于一屋檐下</b>。</div>
+    <div class="src">据瑞·蒙克《维特根斯坦传：天才之为责任》整理 · 哲人档案其一配图</div>
+  </div>
+</div>
+</body>
+</html>

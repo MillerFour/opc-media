@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #e8e4d8; font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+  .serif { font-family: 'STZhongsong','STSong','SimSun',serif; }
+  #diagram2 { width: 1500px; height: 1000px; background: #f3edde; position: relative; overflow: hidden; }
+  .grain { position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(0deg, rgba(120,100,60,.05) 0 1px, transparent 1px 7px); }
+  .frame { position: absolute; inset: 26px; border: 2px solid #cbb98a; outline: 1px solid rgba(168,132,52,.35); outline-offset: -8px; }
+  .head { position: absolute; top: 58px; left: 0; right: 0; text-align: center; }
+  .head .kicker { font-size: 15px; font-weight: 700; letter-spacing: 6px; color: #a88434; margin-bottom: 12px; }
+  .head h2 { font-size: 40px; font-weight: 700; color: #211d15; letter-spacing: 2px; }
+  .head .rule { width: 340px; height: 1px; background: #cbb98a; margin: 16px auto 0; }
+  .axis { position: absolute; top: 470px; left: 90px; right: 90px; height: 2px; background: #cbb98a; }
+  .axis::before { content: ""; position: absolute; right: -2px; top: -6px;
+    border-left: 14px solid #cbb98a; border-top: 7px solid transparent; border-bottom: 7px solid transparent; }
+  .node { position: absolute; width: 232px; }
+  .node .dot { width: 14px; height: 14px; border-radius: 50%; background: #a88434; border: 3px solid #f3edde;
+    box-shadow: 0 0 0 1px #cbb98a; margin: 0 auto; }
+  .node.up .dot { position: absolute; bottom: -42px; left: 50%; transform: translateX(-50%); }
+  .node.down .dot { position: absolute; top: -42px; left: 50%; transform: translateX(-50%); }
+  .node .yr { font-size: 14px; font-weight: 700; color: #a88434; letter-spacing: 2px; margin-bottom: 6px; }
+  .node h4 { font-size: 18px; font-weight: 700; color: #211d15; letter-spacing: 1px; line-height: 1.4; }
+  .node p { font-size: 12.5px; color: #6b6552; line-height: 1.65; margin-top: 6px; }
+  .node p b { color: #211d15; }
+  .node .card { background: #faf6ea; border: 1px solid #d8caa2; border-radius: 10px; padding: 14px 15px; }
+  .node.up { bottom: 540px; }
+  .node.down { top: 548px; }
+  .foot { position: absolute; bottom: 52px; left: 0; right: 0; text-align: center; }
+  .foot .q { font-size: 18px; color: #6b6552; letter-spacing: 1.5px; }
+  .foot .q b { color: #211d15; }
+  .foot .src { margin-top: 12px; font-size: 12px; color: #9c937e; letter-spacing: 1px; }
+</style>
+</head>
+<body>
+<div id="diagram2">
+  <div class="grain"></div>
+  <div class="frame"></div>
+
+  <div class="head">
+    <div class="kicker">生平总览 · 一条逃亡与回归的轨迹</div>
+    <h2 class="serif">从维也纳到剑桥：一个哲学家的十次转身</h2>
+    <div class="rule"></div>
+  </div>
+
+  <div class="axis"></div>
+
+  <div class="node up" style="left:64px;">
+    <div class="card"><div class="yr">1889</div><h4 class="serif">维也纳</h4><p>钢铁大亨幼子出生，家中八子之末</p></div>
+    <div class="dot"></div>
+  </div>
+  <div class="node down" style="left:212px;">
+    <div class="card"><div class="yr">1906-1911</div><h4 class="serif">柏林 → 曼彻斯特</h4><p>航空工程与螺旋桨专利，<b>本该是个工程师</b></p></div>
+    <div class="dot"></div>
+  </div>
+  <div class="node up" style="left:360px;">
+    <div class="card"><div class="yr">1911</div><h4 class="serif">剑桥</h4><p>弗雷格指路，突然到访罗素办公室</p></div>
+    <div class="dot"></div>
+  </div>
+  <div class="node down" style="left:508px;">
+    <div class="card"><div class="yr">1914-1918</div><h4 class="serif">一战战壕</h4><p>志愿兵上前线；战俘营里<b>定稿《逻辑哲学论》</b></p></div>
+    <div class="dot"></div>
+  </div>
+  <div class="node up" style="left:656px;">
+    <div class="card"><div class="yr">1920-1926</div><h4 class="serif">山村小学</h4><p>乡村教师，以体罚风波狼狈离场</p></div>
+    <div class="dot"></div>
+  </div>
+  <div class="node down" style="left:804px;">
+    <div class="card"><div class="yr">1926-1928</div><h4 class="serif">维也纳近郊</h4><p>修道院园丁；为姐姐造出<b>毫米级精确</b>的宅第</p></div>
+    <div class="dot"></div>
+  </div>
+  <div class="node up" style="left:952px;">
+    <div class="card"><div class="yr">1929</div><h4 class="serif">重返剑桥</h4><p>凯恩斯："上帝到了"；答辩拍肩考官</p></div>
+    <div class="dot"></div>
+  </div>
+  <div class="node down" style="left:1080px;">
+    <div class="card"><div class="yr">1939</div><h4 class="serif">剑桥讲席</h4><p>接替摩尔执掌哲学讲席，<b>图灵在座</b>听课</p></div>
+    <div class="dot"></div>
+  </div>
+  <div class="node up" style="left:1230px;">
+    <div class="card"><div class="yr">1947</div><h4 class="serif">爱尔兰海畔</h4><p>辞职独居写作，重写语言的哲学</p></div>
+    <div class="dot"></div>
+  </div>
+  <div class="node down" style="left:1362px; width:118px;">
+    <div class="card" style="background:#0d1526;border-color:#2a3550;">
+      <div class="yr" style="color:#c9a24b;">1951</div>
+      <h4 class="serif" style="color:#f3ead2;">剑桥病逝</h4>
+      <p style="color:#8a94ad;">遗言："告诉他们，我度过了<b style="color:#f3ead2;">极好的一生</b>。"</p>
+    </div>
+    <div class="dot"></div>
+  </div>
+
+  <div class="foot">
+    <div class="q">出去，是逃离黄金牢笼；回来，是承认哲学是<b>唯一没做完的工程</b>。</div>
+    <div class="src">据蒙克《天才之为责任》等公开传记资料整理 · 哲人档案其一配图</div>
+  </div>
+</div>
+</body>
+</html>
