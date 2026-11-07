@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #e4e4e7; font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+  #fig2 { width: 1500px; height: 1000px; background: #fafafa; position: relative; overflow: hidden; }
+  .title { position: absolute; left: 80px; top: 58px; font-size: 32px; font-weight: 700; color: #09090b; letter-spacing: -0.5px; }
+  .sub { position: absolute; left: 80px; top: 106px; font-size: 15px; color: #71717a; }
+  .hdr { position: absolute; font-size: 12px; color: #a1a1aa; letter-spacing: 2px; }
+  .row { position: absolute; left: 80px; width: 1340px; height: 88px; border-top: 1px solid #e4e4e7; }
+  .row.last { border-bottom: 1px solid #e4e4e7; }
+  .cell { position: absolute; top: 0; height: 88px; display: flex; flex-direction: column; justify-content: center; }
+  .nm { font-size: 19px; font-weight: 700; color: #09090b; }
+  .yr { font-size: 11.5px; color: #a1a1aa; font-family: Consolas, monospace; margin-top: 4px; }
+  .tx { font-size: 13px; color: #52525b; line-height: 1.6; padding-right: 18px; }
+  .end { font-size: 13px; color: #09090b; font-weight: 600; }
+  .end span { display: block; font-weight: 400; font-size: 12px; color: #71717a; margin-top: 3px; }
+  .foot { position: absolute; left: 80px; bottom: 42px; font-size: 12.5px; color: #a1a1aa; }
+  .hw { position: absolute; left: 80px; width: 1340px; height: 1px; background: #09090b; }
+</style>
+</head>
+<body>
+<div id="fig2">
+  <div class="title">八个孩子：天赋、父亲的意志，与各自的结局</div>
+  <div class="sub">同一个屋檐，同一套标准，八种完全不同的活法。</div>
+
+  <div class="hdr" style="left:80px; top:152px;">姓 名 / 生 卒</div>
+  <div class="hdr" style="left:360px; top:152px;">天 赋 与 性 情</div>
+  <div class="hdr" style="left:700px; top:152px;">父 亲 的 态 度</div>
+  <div class="hdr" style="left:1030px; top:152px;">结 局</div>
+  <div class="hw" style="top:178px;"></div>
+
+  <div class="row" style="top:179px;">
+    <div class="cell" style="left:0; width:280px;"><div class="nm">赫敏</div><div class="yr">1874–1950</div></div>
+    <div class="cell" style="left:280px; width:340px;"><div class="tx">稳重、克制，家族事务的实际操持者</div></div>
+    <div class="cell" style="left:620px; width:330px;"><div class="tx">长女，不必接班，也不被要求兑现天赋</div></div>
+    <div class="cell" style="left:950px; width:390px;"><div class="end">终身未婚<span>战后与弟弟最亲近的家人</span></div></div>
+  </div>
+
+  <div class="row" style="top:267px;">
+    <div class="cell" style="left:0; width:280px;"><div class="nm">汉斯</div><div class="yr">1877–1902</div></div>
+    <div class="cell" style="left:280px; width:340px;"><div class="tx">音乐神童：四岁辨多普勒效应，五岁听出乐队走音</div></div>
+    <div class="cell" style="left:620px; width:330px;"><div class="tx">被要求放弃音乐，进工厂学商业</div></div>
+    <div class="cell" style="left:950px; width:390px;"><div class="end">1902 出逃美国后失踪<span>普遍推定为自杀，从未确认</span></div></div>
+  </div>
+
+  <div class="row" style="top:355px;">
+    <div class="cell" style="left:0; width:280px;"><div class="nm">库尔特</div><div class="yr">1878–1918</div></div>
+    <div class="cell" style="left:280px; width:340px;"><div class="tx">钢琴与大提琴，风趣，被当成长不大的孩子</div></div>
+    <div class="cell" style="left:620px; width:330px;"><div class="tx">最听话的一个：进企业、当军官</div></div>
+    <div class="cell" style="left:950px; width:390px;"><div class="end">1918 前线自尽<span>部队哗变，拒绝投降</span></div></div>
+  </div>
+
+  <div class="row" style="top:443px;">
+    <div class="cell" style="left:0; width:280px;"><div class="nm">海伦</div><div class="yr">1879–1956</div></div>
+    <div class="cell" style="left:280px; width:340px;"><div class="tx">记载最少，性情温和</div></div>
+    <div class="cell" style="left:620px; width:330px;"><div class="tx">未见于家族冲突的记载</div></div>
+    <div class="cell" style="left:950px; width:390px;"><div class="end">善终<span>少数能让弟弟放松的人</span></div></div>
+  </div>
+
+  <div class="row" style="top:531px;">
+    <div class="cell" style="left:0; width:280px;"><div class="nm">鲁迪</div><div class="yr">1881–1904</div></div>
+    <div class="cell" style="left:280px; width:340px;"><div class="tx">敏感，想学戏剧，对自我身份长期不安</div></div>
+    <div class="cell" style="left:620px; width:330px;"><div class="tx">不支持艺术道路，关系疏远</div></div>
+    <div class="cell" style="left:950px; width:390px;"><div class="end">1904 柏林自尽<span>父亲此后禁止家人提他的名字</span></div></div>
+  </div>
+
+  <div class="row" style="top:619px;">
+    <div class="cell" style="left:0; width:280px;"><div class="nm">玛格丽特</div><div class="yr">1882–1958</div></div>
+    <div class="cell" style="left:280px; width:340px;"><div class="tx">审美极强，与克里姆特、弗洛伊德都有往来</div></div>
+    <div class="cell" style="left:620px; width:330px;"><div class="tx">嫁入豪门，是父亲认可的体面婚姻</div></div>
+    <div class="cell" style="left:950px; width:390px;"><div class="end">善终<span>把叔本华递给弟弟，后来请他造屋</span></div></div>
+  </div>
+
+  <div class="row" style="top:707px;">
+    <div class="cell" style="left:0; width:280px;"><div class="nm">保罗</div><div class="yr">1887–1961</div></div>
+    <div class="cell" style="left:280px; width:340px;"><div class="tx">钢琴天才，意志极硬</div></div>
+    <div class="cell" style="left:620px; width:330px;"><div class="tx">唯一被放行去学音乐的儿子</div></div>
+    <div class="cell" style="left:950px; width:390px;"><div class="end">失右臂后以左手登台<span>拉威尔《左手钢琴协奏曲》为他而作</span></div></div>
+  </div>
+
+  <div class="row last" style="top:795px; background:#f4f4f5;">
+    <div class="cell" style="left:0; width:280px;"><div class="nm">路德维希</div><div class="yr">1889–1951</div></div>
+    <div class="cell" style="left:280px; width:340px;"><div class="tx">四岁才说话，动手能力强，早年在兄姐间自觉无天赋</div></div>
+    <div class="cell" style="left:620px; width:330px;"><div class="tx">被安排学工程，先顺从，后彻底掉头</div></div>
+    <div class="cell" style="left:950px; width:390px;"><div class="end">善终，成为哲学家<span>散尽遗产，一生自我清算</span></div></div>
+  </div>
+
+  <div class="foot">据蒙克《维特根斯坦传》、亚历山大·沃《维特根斯坦之家》及公开家族史料整理 · 哲人档案 · 卷一 ②</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #e4e4e7; font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+  #fig3 { width: 1500px; height: 830px; background: #fafafa; position: relative; overflow: hidden; }
+  .title { position: absolute; left: 80px; top: 58px; font-size: 32px; font-weight: 700; color: #09090b; letter-spacing: -0.5px; }
+  .sub { position: absolute; left: 80px; top: 106px; font-size: 15px; color: #71717a; }
+  .axis { position: absolute; left: 120px; top: 430px; width: 1280px; height: 1px; background: #09090b; }
+  .axis::after { content: ""; position: absolute; right: -1px; top: -5px; border-left: 12px solid #09090b; border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
+  .card { position: absolute; width: 330px; min-height: 150px; border: 1px solid #e4e4e7; border-radius: 10px; background: #ffffff; padding: 16px 18px; }
+  .card .y { font-size: 22px; font-weight: 700; color: #09090b; font-family: Consolas, monospace; }
+  .card .h { font-size: 15px; font-weight: 700; color: #09090b; margin-top: 6px; }
+  .card .t { font-size: 12.5px; color: #71717a; line-height: 1.65; margin-top: 7px; }
+  .card.dark { background: #09090b; border-color: #09090b; }
+  .card.dark .y, .card.dark .h { color: #fafafa; }
+  .card.dark .t { color: #a1a1aa; }
+  .stick { position: absolute; width: 1px; background: #a1a1aa; }
+  .tick { position: absolute; width: 9px; height: 9px; border-radius: 50%; background: #09090b; top: -4px; }
+  .foot { position: absolute; left: 80px; bottom: 34px; font-size: 12.5px; color: #a1a1aa; }
+  .note { position: absolute; left: 120px; top: 724px; font-size: 13.5px; color: #52525b; }
+  .note b { color: #09090b; }
+</style>
+</head>
+<body>
+<div id="fig3">
+  <div class="title">十六年，这个家没有停下来</div>
+  <div class="sub">两次丧兄之后，父亲的去世、最小的哥哥的自尽，接连发生。</div>
+
+  <div class="axis"></div>
+
+  <div class="stick" style="left:200px; top:300px; height:130px;"></div>
+  <div class="tick" style="left:196px;"></div>
+  <div class="card" style="left:80px; top:150px;">
+    <div class="y">1902</div>
+    <div class="h">汉斯从船上消失</div>
+    <div class="t">长子、音乐神童，被父亲派进工厂后出逃美国。此后再无音讯，普遍推定为自杀。</div>
+  </div>
+
+  <div class="stick" style="left:600px; top:300px; height:130px;"></div>
+  <div class="tick" style="left:596px;"></div>
+  <div class="card dark" style="left:480px; top:150px;">
+    <div class="y">1904</div>
+    <div class="h">鲁迪在柏林自尽</div>
+    <div class="t">听完《被遗弃，被遗弃，我被遗弃了》，喝下掺氰化钾的牛奶。父亲禁止家人再提他的名字。</div>
+  </div>
+
+  <div class="stick" style="left:1000px; top:300px; height:130px;"></div>
+  <div class="tick" style="left:996px;"></div>
+  <div class="card" style="left:880px; top:150px;">
+    <div class="y">1913</div>
+    <div class="h">父亲去世</div>
+    <div class="t">卡尔·维特根斯坦病逝。他继承了帝国级的遗产，随后几乎全部散尽：资助里尔克、特拉克尔，余款转给兄姐。</div>
+  </div>
+
+  <div class="stick" style="left:380px; top:430px; height:110px;"></div>
+  <div class="tick" style="left:376px;"></div>
+  <div class="card" style="left:260px; top:540px;">
+    <div class="y">1906</div>
+    <div class="h">玻尔兹曼自杀</div>
+    <div class="t">他原想回维也纳随玻尔兹曼学物理。计划落空，改去柏林学机械工程。</div>
+  </div>
+
+  <div class="stick" style="left:1080px; top:430px; height:110px;"></div>
+  <div class="tick" style="left:1076px;"></div>
+  <div class="card" style="left:960px; top:540px;">
+    <div class="y">1918</div>
+    <div class="h">库尔特自尽，品生特坠机</div>
+    <div class="t">三哥在前线拒降自杀；同年，挚友品生特死于空难。《逻辑哲学论》题献给了他。</div>
+  </div>
+
+  <div class="note">五个节点，<b>全是死亡与离别</b>。这个家从来没有机会真正缓过来。</div>
+  <div class="foot">据蒙克《维特根斯坦传》等传记资料整理 · 哲人档案 · 卷二 ①</div>
+</div>
+</body>
+</html>

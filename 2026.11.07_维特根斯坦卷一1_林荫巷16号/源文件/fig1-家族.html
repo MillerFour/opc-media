@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #e4e4e7; font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+  #fig1 { width: 1500px; height: 920px; background: #fafafa; position: relative; overflow: hidden; }
+  .title { position: absolute; left: 80px; top: 60px; font-size: 32px; font-weight: 700; color: #09090b; letter-spacing: -0.5px; }
+  .sub { position: absolute; left: 80px; top: 108px; font-size: 15px; color: #71717a; }
+  .pbox { position: absolute; width: 300px; height: 96px; border: 1px solid #d4d4d8; border-radius: 10px; background: #ffffff; padding: 16px 20px; }
+  .pbox .n { font-size: 21px; font-weight: 700; color: #09090b; }
+  .pbox .d { font-size: 12.5px; color: #71717a; margin-top: 6px; line-height: 1.5; }
+  .cbus { position: absolute; background: #d4d4d8; }
+  .child { position: absolute; width: 320px; height: 186px; border: 1px solid #e4e4e7; border-radius: 10px; background: #ffffff; padding: 18px 20px; }
+  .child .n { font-size: 22px; font-weight: 700; color: #09090b; }
+  .child .y { font-size: 12px; color: #a1a1aa; margin-top: 3px; font-family: Consolas, monospace; }
+  .child .f { font-size: 13.5px; color: #52525b; line-height: 1.65; margin-top: 12px; }
+  .child .tag { position: absolute; right: 16px; top: 16px; font-size: 11px; color: #71717a; border: 1px solid #e4e4e7; border-radius: 99px; padding: 2px 9px; }
+  .child.dark { background: #09090b; border-color: #09090b; }
+  .child.dark .n { color: #fafafa; }
+  .child.dark .y { color: #71717a; }
+  .child.dark .f { color: #a1a1aa; }
+  .child.dark .tag { color: #d4d4d8; border-color: #3f3f46; }
+  .legend { position: absolute; left: 80px; bottom: 46px; font-size: 13px; color: #71717a; }
+  .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 7px; vertical-align: middle; }
+</style>
+</head>
+<body>
+<div id="fig1">
+  <div class="title">林荫巷 16 号：一对父母，八个孩子</div>
+  <div class="sub">九次生育，长女朵拉出生即夭折；活下来的八人里，五个儿子中有三个死在自己手里。</div>
+
+  <div class="pbox" style="left:400px; top:170px;">
+    <div class="n">卡尔 · 父亲</div>
+    <div class="d">1847–1913 · 钢铁巨头 · 要儿子接班</div>
+  </div>
+  <div class="pbox" style="left:800px; top:170px;">
+    <div class="n">波尔蒂 · 母亲</div>
+    <div class="d">银行家之女 · 七架钢琴 · 家里文化轴心</div>
+  </div>
+
+  <div class="cbus" style="left:550px; top:266px; width:1px; height:34px;"></div>
+  <div class="cbus" style="left:950px; top:266px; width:1px; height:34px;"></div>
+  <div class="cbus" style="left:550px; top:300px; width:401px; height:1px;"></div>
+  <div class="cbus" style="left:750px; top:300px; width:1px; height:80px;"></div>
+
+  <div class="child" style="left:80px; top:380px;">
+    <div class="n">赫敏</div><div class="y">1874–1950</div>
+    <div class="f">长女，终身未婚。替弟弟保管家族记忆，也在他最狼狈时接住他。</div>
+    <div class="tag">善终</div>
+  </div>
+  <div class="child" style="left:420px; top:380px;">
+    <div class="n">汉斯</div><div class="y">1877–1902</div>
+    <div class="f">音乐神童，四岁听出多普勒效应。被父亲派进工厂，1902 出逃美国后失踪。</div>
+    <div class="tag">失踪</div>
+  </div>
+  <div class="child" style="left:760px; top:380px;">
+    <div class="n">库尔特</div><div class="y">1878–1918</div>
+    <div class="f">会钢琴与大提琴，家里最会玩笑的人。1918 年部队哗变，他拒绝投降。</div>
+    <div class="tag">自杀</div>
+  </div>
+  <div class="child" style="left:1100px; top:380px;">
+    <div class="n">海伦</div><div class="y">1879–1956</div>
+    <div class="f">二姐，记载最少。家中信件里，她是少数能让弟弟放松的人。</div>
+    <div class="tag">善终</div>
+  </div>
+
+  <div class="child" style="left:80px; top:600px;">
+    <div class="n">鲁迪</div><div class="y">1881–1904</div>
+    <div class="f">赴柏林学戏剧。1904 请人弹《被遗弃》后自尽，父亲自此禁提其名。</div>
+    <div class="tag">自杀</div>
+  </div>
+  <div class="child" style="left:420px; top:600px;">
+    <div class="n">玛格丽特</div><div class="y">1882–1958</div>
+    <div class="f">克里姆特为她画婚纱肖像；把叔本华递给弟弟；后来请他造房子。</div>
+    <div class="tag">善终</div>
+  </div>
+  <div class="child" style="left:760px; top:600px;">
+    <div class="n">保罗</div><div class="y">1887–1961</div>
+    <div class="f">唯一被允许学音乐的儿子。失右臂后以左手登台，拉威尔为他写协奏曲。</div>
+    <div class="tag">善终</div>
+  </div>
+  <div class="child dark" style="left:1100px; top:600px;">
+    <div class="n">路德维希</div><div class="y">1889–1951</div>
+    <div class="f">幼子，四岁才开口说话。靠机械兴趣讨父亲欢心，后来成了哲学家。</div>
+    <div class="tag">善终</div>
+  </div>
+
+  <div class="legend"><span class="dot" style="background:#09090b;"></span>自杀 / 失踪　　<span class="dot" style="border:1px solid #a1a1aa; background:#ffffff;"></span>善终　　· 年龄只算到去世那年</div>
+</div>
+</body>
+</html>
