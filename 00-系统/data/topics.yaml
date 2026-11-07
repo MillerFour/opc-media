@@ -1,0 +1,57 @@
+# 选题池 · 2026.11.07 建池
+# 字段最小集：id / title / type / angle / status
+# status: idea | approved | drafted | illustrated | reviewed | published | dropped | stale
+# 无 angle 的选题不许入池；essay 必须给 shelf_life
+
+- id: wtg-01
+  title: 林荫巷 16 号：一座被音乐包围的房子
+  type: series
+  series_id: wittgenstein
+  volume: 1
+  angle: 父亲的钢铁与母亲的七架钢琴，如何养出一屋子天才与三个自杀的儿子
+  style: zinc
+  status: published
+  folder: 2026.11.07_维特根斯坦01_林荫巷16号
+  publish_id: yx5020261107906850405605945344
+  facts_checked: true
+
+- id: wtg-03
+  title: 1902–1904：家里少了两个人
+  type: series
+  series_id: wittgenstein
+  volume: 3
+  angle: 两个哥哥消失之后，家里学会了把名字删掉
+  style: zinc
+  status: published
+  folder: 2026.11.07_维特根斯坦03_两次丧兄
+  publish_id: yx5020261107906850474216367104
+  facts_checked: true
+
+- id: wtg-10
+  title: 最后：医院、爱尔兰与一句遗言
+  type: series
+  series_id: wittgenstein
+  volume: 10
+  angle: 他一生自我折磨，为什么临终说"极好的一生"
+  style: zinc
+  status: published
+  folder: 2026.11.07_维特根斯坦10_最后
+  publish_id: yx5020261107906852949279351808
+  facts_checked: true
+
+- id: essay-2026-11-a
+  title: 待定：AI 换装站的后续（开源项目跟踪）
+  type: essay
+  angle: 那篇技术拆解发出后项目又涨了多少星、有没有翻车
+  style: zinc
+  status: idea
+  shelf_life: 168h
+  sources: [github.com/paipiange/nvzhuang]
+
+- id: essay-2026-11-b
+  title: 待定：维特根斯坦系列复盘
+  type: essay
+  angle: 11 篇连载的数据与读者反馈，讲"系列化写作"本身
+  style: zinc
+  status: idea
+  shelf_life: null

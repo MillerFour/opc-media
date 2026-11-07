@@ -1,0 +1,62 @@
+# 文章 manifest 模板
+# 每篇文章文件夹里放一份 manifest.yaml，是这个文章的唯一事实源。
+# 所有脚本只读它、只通过它改状态；agent 不手改 status。
+
+id: wtg-05
+title: 工程师的六年：父亲的期望与一副螺旋桨
+type: series                 # series | essay
+series_id: wittgenstein
+volume: 5
+style: zinc                  # zinc | chronicle | extra | xiwen
+status: published            # idea|approved|outlined|drafted|illustrated|reviewed|published|archived
+folder: 2026.11.07_维特根斯坦05_工程师六年
+
+# 选题定位：这篇只回答一个问题
+question: 一个顺从父亲去学工程的儿子，怎么在六年里把专业学成了哲学
+angle: 父亲的期望 vs 螺旋桨背后的数学
+must_have:
+  - 1906 柏林、1908 曼彻斯特的学业线
+  - 1911 螺旋桨专利与"数学凭什么可靠"的转折
+  - 弗雷格一句"去剑桥找罗素"
+
+# 事实核查：未全部 checked 不许进 reviewed
+facts:
+  - claim: 1906 年入柏林夏洛滕堡工学院
+    source: 江怡《维特根斯坦传》
+    checked: true
+  - claim: 1911 年获得带反推叶片的螺旋桨专利
+    source: 曼彻斯特大学档案
+    checked: true
+
+# 素材清单：path 相对文章文件夹
+assets:
+  cover_23: 封面_2.3白色.png
+  cover_sq: 封面_方版1x1.png
+  figures:
+    - {file: 插图_1_六年路线.jpg, type: route, source_html: 源文件/fig5-路线.html}
+  uploaded:
+    - {file: 封面_2.3白色.png, url: "https://toolsvip.cn/static/cover/20261107/c4e4675e245a.jpg"}
+    - {file: 插图_1_六年路线.jpg, url: "https://toolsvip.cn/static/mcp/20261107/71e9fed1fc03.jpg"}
+
+# 发布记录
+publish:
+  account_id: "4020261023901417208318895104"
+  theme_id: terminal
+  info_id: yx5020261107906852835739542528
+  media_id: qRtUCE8V-xi5_nlfs0tP5DLKUDiH7t1e65Wgv0_YSfWoYe_r0sBr-ccjwoTGpSUY
+  status: 1
+  published_at: 2026-11-07
+
+# 审查
+review:
+  facts_ok: true
+  consistency_ok: true        # 与系列 bible 是否冲突
+  title_chars: 20             # 上限 30
+  abstract_chars: 62          # 上限 100
+  notes: 图位在第三节后
+
+# 数据回流（P4 阶段填）
+stats:
+  read: null
+  like: null
+  share: null
