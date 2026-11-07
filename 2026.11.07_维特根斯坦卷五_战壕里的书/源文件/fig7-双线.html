@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #e4e4e7; font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+  #f7 { width: 1500px; height: 800px; background: #fafafa; position: relative; overflow: hidden; }
+  .ti { position: absolute; left: 80px; top: 56px; font-size: 32px; font-weight: 700; color: #09090b; }
+  .su { position: absolute; left: 80px; top: 104px; font-size: 15px; color: #71717a; }
+  .band { position: absolute; left: 80px; width: 1340px; font-size: 12px; color: #a1a1aa; letter-spacing: 3px; }
+  .axis { position: absolute; left: 160px; width: 1180px; height: 1px; background: #09090b; }
+  .axis::after { content: ""; position: absolute; right: -1px; top: -4px; border-left: 10px solid #09090b; border-top: 4px solid transparent; border-bottom: 4px solid transparent; }
+  .pt { position: absolute; width: 250px; }
+  .pt .y { font-size: 15px; font-weight: 700; color: #09090b; font-family: Consolas, monospace; }
+  .pt .t { font-size: 12.5px; color: #52525b; line-height: 1.65; margin-top: 6px; }
+  .dot { position: absolute; width: 9px; height: 9px; border-radius: 50%; background: #09090b; }
+  .stick { position: absolute; width: 1px; background: #d4d4d8; }
+  .big { position: absolute; left: 80px; top: 626px; width: 1340px; background: #09090b; border-radius: 10px; padding: 22px 26px; }
+  .big .q { font-size: 17px; color: #fafafa; font-weight: 600; }
+  .big .a { font-size: 13px; color: #a1a1aa; margin-top: 8px; line-height: 1.7; }
+  .foot { position: absolute; left: 80px; bottom: 32px; font-size: 12.5px; color: #a1a1aa; }
+</style>
+</head>
+<body>
+<div id="f7">
+  <div class="ti">外面的五年，与里面的五年</div>
+  <div class="su">战事在推进，他在同一张纸上写两种东西：命题的逻辑，和上帝的意志。</div>
+
+  <div class="band" style="top:168px;">外 面 · 战 事 与 命 运</div>
+  <div class="axis" style="top:300px;"></div>
+  <div class="pt" style="left:160px; top:206px;"><div class="y">1914.08</div><div class="t">一战爆发。他身体本可免役，仍以志愿兵入伍。</div></div>
+  <div class="stick" style="left:284px; top:270px; height:30px;"></div><div class="dot" style="left:280px; top:296px;"></div>
+  <div class="pt" style="left:480px; top:206px;"><div class="y">1916</div><div class="t">主动请调最危险的观察哨；开始读托尔斯泰《福音书摘要》。</div></div>
+  <div class="stick" style="left:604px; top:270px; height:30px;"></div><div class="dot" style="left:600px; top:296px;"></div>
+  <div class="pt" style="left:800px; top:206px;"><div class="y">1918.10</div><div class="t">库尔特前线自尽；同年挚友品生特空难身亡。</div></div>
+  <div class="stick" style="left:924px; top:270px; height:30px;"></div><div class="dot" style="left:920px; top:296px;"></div>
+  <div class="pt" style="left:1120px; top:206px;"><div class="y">1918.11</div><div class="t">意大利被俘，押入蒙特卡西诺战俘营。</div></div>
+  <div class="stick" style="left:1244px; top:270px; height:30px;"></div><div class="dot" style="left:1240px; top:296px;"></div>
+
+  <div class="band" style="top:356px;">里 面 · 笔 记 与 手 稿</div>
+  <div class="axis" style="top:488px;"></div>
+  <div class="pt" style="left:160px; top:530px;"><div class="y">1914–15</div><div class="t">战地笔记：逻辑问题、罪、祈祷混在一起写。</div></div>
+  <div class="stick" style="left:284px; top:458px; height:30px;"></div><div class="dot" style="left:280px; top:484px;"></div>
+  <div class="pt" style="left:480px; top:530px;"><div class="y">1916.06.11</div><div class="t">“关于上帝和生命的目的，我知道些什么？”逻辑与罪合流。</div></div>
+  <div class="stick" style="left:604px; top:458px; height:30px;"></div><div class="dot" style="left:600px; top:484px;"></div>
+  <div class="pt" style="left:800px; top:530px;"><div class="y">1918</div><div class="t">战俘营里整理定稿，题献给品生特。</div></div>
+  <div class="stick" style="left:924px; top:458px; height:30px;"></div><div class="dot" style="left:920px; top:484px;"></div>
+  <div class="pt" style="left:1120px; top:530px;"><div class="y">1921</div><div class="t">《逻辑哲学论》发表；最后一句：凡不可说的，必须保持沉默。</div></div>
+  <div class="stick" style="left:1244px; top:458px; height:30px;"></div><div class="dot" style="left:1240px; top:484px;"></div>
+
+  <div class="big">
+    <div class="q">“你到底是在思考逻辑，还是在思考你的罪？”——“两者皆是。”</div>
+    <div class="a">罗素的这句问话，和这个回答，是理解这本书的钥匙：它前半部在算命题，最后几页在谈伦理、美与生活的意义。</div>
+  </div>
+  <div class="foot">据《战时笔记 1914–1916》、蒙克《天才之为责任》整理 · 哲人档案 · 卷五</div>
+</div>
+</body>
+</html>

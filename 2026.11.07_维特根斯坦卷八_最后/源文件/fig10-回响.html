@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #e4e4e7; font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+  #f10 { width: 1500px; height: 700px; background: #fafafa; position: relative; overflow: hidden; }
+  .ti { position: absolute; left: 80px; top: 56px; font-size: 32px; font-weight: 700; color: #09090b; }
+  .su { position: absolute; left: 80px; top: 104px; font-size: 15px; color: #71717a; }
+  .card { position: absolute; top: 176px; width: 400px; border: 1px solid #e4e4e7; border-radius: 10px; background: #fff; padding: 22px 24px; height: 300px; }
+  .card .y { font-size: 13px; color: #a1a1aa; font-family: Consolas, monospace; }
+  .card .q { font-size: 19px; font-weight: 700; color: #09090b; line-height: 1.5; margin-top: 14px; }
+  .card .d { font-size: 13px; color: #71717a; line-height: 1.7; margin-top: 14px; }
+  .card.dark { background: #09090b; border-color: #09090b; }
+  .card.dark .y { color: #71717a; } .card.dark .q { color: #fafafa; } .card.dark .d { color: #a1a1aa; }
+  .ar { position: absolute; top: 316px; width: 40px; height: 1px; background: #a1a1aa; }
+  .ar::after { content: ""; position: absolute; right: 0; top: -4px; border-left: 7px solid #a1a1aa; border-top: 4px solid transparent; border-bottom: 4px solid transparent; }
+  .concl { position: absolute; left: 80px; top: 528px; width: 1340px; }
+  .concl .l { font-size: 15px; color: #3f3f46; line-height: 1.9; }
+  .concl .l b { color: #09090b; }
+  .foot { position: absolute; left: 80px; bottom: 36px; font-size: 12.5px; color: #a1a1aa; }
+</style>
+</head>
+<body>
+<div id="f10">
+  <div class="ti">一句话的三次回响</div>
+  <div class="su">八岁的问题、战壕里的问题、临终的判词——他从头到尾只在问同一件事。</div>
+
+  <div class="card" style="left:80px;">
+    <div class="y">八岁</div>
+    <div class="q">“撒谎对自己有利的时候，为什么要说实话？”</div>
+    <div class="d">起因很小：要不要向小伙伴承认自己的犹太血统。它却成了他一生最初、也最持久的哲学问题。</div>
+  </div>
+  <div class="ar" style="left:494px;"></div>
+  <div class="card" style="left:550px;">
+    <div class="y">1916 · 战壕</div>
+    <div class="q">“关于上帝和生命的目的，我知道些什么？”</div>
+    <div class="d">他把答案列成一张单子：生活的意义，即世界的意义，我们可以称之为上帝。逻辑与罪在这里合流。</div>
+  </div>
+  <div class="ar" style="left:964px;"></div>
+  <div class="card dark" style="left:1020px;">
+    <div class="y">1951 · 临终</div>
+    <div class="q">“告诉他们，我度过了极好的一生。”</div>
+    <div class="d">他没有回答那个问题，而是用一辈子把它活成了一个答案：对自己彻底诚实。</div>
+  </div>
+
+  <div class="concl">
+    <div class="l">这三句话看起来无关，其实是一条线：<b>能不能对自己诚实</b>——在身份上、在战场上、在临终的判词里。<br>他对语言的追问也是从这条线长出来的：如果语言不能替我说清我自己，那它到底能做什么。</div>
+  </div>
+
+  <div class="foot">据蒙克《天才之为责任》《战时笔记》整理 · 哲人档案 · 卷八</div>
+</div>
+</body>
+</html>

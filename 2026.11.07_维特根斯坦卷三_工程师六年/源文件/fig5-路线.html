@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #e4e4e7; font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+  #f5 { width: 1500px; height: 700px; background: #fafafa; position: relative; overflow: hidden; }
+  .ti { position: absolute; left: 80px; top: 56px; font-size: 32px; font-weight: 700; color: #09090b; }
+  .su { position: absolute; left: 80px; top: 104px; font-size: 15px; color: #71717a; }
+  .node { position: absolute; top: 190px; width: 280px; border: 1px solid #e4e4e7; border-radius: 10px; background: #fff; padding: 18px 20px; }
+  .node .y { font-size: 12px; color: #a1a1aa; font-family: Consolas, monospace; }
+  .node .n { font-size: 19px; font-weight: 700; color: #09090b; margin-top: 6px; }
+  .node .d { font-size: 12.5px; color: #71717a; margin-top: 8px; line-height: 1.6; }
+  .node.dark { background: #09090b; border-color: #09090b; }
+  .node.dark .y { color: #71717a; } .node.dark .n { color: #fafafa; } .node.dark .d { color: #a1a1aa; }
+  .arr { position: absolute; top: 252px; width: 60px; height: 1px; background: #a1a1aa; }
+  .arr::after { content: ""; position: absolute; right: 0; top: -4px; border-left: 8px solid #a1a1aa; border-top: 4.5px solid transparent; border-bottom: 4.5px solid transparent; }
+  .lbl { position: absolute; left: 80px; top: 400px; font-size: 12px; color: #a1a1aa; letter-spacing: 3px; }
+  .chain { position: absolute; top: 448px; display: flex; align-items: center; gap: 0; left: 80px; }
+  .chip { border: 1px solid #d4d4d8; border-radius: 999px; padding: 9px 20px; font-size: 14px; color: #09090b; background: #fff; }
+  .chip.on { background: #09090b; color: #fafafa; border-color: #09090b; }
+  .to { width: 46px; height: 1px; background: #d4d4d8; position: relative; }
+  .to::after { content: ""; position: absolute; right: 0; top: -4px; border-left: 7px solid #d4d4d8; border-top: 4px solid transparent; border-bottom: 4px solid transparent; }
+  .foot { position: absolute; left: 80px; bottom: 40px; font-size: 12.5px; color: #a1a1aa; }
+  .note { position: absolute; left: 80px; top: 560px; font-size: 13.5px; color: #52525b; }
+  .note b { color: #09090b; }
+</style>
+</head>
+<body>
+<div id="f5">
+  <div class="ti">六年，一条越走越远的路线</div>
+  <div class="su">每一站都是父亲认可的学业，每一站也都让他离工程更远一点。</div>
+
+  <div class="node" style="left:80px;"><div class="y">1906</div><div class="n">柏林</div><div class="d">夏洛滕堡工学院，机械工程。他后来承认这段时间最不愉快。</div></div>
+  <div class="arr" style="left:366px;"></div>
+  <div class="node" style="left:432px;"><div class="y">1908</div><div class="n">曼彻斯特</div><div class="d">研究喷气发动机，去风筝实验站做大气观测。</div></div>
+  <div class="arr" style="left:718px;"></div>
+  <div class="node" style="left:784px;"><div class="y">1911</div><div class="n">耶拿</div><div class="d">带着一堆问题去见弗雷格，被指去剑桥找罗素。</div></div>
+  <div class="arr" style="left:1070px;"></div>
+  <div class="node dark" style="left:1136px;"><div class="y">1911 秋</div><div class="n">剑桥</div><div class="d">走进罗素的房间，从此不再回头。</div></div>
+
+  <div class="lbl">同 一 个 人 的 兴 趣 迁 移</div>
+  <div class="chain">
+    <div class="chip">喷气嘴</div><div class="to"></div>
+    <div class="chip">螺旋桨</div><div class="to"></div>
+    <div class="chip">数学</div><div class="to"></div>
+    <div class="chip">数学基础</div><div class="to"></div>
+    <div class="chip on">逻辑与哲学</div>
+  </div>
+
+  <div class="note">父亲要的是一个<b>能接班的工程师</b>，他交出了专利，也交出了一个父亲完全听不懂的问题。</div>
+  <div class="foot">据江怡《维特根斯坦传》与曼彻斯特大学档案整理 · 哲人档案 · 卷三</div>
+</div>
+</body>
+</html>
