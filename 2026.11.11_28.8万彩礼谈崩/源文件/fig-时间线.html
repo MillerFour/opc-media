@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #55524a; }
+  #fig { width: 900px; height: 820px; background: #f7f4ec; position: relative; overflow: hidden; font-family: 'PingFang SC','Microsoft YaHei',sans-serif; }
+  .ttl { position: absolute; top: 30px; left: 56px; font-size: 26px; font-weight: 900; color: #1a1a1a; letter-spacing: 2px; font-family: 'STZhongsong','STSong',serif; }
+  .ttl b { color: #c9342b; }
+  .rule { position: absolute; top: 74px; left: 56px; right: 56px; border-top: 3px solid #1a1a1a; }
+  .axis { position: absolute; left: 150px; top: 110px; width: 2px; height: 580px; background: #1a1a1a; }
+  .node { position: absolute; left: 141px; width: 18px; height: 18px; border-radius: 50%; background: #1a1a1a; border: 3px solid #f7f4ec; }
+  .node.r { background: #c9342b; }
+  .yr { position: absolute; left: 56px; width: 80px; text-align: right; font-family: Consolas,monospace; font-size: 14px; font-weight: 800; color: #1a1a1a; }
+  .yr.r { color: #c9342b; }
+  .card { position: absolute; left: 188px; width: 600px; background: #efeadb; border: 1px solid #1a1a1a; padding: 12px 18px; }
+  .card h4 { font-size: 16px; font-weight: 900; color: #1a1a1a; margin-bottom: 5px; font-family: 'STZhongsong','STSong',serif; }
+  .card p { font-size: 13px; color: #2b2b2b; line-height: 1.65; }
+  .card .tag { display:inline-block; background:#1a1a1a; color:#f7f4ec; font-size:11px; font-weight:800; letter-spacing:1px; padding:2px 8px; margin-bottom:6px; }
+  .card .tag.r { background:#c9342b; }
+  .irony { position: absolute; left: 188px; width: 600px; background: #1a1a1a; padding: 13px 18px; }
+  .irony p { font-size: 13.5px; color: #e8e3d5; line-height: 1.65; }
+  .irony b { color: #c9342b; border-bottom: 2px solid #c9342b; }
+  .foot { position: absolute; left: 56px; bottom: 22px; font-size: 11px; color: #a19a88; letter-spacing: 1px; font-family: Consolas,monospace; }
+</style>
+</head>
+<body>
+<div id="fig">
+  <div class="ttl">事件时间线 · <b>据直播口述整理</b></div>
+  <div class="rule"></div>
+  <div class="axis"></div>
+
+  <div class="node" style="top:150px;"></div>
+  <div class="yr" style="top:146px;">约3年前</div>
+  <div class="card" style="top:120px;">
+    <span class="tag">起点</span>
+    <h4>恋爱开始</h4>
+    <p>女方自述与前男友交往三年多、谈婚论嫁。母亲据称主张 28.8 万彩礼，交往第一年即已提及。</p>
+  </div>
+
+  <div class="node r" style="top:296px;"></div>
+  <div class="yr r" style="top:292px;">2025.07</div>
+  <div class="card" style="top:266px;">
+    <span class="tag r">转折点</span>
+    <h4>彩礼谈崩 · 报案 · 入狱</h4>
+    <p>男方家称资金压在餐馆，只愿出 18.8 万；争执中女方指男方违背意愿发生关系，家中监控录下过程。女方报警，据口述男方因强奸罪被判三年。</p>
+  </div>
+
+  <div class="node" style="top:442px;"></div>
+  <div class="yr" style="top:438px;">2025.08</div>
+  <div class="card" style="top:412px;">
+    <span class="tag">转折二</span>
+    <h4>无缝衔接现未婚夫</h4>
+    <p>女方称与母亲此前介绍、在银行工作的"小周"开始交往，现为订婚状态。</p>
+  </div>
+
+  <div class="node r" style="top:560px;"></div>
+  <div class="yr r" style="top:556px;">2026 今</div>
+  <div class="card" style="top:530px;">
+    <span class="tag r">现状</span>
+    <h4>订婚被搅黄 · 现男友疏远</h4>
+    <p>前男友母亲通过社交动态得知订婚，到现场闹事；现未婚夫父母打听后得知真相，男方一周多未联系，婚事告危。</p>
+  </div>
+
+  <div class="irony" style="top:648px;">
+    <p>最刺眼的反讽：同一个 <b>18.8 万</b>，前男友"给不出"被送进监狱，现未婚夫"给出了"就被接受——数字没变，变的是人。</p>
+  </div>
+
+  <div class="foot">注：以上为单方口述版本，未经另一方证实，仅作事件脉络示意</div>
+</div>
+</body>
+</html>
