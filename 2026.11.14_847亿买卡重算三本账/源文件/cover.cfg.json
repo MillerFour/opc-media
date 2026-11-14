@@ -1,0 +1,19 @@
+{
+  "out": "E:/Writing/wx-mp/2026.11.14_847亿买卡重算三本账/源文件/cover.html",
+  "tag": "产业观察 · AI INFRA WEEKLY",
+  "title": "847亿买卡背后",
+  "title2": "<br><span style=\"color:#3f3f46\">重算三本账</span>",
+  "sub_pre": "算力 · 充值权 · 人的定价",
+  "sub_post": "，一本账拆到底",
+  "cmd": "ledger — tencent · 2026H1",
+  "cmdline": "audit --capex --agents --headcount",
+  "lines": [
+    ["2025", "资本开支 792 亿元 · 全年"],
+    ["26H1", "847.2 亿元 · 同比 +82%"],
+    ["26Q2", "单季 527.84 亿元 · +176%"],
+    ["FCF", "单季自由现金流 −138 亿元"],
+    ["06/30", "员工 115,927 人 · 酬金 645 亿"]
+  ],
+  "foot": "2026.11.14 · ZINC WEEKLY · 产业观察 第 10 期",
+  "slogan": "买卡不是终点，<b>谁收钱、谁拍板</b>才是。"
+}
