@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #5c6650; font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+  .mono { font-family: Consolas, "Courier New", monospace; }
+  .serif { font-family: 'STSong','SimSun',serif; }
+  #fig { position: relative; width: 1200px; height: 780px; overflow: hidden;
+    background: #0d1509; color: #f0f6e6; }
+  .grid { position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(to right, transparent 0 50px, rgba(118,185,0,.055) 50px 51px),
+                      repeating-linear-gradient(to bottom, transparent 0 50px, rgba(118,185,0,.055) 50px 51px); }
+  .glow { position: absolute; width: 720px; height: 720px; left: -240px; top: 80px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(118,185,0,.13) 0%, rgba(118,185,0,0) 68%); }
+  .tag { display: inline-block; background: #76b900; color: #0d1509; font-size: 14px;
+    font-weight: 800; letter-spacing: .22em; padding: 7px 16px 7px 20px; }
+  h1 { font-size: 38px; font-weight: 900; letter-spacing: -.02em; }
+  h1 em { font-style: normal; color: #a6e22e; }
+  .sub { font-size: 16px; color: #9fb08a; margin-top: 10px; }
+  .half { position: absolute; top: 196px; width: 520px; height: 440px; }
+  .half.l { left: 48px; }
+  .half.r { right: 48px; }
+  .bignum { font-size: 106px; font-weight: 900; line-height: 1; letter-spacing: -.05em; }
+  .bignum.l { color: #a6e22e; }
+  .bignum.r { color: #f0f6e6; }
+  .unit { font-size: 24px; font-weight: 700; margin-left: 12px; color: #9fb08a; }
+  .cap { font-size: 14px; color: #9fb08a; margin-top: 10px; letter-spacing: .05em; }
+  .axis { margin-top: 26px; border-left: 2px solid #33501a; padding-left: 20px; }
+  .ev { position: relative; font-size: 15px; color: #d6e4c4; line-height: 1.6; margin-bottom: 17px; }
+  .ev:before { content: ''; position: absolute; left: -26px; top: 9px; width: 9px; height: 9px;
+    background: #76b900; border-radius: 50%; }
+  .ev .y { display: inline-block; min-width: 84px; color: #76b900; font-size: 13px; font-weight: 700; }
+  .ev b { color: #f0f6e6; font-weight: 700; }
+  .divider { position: absolute; left: 600px; top: 210px; width: 1px; height: 400px; background: #2c3a1c; }
+  .vs { position: absolute; left: 574px; top: 380px; width: 52px; text-align: center;
+    background: #0d1509; font-size: 13px; color: #8fa37a; letter-spacing: .1em; padding: 8px 0; }
+  .bottom { position: absolute; left: 48px; right: 48px; bottom: 74px; height: 92px;
+    background: #131c0d; border: 1px solid #33501a; border-radius: 10px;
+    display: flex; align-items: center; padding: 0 26px; }
+  .bottom .n { font-size: 34px; font-weight: 800; color: #a6e22e; }
+  .bottom .t { margin-left: 22px; font-size: 15px; color: #d6e4c4; line-height: 1.7; }
+  .bottom .t b { color: #f0f6e6; }
+  .bottom .src { margin-left: auto; font-size: 12px; color: #8fa37a; text-align: right; line-height: 1.7; }
+  .foot { position: absolute; left: 48px; right: 48px; bottom: 32px; display: flex;
+    justify-content: space-between; font-size: 12.5px; color: #8fa37a; letter-spacing: .1em; }
+  .die { position: absolute; right: 56px; top: 34px; opacity: .45; }
+  .die i { position: absolute; width: 8px; height: 8px; border-radius: 1px; background: #243318; }
+  .die i.on { background: #76b900; }
+</style>
+</head>
+<body>
+<div id="fig">
+  <div class="grid"></div>
+  <div class="glow"></div>
+  <div class="die" id="die"></div>
+
+  <div style="position:absolute;left:48px;top:42px;">
+    <span class="tag">述评 / OPINION</span>
+    <span class="mono" style="margin-left:16px;font-size:13px;color:#8fa37a;letter-spacing:.2em;">2026.11.15 · NVIDIA BRIEF</span>
+  </div>
+  <div style="position:absolute;left:48px;top:102px;">
+    <h1>上面是三十三年，<em>下面是四天</em></h1>
+    <div class="sub">调查还没结束，公告先到了 —— 时间据公司公告与公开报道整理</div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="vs mono">VS</div>
+
+  <div class="half l">
+    <div><span class="bignum l serif">33</span><span class="unit">年</span></div>
+    <div class="cap">从一间餐馆的卡座，到数万亿美元</div>
+    <div class="axis">
+      <div class="ev"><span class="y mono">1993</span>三人、4 万美元，在圣何塞决定做图形芯片</div>
+      <div class="ev"><span class="y mono">1995-97</span>两款芯片接连失利，<b>"距离关门永远只有三十天"</b></div>
+      <div class="ev"><span class="y mono">2006</span>押上 <b>CUDA</b>，一个当时看不到生意的方向</div>
+      <div class="ev"><span class="y mono">2012</span>AlexNet 用两块 GeForce 跑出来，世界才回头</div>
+      <div class="ev"><span class="y mono">2026.10</span>受访谈接班：<b>"二十年后，希望还配得上这份工作"</b></div>
+    </div>
+  </div>
+
+  <div class="half r">
+    <div><span class="bignum r serif">4</span><span class="unit">天</span></div>
+    <div class="cap">从一封道歉信，到一份没有他声音的公告</div>
+    <div class="axis">
+      <div class="ev"><span class="y mono">11.08</span>全员信道歉；董事会启动独立调查，<b>表态留任</b></div>
+      <div class="ev"><span class="y mono">11.11</span>董事会晚间开会讨论去留</div>
+      <div class="ev"><span class="y mono">11.12</span>公告：三项职务即刻辞去，<b>未说明原因</b></div>
+      <div class="ev"><span class="y mono">11.15</span>公开信集结 <b>7,250+</b> 名现任员工署名</div>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div class="n mono">7,250+</div>
+    <div class="t">个写下真名的现任员工，只要求一件事：<b>先别急着结账</b></div>
+    <div class="src mono">签名数为网站自报，实时刷新<br>未经独立核验</div>
+  </div>
+
+  <div class="foot mono"><span>▦ 一篇站在黄仁勋这边的述评</span><span>时间据 NVIDIA 公告 / 公开报道整理 · 不构成投资建议</span></div>
+</div>
+<script>
+  var lit = [[0,3],[0,6],[1,1],[1,4],[1,7],[2,2],[2,5],[2,8],[3,0],[3,3],[3,6],[3,9],
+             [4,1],[4,4],[4,7],[5,2],[5,5],[5,8],[6,0],[6,3],[6,6],[7,1],[7,4],[7,7],
+             [8,2],[8,5],[8,9],[9,3],[9,6]];
+  var s = '';
+  for (var r=0;r<10;r++) for (var c=0;c<10;c++) {
+    var on = lit.some(function(p){return p[0]===r && p[1]===c;});
+    s += '<i class="'+(on?'on':'')+'" style="left:'+(c*12)+'px;top:'+(r*12)+'px"></i>';
+  }
+  document.getElementById('die').innerHTML = s;
+</script>
+</body>
+</html>

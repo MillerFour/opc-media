@@ -78,12 +78,12 @@ TPL = '''<!DOCTYPE html>
   <div class="glow" style="right:-180px;top:-230px;"></div>
   <div style="position:absolute;right:56px;top:26px;opacity:.85;">{die}</div>
   <div style="position:absolute;left:48px;top:44px;">
-    <span class="kicker">FLASH / 快讯</span>
+    <span class="kicker">{kicker}</span>
     <span class="mono" style="margin-left:14px;font-size:12px;color:#8fa37a;letter-spacing:.2em;">NO.{flash}</span>
   </div>
   <div style="position:absolute;left:48px;top:112px;width:560px;">
     <div class="hl" style="font-size:42px;">{title_main}<em>{title_hl}</em></div>
-    <div class="sub" style="font-size:17px;margin-top:14px;">{sub}</div>
+    <div class="sub" style="font-size:17px;margin-top:14px;width:490px;line-height:1.5;">{sub}</div>
   </div>
   <div class="term" style="position:absolute;right:48px;top:104px;width:290px;">
     <div class="termbar"><i class="dot"></i><i class="dot" style="background:#4f7118"></i><i class="dot" style="background:#2c3a1c"></i>
@@ -95,7 +95,7 @@ TPL = '''<!DOCTYPE html>
       <div class="row mono"><span>{m3_label}</span><b>{m3_value}</b></div>
     </div>
   </div>
-  <div class="foot mono"><span>{date} · DISPATCH DESK</span><span>{kw1} ｜ {kw2} ｜ {kw3}</span></div>
+  <div class="foot mono"><span>{date} · {desk}</span><span>{kw1} ｜ {kw2} ｜ {kw3}</span></div>
 </div>
 
 <div class="spacer"></div>
@@ -105,7 +105,7 @@ TPL = '''<!DOCTYPE html>
   <div class="glow" style="right:-210px;top:-160px;"></div>
   <div style="position:absolute;right:64px;top:64px;opacity:.8;">{die}</div>
   <div style="position:absolute;left:64px;top:88px;">
-    <span class="kicker" style="font-size:15px;">FLASH / 快讯</span>
+    <span class="kicker" style="font-size:15px;">{kicker}</span>
     <span class="mono" style="margin-left:16px;font-size:13px;color:#8fa37a;letter-spacing:.2em;">NO.{flash}</span>
   </div>
   <div style="position:absolute;left:64px;top:190px;width:760px;">
@@ -132,7 +132,7 @@ TPL = '''<!DOCTYPE html>
     <div class="mono" style="font-size:76px;font-weight:800;color:#a6e22e;line-height:1;">{flash}<span style="font-size:26px;color:#8fa37a;">/期</span></div>
     <div class="mono" style="margin-top:12px;font-size:13px;color:#8fa37a;letter-spacing:.24em;">{date}</div>
   </div>
-  <div class="foot mono" style="left:64px;right:64px;bottom:44px;"><span>GPU BRIEF · FACTS ≠ CLAIMS</span><span>{kw1} ｜ {kw2} ｜ {kw3}</span></div>
+  <div class="foot mono" style="left:64px;right:64px;bottom:44px;"><span>{foot_sig}</span><span>{kw1} ｜ {kw2} ｜ {kw3}</span></div>
 </div>
 
 </body>
@@ -145,6 +145,9 @@ SAMPLE = {
     "sub": "官方公告已确认 · 一封要求「正当程序」的公开信正在集结签名",
     "date": "2026.11.15",
     "flash": "001",
+    "kicker": "FLASH / 快讯",
+    "desk": "DISPATCH DESK",
+    "foot_sig": "GPU BRIEF · FACTS ≠ CLAIMS",
     "kw1": "CEO 交接", "kw2": "独立调查", "kw3": "公开信",
     "m1_label": "confirmed", "m1_value": "11.12",
     "m2_label": "signatures", "m2_value": "7,250+",
