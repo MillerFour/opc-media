@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #4e5644; font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+  .mono { font-family: Consolas, "Courier New", monospace; }
+  .serif { font-family: 'STSong','SimSun',serif; }
+  #v3 { position: relative; width: 1080px; height: 1440px; overflow: hidden;
+    background: #0d1509; color: #f0f6e6; }
+  .bg { position: absolute; inset: 0; background: url(素材/datacenter.jpg) center/cover no-repeat; opacity: .42;
+    filter: grayscale(.5) sepia(.6) hue-rotate(60deg) saturate(2.2) brightness(.62); }
+  .bgmask { position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(13,21,9,.92) 0%, rgba(13,21,9,.74) 26%, rgba(13,21,9,.90) 62%, #0d1509 100%); }
+  .grid { position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(to right, transparent 0 59px, rgba(118,185,0,.05) 59px 60px),
+                      repeating-linear-gradient(to bottom, transparent 0 59px, rgba(118,185,0,.05) 59px 60px); }
+  .logo { position: absolute; left: 64px; top: 56px; height: 44px; z-index: 5; }
+  .kicker { position: absolute; right: 64px; top: 60px; z-index: 5; background: #76b900; color: #0d1509;
+    font-size: 17px; font-weight: 800; letter-spacing: .16em; padding: 9px 16px; }
+  .big { position: absolute; left: 58px; top: 148px; z-index: 5; font-size: 212px; font-weight: 800;
+    color: #f0f6e6; line-height: 1; letter-spacing: -.055em; }
+  .big em { font-style: normal; color: #a6e22e; }
+  .lead { position: absolute; left: 66px; top: 366px; z-index: 5; font-size: 23px; color: #d6e4c4; }
+  .facts { position: absolute; left: 64px; right: 64px; top: 452px; z-index: 5; }
+  .f { background: rgba(13,21,9,.88); border-left: 4px solid #76b900; padding: 24px 26px; margin-bottom: 18px; }
+  .f .t { font-size: 25px; color: #eaf3dd; line-height: 1.4; }
+  .f .t b { color: #a6e22e; }
+  .f .s { font-size: 17px; color: #8fa37a; margin-top: 9px; line-height: 1.5; }
+  .punch { position: absolute; left: 64px; right: 64px; top: 1032px; z-index: 5; text-align: center;
+    font-family: 'STSong','SimSun',serif; font-size: 32px; color: #d6e4c4; }
+  .punch b { color: #a6e22e; }
+  .quote { position: absolute; left: 64px; right: 64px; bottom: 116px; z-index: 5; background: #0d1509;
+    border: 1px solid #33501a; border-left: 6px solid #76b900; padding: 30px 32px; }
+  .quote .t { font-size: 33px; color: #f0f6e6; line-height: 1.6; font-family: 'STSong','SimSun',serif; }
+  .quote .t b { color: #a6e22e; }
+  .src { position: absolute; right: 64px; bottom: 46px; z-index: 5; font-size: 14px; color: #8fa37a; letter-spacing: .04em; }
+  .die { position: absolute; right: 64px; top: 404px; width: 160px; height: 160px; z-index: 4; opacity: .45; }
+  .die i { position: absolute; width: 12px; height: 12px; border-radius: 1px; background: #1b2611; }
+  .die i.on { background: #76b900; }
+</style>
+</head>
+<body>
+<div id="v3">
+  <div class="bg"></div>
+  <div class="bgmask"></div>
+  <div class="grid"></div>
+  <div class="die" id="die"></div>
+  <img class="logo" src="素材/nv-logo.png" alt="NVIDIA">
+  <div class="kicker">股权结构</div>
+
+  <div class="big mono">3.58<em>%</em></div>
+  <div class="lead">他在这家公司的持股比例 · NVIDIA 2026 年代理声明</div>
+
+  <div class="facts">
+    <div class="f">
+      <div class="t">一股一票，<b>没有 AB 股</b></div>
+      <div class="s">他手里的票，一票就是一票</div>
+    </div>
+    <div class="f">
+      <div class="t">11 位董事，<b>10 位是独立董事</b></div>
+      <div class="s">他是董事会里唯一的非独立董事，现在也交了出去</div>
+    </div>
+    <div class="f">
+      <div class="t"><b>没有创始人否决权</b>，没有特殊任期保护</div>
+      <div class="s">33 年创始人，头上没有一张护身符</div>
+    </div>
+    <div class="f">
+      <div class="t">公司章程：董事会<b>过半数票</b>即可解职 CEO</div>
+      <div class="s">把一个人请走，需要的票并不难凑</div>
+    </div>
+  </div>
+
+  <div class="punch">把一个人请走，需要几票？<b>过半数。</b></div>
+
+  <div class="quote">
+    <div class="t">他不是公司的主人。<br>他是公司<b>最贵的那个雇员</b>。</div>
+  </div>
+  <div class="src mono">图源：NVIDIA 官网数据中心图 · 数据据 NVIDIA 2026 年代理声明</div>
+</div>
+<script>
+  var lit=[[0,2],[0,5],[0,8],[1,0],[1,3],[1,6],[2,1],[2,4],[2,7],[3,0],[3,3],[3,6],[3,9],
+           [4,1],[4,4],[4,7],[5,2],[5,5],[5,8],[6,0],[6,3],[6,6],[7,1],[7,4],[7,7],[8,2],[8,5],[8,8],[9,3],[9,6],[9,9]];
+  var s='';
+  for(var r=0;r<10;r++)for(var c=0;c<10;c++){
+    var on=lit.some(function(p){return p[0]===r&&p[1]===c;});
+    s+='<i class="'+(on?'on':'')+'" style="left:'+(c*16)+'px;top:'+(r*16)+'px"></i>';
+  }
+  document.getElementById('die').innerHTML=s;
+</script>
+</body>
+</html>

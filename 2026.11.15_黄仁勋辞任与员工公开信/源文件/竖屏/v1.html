@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #4e5644; font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+  .mono { font-family: Consolas, "Courier New", monospace; }
+  #v1 { position: relative; width: 1080px; height: 1440px; overflow: hidden;
+    background: #0d1509; color: #f0f6e6; }
+  .grid { position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(to right, transparent 0 59px, rgba(118,185,0,.05) 59px 60px),
+                      repeating-linear-gradient(to bottom, transparent 0 59px, rgba(118,185,0,.05) 59px 60px); }
+  .glow { position: absolute; width: 860px; height: 860px; right: -300px; top: -400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(118,185,0,.18) 0%, rgba(118,185,0,0) 66%); }
+  .logo { position: absolute; left: 64px; top: 56px; height: 44px; z-index: 5; }
+  .kicker { position: absolute; right: 64px; top: 60px; background: #76b900; color: #0d1509; z-index: 5;
+    font-size: 19px; font-weight: 800; letter-spacing: .2em; padding: 9px 18px 9px 22px; }
+  .h1 { position: absolute; left: 64px; top: 156px; z-index: 5; font-size: 104px; font-weight: 800;
+    line-height: 1.1; letter-spacing: -.045em; }
+  .h1 em { font-style: normal; color: #a6e22e; }
+  .sub { position: absolute; left: 68px; top: 392px; z-index: 5; font-size: 21px; color: #9fb08a; letter-spacing: .05em; }
+  .photo { position: absolute; left: 0; top: 424px; width: 1080px; height: 1016px;
+    background: url(素材/jensen-duotone.jpg) center 43%/cover no-repeat; }
+  .fadeTop { position: absolute; left: 0; top: 424px; width: 1080px; height: 210px; z-index: 3;
+    background: linear-gradient(180deg, #0d1509 0%, rgba(13,21,9,.72) 40%, rgba(13,21,9,0) 100%); }
+  .fadeBot { position: absolute; left: 0; bottom: 0; width: 1080px; height: 420px; z-index: 3;
+    background: linear-gradient(0deg, #0d1509 2%, rgba(13,21,9,.94) 32%, rgba(13,21,9,.55) 68%, rgba(13,21,9,0) 100%); }
+  .bar { position: absolute; left: 64px; right: 64px; bottom: 112px; z-index: 4; border-top: 1px solid rgba(118,185,0,.45);
+    padding-top: 26px; display: flex; align-items: flex-end; gap: 30px; }
+  .bar .n { font-size: 68px; font-weight: 800; color: #a6e22e; line-height: .95; }
+  .bar .t { font-size: 21px; color: #d6e4c4; line-height: 1.55; padding-bottom: 4px; }
+  .bar .t b { color: #f0f6e6; }
+  .src { position: absolute; right: 64px; bottom: 58px; z-index: 4; font-size: 15px; color: #8fa37a; letter-spacing: .05em; }
+</style>
+</head>
+<body>
+<div id="v1">
+  <div class="grid"></div>
+  <div class="glow"></div>
+  <div class="photo"></div>
+  <div class="fadeTop"></div>
+  <div class="fadeBot"></div>
+  <img class="logo" src="素材/nv-logo.png" alt="NVIDIA">
+  <div class="kicker">2026.11.12</div>
+
+  <div class="h1">三十三年，<br><em>输给四天</em></div>
+  <div class="sub">一纸公告 · 三项职务 · 即刻生效 · 调查还没结束</div>
+
+  <div class="bar">
+    <div class="n mono">7,250+</div>
+    <div class="t">名现任员工联署，要求董事会<br><b>给出一个答案</b></div>
+  </div>
+  <div class="src mono">图源：NVIDIA 官网 GTC 2026 keynote</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #4e5644; font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+  .mono { font-family: Consolas, "Courier New", monospace; }
+  .kai { font-family: 'STKaiti','KaiTi','STSong','SimSun',serif; }
+  #v2 { position: relative; width: 1080px; height: 1440px; overflow: hidden;
+    background: #0d1509; color: #f0f6e6; }
+  .grid { position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(to right, transparent 0 59px, rgba(118,185,0,.05) 59px 60px),
+                      repeating-linear-gradient(to bottom, transparent 0 59px, rgba(118,185,0,.05) 59px 60px); }
+  .glow { position: absolute; width: 820px; height: 820px; left: -280px; top: -340px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(118,185,0,.17) 0%, rgba(118,185,0,0) 68%); }
+  .logo { position: absolute; left: 64px; top: 56px; height: 44px; z-index: 5; }
+  .kicker { position: absolute; right: 64px; top: 60px; z-index: 5; background: #1b2710; color: #76b900;
+    border: 1px solid #33501a; font-size: 17px; font-weight: 700; letter-spacing: .12em; padding: 9px 16px; }
+  .big { position: absolute; left: 56px; top: 138px; z-index: 5; font-size: 208px; font-weight: 800;
+    color: #a6e22e; line-height: 1; letter-spacing: -.055em; }
+  .lead { position: absolute; left: 66px; top: 360px; z-index: 5; font-size: 25px; color: #d6e4c4; }
+  .lead b { color: #f0f6e6; }
+  .stat { position: absolute; left: 64px; right: 64px; top: 442px; z-index: 5; display: flex;
+    border-top: 1px solid #33501a; border-bottom: 1px solid #33501a; }
+  .stat .c { flex: 1; padding: 18px 10px; text-align: center; border-right: 1px solid #223213; }
+  .stat .c:last-child { border-right: none; }
+  .stat .v { font-size: 33px; font-weight: 800; color: #f0f6e6; line-height: 1.1; }
+  .stat .c:first-child .v { color: #a6e22e; }
+  .stat .l { font-size: 13px; color: #8fa37a; margin-top: 7px; letter-spacing: .04em; }
+  .cards { position: absolute; left: 64px; right: 64px; top: 600px; z-index: 5; }
+  .card { background: #f1f6e9; border-left: 5px solid #76b900; padding: 22px 26px; margin-bottom: 16px; }
+  .card .q { font-size: 27px; color: #1c2614; line-height: 1.5; }
+  .card .a { font-size: 14px; color: #6b7a5c; margin-top: 10px; letter-spacing: .04em; }
+  .strip { position: absolute; left: 0; right: 0; bottom: 0; height: 330px;
+    background: url(素材/datacenter.jpg) center/cover no-repeat;
+    filter: grayscale(.75) sepia(.8) hue-rotate(62deg) saturate(2.6) brightness(.62); }
+  .stripMask { position: absolute; left: 0; right: 0; bottom: 0; height: 330px; z-index: 3;
+    background: linear-gradient(0deg, #0d1509 4%, rgba(13,21,9,.93) 40%, rgba(13,21,9,.45) 78%, rgba(13,21,9,.1) 100%); }
+  .stripText { position: absolute; left: 64px; right: 64px; bottom: 96px; z-index: 4; }
+  .stripText .t { font-size: 27px; color: #f0f6e6; line-height: 1.6; font-family: 'STSong','SimSun',serif; }
+  .stripText .t b { color: #a6e22e; }
+  .src { position: absolute; right: 64px; bottom: 36px; z-index: 4; font-size: 14px; color: #8fa37a;
+    letter-spacing: .04em; text-align: right; line-height: 1.7; }
+</style>
+</head>
+<body>
+<div id="v2">
+  <div class="grid"></div>
+  <div class="glow"></div>
+  <div class="strip"></div>
+  <div class="stripMask"></div>
+  <img class="logo" src="素材/nv-logo.png" alt="NVIDIA">
+  <div class="kicker">员工公开信</div>
+
+  <div class="big mono">146,766</div>
+  <div class="lead">个名字，写在了一封致 NVIDIA 董事会的公开信上<br><b>其中 7,293 个，来自这家公司内部</b></div>
+
+  <div class="stat">
+    <div class="c"><div class="v mono">7,293</div><div class="l">现任员工</div></div>
+    <div class="c"><div class="v mono">1,356</div><div class="l">前任员工</div></div>
+    <div class="c"><div class="v mono">78,337</div><div class="l">股东</div></div>
+    <div class="c"><div class="v mono">59,780</div><div class="l">支持者</div></div>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <div class="q kai">"我穿皮夹克，我不同意。"</div>
+      <div class="a">现任员工签名 · standwithjensen.com</div>
+    </div>
+    <div class="card">
+      <div class="q kai">"33 年的服务，不该被几个错误一笔抹掉。"</div>
+      <div class="a">现任员工签名 · standwithjensen.com</div>
+    </div>
+    <div class="card">
+      <div class="q kai">"给他同样的体面吧 —— 就像他教我们的那样。"</div>
+      <div class="a">现任员工签名 · standwithjensen.com（译）</div>
+    </div>
+  </div>
+
+  <div class="stripText">
+    <div class="t">他还在这家公司上班。<br>董事会欠公众一个<b>解释</b>。</div>
+  </div>
+  <div class="src mono">图源：NVIDIA 官网数据中心图<br>数据来源：standwithjensen.com（实时刷新，单方主张，未经独立核验）</div>
+</div>
+</body>
+</html>
