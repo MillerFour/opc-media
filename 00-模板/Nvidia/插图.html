@@ -1,0 +1,112 @@
+<!-- 风格 Nvidia · 插图基线 · 画布 1200×780 · 截图后压 JPG（scale=1200:-1, -q:v 3） -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>Nvidia · 插图基线</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{margin:0;background:#e8ece1;}
+  body{display:flex;justify-content:center;padding:24px 0;}
+  #fig{
+    width:1200px;height:780px;flex:none;overflow:hidden;position:relative;
+    background-color:#0d1509;
+    background-image:linear-gradient(rgba(118,185,0,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(118,185,0,.07) 1px,transparent 1px);
+    background-size:44px 44px;display:flex;flex-direction:column;padding:42px 52px 32px;
+    font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;
+  }
+  .m{font-family:Consolas,'Courier New',monospace;}
+  .hdr{position:relative;z-index:2;flex:none;}
+  .top{display:flex;justify-content:space-between;align-items:center;}
+  .flash{display:inline-block;background:#76b900;color:#0d1509;font-size:12px;font-weight:800;letter-spacing:3px;padding:5px 13px;}
+  .stamp{font-size:11.5px;color:#8fa37a;letter-spacing:1.5px;}
+  .h1{font-size:34px;font-weight:800;color:#f0f6e6;line-height:1.4;margin-top:14px;}
+  .sub{font-size:13.5px;color:#9fb08a;line-height:1.7;margin-top:8px;}
+  .meta{margin-top:14px;border-top:1px solid #2c3a1c;padding-top:10px;font-size:11.5px;color:#76b900;letter-spacing:1.5px;}
+  .die{position:absolute;right:52px;top:40px;z-index:1;display:grid;grid-template-columns:repeat(10,10px);grid-auto-rows:10px;gap:3px;}
+  .die i{width:10px;height:10px;background:rgba(118,185,0,.12);border-radius:1px;}
+  .die i.on{background:#76b900;box-shadow:0 0 6px rgba(118,185,0,.55);}
+  .cards{flex:1;display:flex;gap:20px;margin-top:24px;min-height:0;z-index:2;}
+  .card{flex:1;border-radius:10px;padding:18px 20px;display:flex;flex-direction:column;}
+  .card-l{background:#f7f9f3;border:1px solid #dfe8d2;border-left:4px solid #76b900;}
+  .card-r{background:#0d1509;border:1px solid #2c3a1c;border-left:4px solid #76b900;}
+  .ct{font-size:12px;font-weight:800;letter-spacing:2.5px;color:#4c7a00;}
+  .ct2{font-size:13px;font-weight:800;letter-spacing:2px;color:#76b900;margin-top:3px;}
+  .li{font-size:14px;line-height:1.75;margin-top:12px;}
+  .card-l .li{color:#35402b;}
+  .card-r .li{color:#d6e4c4;}
+  .li b{color:#4c7a00;}
+  .card-r .li b{color:#76b900;}
+  .tags{margin-top:auto;display:flex;gap:8px;flex-wrap:wrap;padding-top:12px;}
+  .chip{font-size:11px;padding:4px 9px;border-radius:99px;}
+  .card-l .chip{background:#e7f0d8;color:#4c7a00;}
+  .card-r .chip{background:#1a2a10;color:#9fb08a;border:1px solid #2c3a1c;}
+  .data{margin-top:20px;background:#0d1509;border:1px solid #2c3a1c;border-radius:10px;padding:16px 20px;z-index:2;flex:none;}
+  .data-t{font-size:11.5px;font-weight:800;color:#76b900;letter-spacing:2px;}
+  .grid3{display:flex;margin-top:12px;}
+  .g3{flex:1;border-right:1px solid #2c3a1c;padding:0 16px;}
+  .g3:last-child{border-right:0;}
+  .num{font-size:30px;font-weight:800;color:#a6e22e;line-height:1.2;}
+  .lbl{font-size:11.5px;color:#9fb08a;margin-top:4px;}
+  .cap{margin-top:10px;font-size:11.5px;color:#8fa37a;line-height:1.6;}
+  .footer{margin-top:14px;display:flex;justify-content:space-between;font-size:11px;color:#8fa37a;z-index:2;flex:none;}
+</style>
+</head>
+<body>
+<div id="fig">
+  <div class="hdr">
+    <div class="top">
+      <span class="flash">FLASH · 快讯</span>
+      <span class="stamp m">YYYY.MM.DD HH:MM GMT+8</span>
+    </div>
+    <div class="h1">快讯标题占位，一句到位</div>
+    <div class="sub">副题：来源、时间、口径边界，一句话交代清楚。</div>
+    <div class="meta m">▦ BRIEF // DISPATCH 000 // FACTS ≠ CLAIMS</div>
+  </div>
+
+  <div class="die" aria-hidden="true">
+    <i class="on"></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i>
+    <i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i>
+    <i></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i>
+    <i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i>
+    <i></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i>
+    <i></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i>
+    <i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i>
+    <i></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i>
+    <i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i>
+    <i></i><i></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i>
+  </div>
+
+  <div class="cards">
+    <div class="card card-l">
+      <div class="ct m">// 01 CONFIRMED</div>
+      <div class="ct2">已确认 · 事实卡</div>
+      <div class="li"><b>01 ▸</b>　一条已确认事实，出处写在句末。</div>
+      <div class="li"><b>02 ▸</b>　另一条已确认事实，数字用等宽。</div>
+      <div class="li"><b>03 ▸</b>　事实与主张分离，此处只写事实。</div>
+      <div class="tags m"><span class="chip">公告</span><span class="chip">监管文件</span><span class="chip">YYYY-MM-DD</span></div>
+    </div>
+    <div class="card card-r">
+      <div class="ct m">// 02 CLAIMS</div>
+      <div class="ct2">单方主张 · 未背书</div>
+      <div class="li"><b>要求一 ▸</b>　主张原文压缩成一句，标明出处。</div>
+      <div class="li"><b>要求二 ▸</b>　不把主张写成事实。</div>
+      <div class="li"><b>要求三 ▸</b>　同上，逐条标注来源。</div>
+      <div class="tags m"><span class="chip">公开信</span><span class="chip">单方口径</span><span class="chip">未获背书</span></div>
+    </div>
+  </div>
+
+  <div class="data">
+    <div class="data-t m">// DATA SNAPSHOT · 深底三格（单位占位）</div>
+    <div class="grid3">
+      <div class="g3"><div class="num m">00,000</div><div class="lbl">指标一 · 占位</div></div>
+      <div class="g3"><div class="num m">00.0%</div><div class="lbl">指标二 · 占位</div></div>
+      <div class="g3"><div class="num m">00</div><div class="lbl">指标三 · 占位</div></div>
+    </div>
+    <div class="cap m">$ source: 出处占位 · 页面实时刷新，未经独立核验</div>
+  </div>
+
+  <div class="footer m"><span>▲ 图注：双口径对照版式示意（Nvidia风 · 编辑部绘制）</span><span>// END OF FIGURE 000</span></div>
+</div>
+</body>
+</html>

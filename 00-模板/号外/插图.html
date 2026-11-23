@@ -1,0 +1,71 @@
+<!-- 风格 号外 · 插图基线 · 画布 1200×780 · 截图后压 JPG（scale=1200:-1, -q:v 3） -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>号外 · 插图基线</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{margin:0;background:#dcd8cc;}
+  body{display:flex;justify-content:center;padding:24px 0;}
+  #fig{
+    width:1200px;height:780px;flex:none;overflow:hidden;position:relative;
+    background:#f7f4ec;border:1px solid #1a1a1a;display:flex;flex-direction:column;padding:36px 46px 30px;
+    font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;
+  }
+  .song{font-family:'STZhongsong','STSong','SimSun',serif;}
+  .m{font-family:Consolas,'Courier New',monospace;}
+  .mast{border-bottom:4px solid #1a1a1a;padding-bottom:14px;flex:none;}
+  .mast-top{display:flex;justify-content:space-between;align-items:center;}
+  .tag{display:inline-block;background:#c9342b;color:#f7f4ec;font-size:13px;font-weight:800;letter-spacing:4px;padding:5px 14px;}
+  .issue{font-size:12px;color:#6b6552;letter-spacing:2px;}
+  .h1{font-size:34px;font-weight:900;color:#1a1a1a;line-height:1.4;margin-top:14px;}
+  .kw{border-top:1px solid #1a1a1a;border-bottom:1px solid #1a1a1a;padding:7px 0;margin-top:12px;font-size:12px;color:#6b6552;letter-spacing:2px;}
+  .lead{font-size:15px;font-weight:700;color:#1a1a1a;line-height:1.8;padding-top:16px;flex:none;}
+  .tl{flex:1;display:flex;flex-direction:column;gap:13px;padding-top:18px;min-height:0;}
+  .tl-row{display:flex;gap:14px;align-items:flex-start;}
+  .badge{flex:none;background:#1a1a1a;color:#f7f4ec;font-size:13px;font-weight:800;letter-spacing:2px;padding:8px 12px;min-width:104px;text-align:center;}
+  .tl-c{flex:1;border-bottom:1px solid #d9d4c7;padding-bottom:10px;}
+  .tl-t{font-size:17px;font-weight:900;color:#1a1a1a;line-height:1.4;}
+  .tl-d{font-size:13.5px;color:#2b2b2b;line-height:1.7;margin-top:4px;}
+  .red{color:#c9342b;font-weight:800;}
+  .view{border-left:4px solid #c9342b;background:#efeadb;padding:12px 16px;margin-top:6px;flex:none;}
+  .view-t{font-size:12px;font-weight:800;color:#1a1a1a;letter-spacing:3px;}
+  .view-c{font-size:14px;font-weight:700;color:#1a1a1a;line-height:1.7;margin-top:4px;}
+  .footer{margin-top:16px;flex:none;}
+  .dbl{border-top:1px solid #1a1a1a;border-bottom:1px solid #1a1a1a;padding:8px 0;text-align:center;font-size:12px;color:#6b6552;letter-spacing:4px;}
+  .src{font-size:11.5px;color:#a19a88;line-height:1.7;margin-top:8px;}
+</style>
+</head>
+<body>
+<div id="fig">
+  <div class="mast">
+    <div class="mast-top">
+      <span class="tag">号外 EXTRA</span>
+      <span class="issue m">热点手记 · 第 N 期</span>
+    </div>
+    <div class="h1 song">热点标题占位，一句到位，别绕弯</div>
+    <div class="kw m">关键词一 ｜ 关键词二 ｜ 关键词三 ｜ 编辑部快评</div>
+  </div>
+
+  <div class="lead">导语两三句：发生了什么 + 为什么值得聊。报纸腔，短句，信息密度拉满。</div>
+
+  <div class="tl">
+    <div class="tl-row"><div class="badge m">时间点 · 一</div><div class="tl-c"><div class="tl-t song">事件回放：事情本身</div><div class="tl-d">用最短篇幅交代事实，观点与事实分离，不铺垫、不抒情。</div></div></div>
+    <div class="tl-row"><div class="badge m">时间点 · 二</div><div class="tl-c"><div class="tl-t song">发酵：争议出现</div><div class="tl-d">支持方与质疑方各摆一边道理，不带情绪转述。</div></div></div>
+    <div class="tl-row"><div class="badge m">时间点 · 三</div><div class="tl-c"><div class="tl-t song">转折：<span class="red">事态升级</span></div><div class="tl-d">关键事实用红字点睛，全文红色只留关键处，不超过五处。</div></div></div>
+    <div class="tl-row"><div class="badge m">时间点 · 四</div><div class="tl-c"><div class="tl-t song">收束：长期意义</div><div class="tl-d">下判断：会往哪走、真正的问题是什么、盯住哪个后续信号。</div></div></div>
+  </div>
+
+  <div class="view">
+    <div class="view-t">编辑部观点 · 钉子话</div>
+    <div class="view-c">短、硬、可引用。读者可以不同意，但必须记住这一句。</div>
+  </div>
+
+  <div class="footer">
+    <div class="dbl m">— 号外完 · EXTRA —</div>
+    <div class="src m">▲ 图注：事件时间线版式示意（号外风 · 编辑部绘制） · 口径：事实截至发稿，观点仅代表编辑部</div>
+  </div>
+</div>
+</body>
+</html>

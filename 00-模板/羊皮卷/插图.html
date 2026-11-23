@@ -1,0 +1,67 @@
+<!-- 风格 羊皮卷 · 插图基线 · 画布 1200×780 · 截图后压 JPG（scale=1200:-1, -q:v 3） -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>羊皮卷 · 插图基线</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{margin:0;background:#e8e4d8;}
+  body{display:flex;justify-content:center;padding:24px 0;}
+  #fig{
+    width:1200px;height:780px;flex:none;overflow:hidden;position:relative;
+    background:#faf7ef;display:flex;flex-direction:column;padding:42px 52px 34px;
+    font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;
+  }
+  .song{font-family:'STZhongsong','STSong','SimSun',serif;}
+  .m{font-family:Consolas,'Courier New',monospace;}
+  .banner{background:#0d1526;border:1px solid #2a3550;border-radius:12px;padding:24px 28px 20px;flex:none;}
+  .eb{display:inline-block;font-size:12px;font-weight:600;letter-spacing:3px;color:#c9a24b;border:1px solid #3d4a6b;border-radius:99px;padding:5px 14px;}
+  .h1{font-size:34px;font-weight:700;color:#f3ead2;line-height:1.4;margin-top:14px;letter-spacing:-0.5px;}
+  .lead{font-size:14px;color:#8a94ad;line-height:1.7;margin-top:10px;}
+  .body{flex:1;display:flex;flex-direction:column;gap:18px;min-height:0;padding-top:22px;}
+  .card{background:#f5f0e2;border:1px solid #e6dfcd;border-radius:10px;padding:18px 22px;}
+  .card-hd{font-size:14px;font-weight:700;color:#211d15;letter-spacing:2px;margin-bottom:16px;}
+  .tl{display:flex;flex-direction:column;gap:14px;}
+  .tl-row{display:flex;align-items:flex-start;}
+  .yr{width:104px;flex:none;text-align:right;padding-right:14px;padding-top:1px;font-size:14px;font-weight:700;color:#a88434;letter-spacing:1px;}
+  .rail{width:18px;flex:none;position:relative;align-self:stretch;}
+  .rail::before{content:'';position:absolute;left:8px;top:-14px;bottom:-14px;width:1px;background:#d8cfae;}
+  .dot{position:absolute;left:4px;top:5px;width:9px;height:9px;border-radius:50%;background:#c9a24b;box-shadow:0 0 0 3px #f5f0e2;}
+  .ev{flex:1;padding-left:12px;font-size:14px;color:#6b6552;line-height:1.6;}
+  .ev b{color:#3d3a33;}
+  .note{border-left:3px solid #c9a24b;background:#f5f0e2;padding:12px 16px;border-radius:0 8px 8px 0;}
+  .note-t{font-size:12px;font-weight:700;color:#a88434;letter-spacing:2px;margin-bottom:5px;}
+  .note-c{font-size:13px;color:#52525b;line-height:1.6;}
+  .footer{border-top:1px solid #e6dfcd;padding-top:12px;margin-top:16px;display:flex;justify-content:space-between;font-size:12px;color:#8a8372;line-height:1.6;flex:none;}
+</style>
+</head>
+<body>
+<div id="fig">
+  <div class="banner">
+    <span class="eb">CHRONICLE · 卷宗 ｜ 档案馆名称占位</span>
+    <div class="h1 song">大标题占位，一句定调<br>副标题可换行，点出叙事主线</div>
+    <div class="lead">导语两三句：交代这是一段什么历史或故事，为什么值得从头读起，叙事基调一次定准。</div>
+  </div>
+
+  <div class="body">
+    <div class="card">
+      <div class="card-hd song">附 · 世界大事年表（占位）</div>
+      <div class="tl">
+        <div class="tl-row"><div class="yr">纪元 00</div><div class="rail"><span class="dot"></span></div><div class="ev">力量一与力量二交锋，<b>混沌诞生，星魂孕育</b></div></div>
+        <div class="tl-row"><div class="yr">纪元 00</div><div class="rail"><span class="dot"></span></div><div class="ev">角色一叛离组织，<b>组建军团一</b></div></div>
+        <div class="tl-row"><div class="yr">纪元 00</div><div class="rail"><span class="dot"></span></div><div class="ev">威胁三降临世界，<b>诅咒开始蔓延</b></div></div>
+        <div class="tl-row"><div class="yr">纪元 00</div><div class="rail"><span class="dot"></span></div><div class="ev">威胁四被撕碎，<b>圣地成形；守护者封印暗面</b></div></div>
+        <div class="tl-row"><div class="yr">纪元 00</div><div class="rail"><span class="dot"></span></div><div class="ev">圣地爆炸，大灾难；<b>女王沉入海底</b></div></div>
+      </div>
+    </div>
+    <div class="note">
+      <div class="note-t">手记 · 点题</div>
+      <div class="note-c">读懂这条时间线，就读懂了这段历史的「第一推动力」——细节留白，正文再展开。</div>
+    </div>
+  </div>
+
+  <div class="footer m"><span>▲ 图注：世界大事年表版式示意（羊皮卷风 · 编辑部绘制）</span><span>资料来源占位 · YYYY-MM-DD</span></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!-- 风格 锌白 · 插图基线 · 画布 1200×780 · 截图后压 JPG（scale=1200:-1, -q:v 3） -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>锌白 · 插图基线</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{margin:0;background:#e4e4e7;}
+  body{display:flex;justify-content:center;padding:24px 0;}
+  #fig{
+    width:1200px;height:780px;flex:none;overflow:hidden;position:relative;
+    background:#ffffff;display:flex;flex-direction:column;padding:48px 56px 36px;
+    font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;
+  }
+  .m{font-family:Consolas,'Courier New',monospace;}
+  .eyebrow{font-size:13px;font-weight:600;letter-spacing:3px;color:#a1a1aa;display:flex;justify-content:space-between;}
+  .eyebrow b{color:#52525b;font-weight:700;}
+  .h1{font-size:36px;font-weight:700;color:#09090b;line-height:1.25;letter-spacing:-0.5px;margin:12px 0 8px;}
+  .sub{font-size:15px;color:#71717a;line-height:1.7;}
+  .rule{height:1px;background:#e4e4e7;margin:24px 0 22px;flex:none;}
+  .stats{display:flex;border:1px solid #e4e4e7;border-radius:10px;background:#fafafa;margin-bottom:24px;flex:none;}
+  .stat{flex:1;padding:14px 20px;border-right:1px solid #e4e4e7;}
+  .stat:last-child{border-right:0;}
+  .stat-n{font-size:26px;font-weight:700;color:#09090b;line-height:1.2;}
+  .stat-l{font-size:12px;color:#71717a;margin-top:4px;letter-spacing:1px;}
+  .main{flex:1;display:flex;gap:28px;min-height:0;}
+  .left{width:40%;display:flex;flex-direction:column;gap:12px;}
+  .col-hd{font-size:13px;font-weight:700;color:#52525b;letter-spacing:2px;}
+  .point{border-left:3px solid #18181b;background:#fafafa;padding:11px 15px;}
+  .pt{font-size:16px;font-weight:700;color:#09090b;line-height:1.3;}
+  .pt-num{color:#d4d4d8;font-size:18px;font-weight:700;margin-right:8px;}
+  .pd{font-size:12.5px;color:#52525b;line-height:1.6;margin-top:4px;}
+  .right{flex:1;border:1px solid #e4e4e7;border-radius:10px;background:#ffffff;padding:18px 20px;}
+  .bar-row{display:flex;align-items:center;margin-bottom:11px;font-size:13px;}
+  .bar-row:last-child{margin-bottom:0;}
+  .bar-label{width:110px;flex:none;color:#09090b;font-weight:600;}
+  .bar-val{width:66px;flex:none;color:#71717a;}
+  .track{flex:1;height:9px;background:#f4f4f5;border-radius:99px;overflow:hidden;}
+  .fill{height:9px;background:#18181b;border-radius:99px;}
+  .footer{border-top:1px solid #e4e4e7;padding-top:14px;margin-top:20px;display:flex;justify-content:space-between;font-size:12px;color:#a1a1aa;line-height:1.6;flex:none;}
+</style>
+</head>
+<body>
+<div id="fig">
+  <div class="eyebrow m"><span>COLUMN LABEL · <b>栏目眉标占位</b></span><span>DATA BRIEF // 00</span></div>
+  <div class="h1">主标题占位：一句话说清本期数据主题</div>
+  <div class="sub">来源占位（YYYY-MM-DD）· 一句话交代口径与阅读方式，不铺垫。</div>
+  <div class="rule"></div>
+
+  <div class="stats">
+    <div class="stat"><div class="stat-n m">00</div><div class="stat-l">指标项数 · 占位</div></div>
+    <div class="stat"><div class="stat-n m">000.0k</div><div class="stat-l">累计口径 · 占位</div></div>
+    <div class="stat"><div class="stat-n m">00:00</div><div class="stat-l">查询时间 · 占位</div></div>
+  </div>
+
+  <div class="main">
+    <div class="left">
+      <div class="col-hd">核心要点 / KEY POINTS</div>
+      <div class="point"><div class="pt"><span class="pt-num m">01</span>要点标题一</div><div class="pd">一句话说清是什么与为何值得关注。</div></div>
+      <div class="point"><div class="pt"><span class="pt-num m">02</span>要点标题二</div><div class="pd">补充一句：解决什么问题、适合谁用。</div></div>
+      <div class="point"><div class="pt"><span class="pt-num m">03</span>要点标题三</div><div class="pd">强调只用加粗，全篇不用彩色。</div></div>
+      <div class="point"><div class="pt"><span class="pt-num m">04</span>要点标题四</div><div class="pd">要点标题与正文保持一行，留足余量。</div></div>
+    </div>
+    <div class="right">
+      <div class="col-hd" style="margin-bottom:16px;">数据一览 / ★ 指标名称（单位占位）</div>
+      <div class="bar-row"><span class="bar-label">项目一</span><span class="bar-val m">000.0k</span><span class="track"><span class="fill" style="width:100%;"></span></span></div>
+      <div class="bar-row"><span class="bar-label">项目二</span><span class="bar-val m">000.0k</span><span class="track"><span class="fill" style="width:85%;"></span></span></div>
+      <div class="bar-row"><span class="bar-label">项目三</span><span class="bar-val m">000.0k</span><span class="track"><span class="fill" style="width:70%;"></span></span></div>
+      <div class="bar-row"><span class="bar-label">项目四</span><span class="bar-val m">000.0k</span><span class="track"><span class="fill" style="width:58%;"></span></span></div>
+      <div class="bar-row"><span class="bar-label">项目五</span><span class="bar-val m">000.0k</span><span class="track"><span class="fill" style="width:46%;"></span></span></div>
+      <div class="bar-row"><span class="bar-label">项目六</span><span class="bar-val m">000.0k</span><span class="track"><span class="fill" style="width:36%;"></span></span></div>
+      <div class="bar-row"><span class="bar-label">项目七</span><span class="bar-val m">000.0k</span><span class="track"><span class="fill" style="width:27%;"></span></span></div>
+      <div class="bar-row"><span class="bar-label">项目八</span><span class="bar-val m">000.0k</span><span class="track"><span class="fill" style="width:18%;"></span></span></div>
+    </div>
+  </div>
+
+  <div class="footer m"><span>▲ 图注：数据一览版式示意（锌白风 · 编辑部绘制）</span><span>source: 来源占位 · YYYY-MM-DD</span></div>
+</div>
+</body>
+</html>

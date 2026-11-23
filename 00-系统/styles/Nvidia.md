@@ -1,6 +1,6 @@
 # 风格卡 · Nvidia（GPU BRIEF）
 
-> 写作时只读这一张卡 + `00-模板/style-Nvidia.html` 骨架，不要全量读 style-guide。
+> 写作时只读这一张卡 + `00-模板/Nvidia/正文.html` 骨架，不要全量读 style-guide。
 
 ```yaml
 style_id: nvidia
@@ -9,9 +9,9 @@ aliases: [英伟达, nv, 绿黑, GPU风, 快讯]
 best_for: 科技公司快讯 / 财报 / 产品发布 / 人事变动 / 算力与芯片
 cover_theme_id: terminal
 added: 2026-11-15
-baseline: 00-模板/style-Nvidia.html
-cover_baseline: 00-模板/cover-Nvidia.html
-cover_generator: 00-模板/gen_nvidia_cover.py
+baseline: 00-模板/Nvidia/正文.html
+cover_baseline: 00-模板/Nvidia/封面.html
+cover_generator: 00-模板/Nvidia/gen_封面.py
 
 palette:
   bg: "#f7f9f3"        # 页面底，浅绿白（正文保持浅色，公众号可读）

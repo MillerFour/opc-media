@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
-"""从参数生成魔兽系列羊皮卷封面（2.3深蓝 + 方版深蓝），基于 wc1 cover.html 精简版"""
-import sys, io
+"""羊皮卷（Chronicle）封面生成器：2.3 深蓝版 + 方版深蓝，参数化输出单 HTML。
+用法：python gen_封面.py cfg.json（字段 out/num/sub_main/sub_rest/rule/ttl/rows/foot）"""
+import sys, io, json
 
 def make(out_path, num, sub_main, sub_rest, rule, ttl, rows, foot):
     rows23 = "\n".join(
@@ -119,6 +120,9 @@ def make(out_path, num, sub_main, sub_rest, rule, ttl, rows, foot):
     print("written:", out_path)
 
 if __name__ == "__main__":
-    import json
-    cfg = json.loads(sys.argv[1])
+    # 与其他风格生成器统一：接受配置文件路径
+    if len(sys.argv) < 2:
+        raise SystemExit("用法: python gen_封面.py cfg.json")
+    with io.open(sys.argv[1], encoding="utf-8") as f:
+        cfg = json.load(f)
     make(cfg["out"], cfg["num"], cfg["sub_main"], cfg["sub_rest"], cfg["rule"], cfg["ttl"], cfg["rows"], cfg["foot"])

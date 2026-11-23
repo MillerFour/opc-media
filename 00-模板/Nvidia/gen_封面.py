@@ -2,7 +2,7 @@
 """风格 E · Nvidia 封面参数化生成器：2.3 深绿快讯版 + 方版，输出单 HTML。
 
 用法：
-  python 00-模板/gen_nvidia_cover.py config.json
+  python 00-模板/Nvidia/gen_封面.py config.json
 config.json 字段见文件末尾 __main__ 的 SAMPLE。
 输出两个画板 id：#paper（900x383）、#sq（900x900）。
 """
@@ -170,7 +170,7 @@ def build(cfg):
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        build({"out": "cover-Nvidia.html"})
+        build({"out": "Nvidia/封面.html"})
     else:
         with io.open(sys.argv[1], encoding="utf-8") as f:
             build(json.load(f))

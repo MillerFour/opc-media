@@ -1,0 +1,82 @@
+<!-- 风格 檄文 · 插图基线 · 画布 1200×780 · 截图后压 JPG（scale=1200:-1, -q:v 3） -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>檄文 · 插图基线</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{margin:0;background:#d9d2bd;}
+  body{display:flex;justify-content:center;padding:24px 0;}
+  #fig{
+    width:1200px;height:780px;flex:none;overflow:hidden;position:relative;
+    background:#f5edd8;border:3px double #141210;display:flex;flex-direction:column;padding:34px 46px 30px;
+    font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;
+  }
+  .song{font-family:'STZhongsong','STSong','SimSun',serif;}
+  .m{font-family:Consolas,'Courier New',monospace;}
+  .wm{position:absolute;top:60px;right:-16px;font-size:210px;font-weight:900;color:rgba(20,18,16,.05);line-height:1;writing-mode:vertical-rl;pointer-events:none;user-select:none;}
+  .hd{border-bottom:4px solid #141210;padding-bottom:14px;position:relative;flex:none;}
+  .hd-top{display:flex;justify-content:space-between;align-items:center;}
+  .pub{display:inline-block;background:#b53225;color:#f5edd8;font-size:13px;font-weight:900;letter-spacing:5px;padding:6px 16px;border-radius:4px;box-shadow:2px 2px 0 rgba(20,18,16,.25);}
+  .no{font-size:12px;color:#7a6f55;letter-spacing:2px;}
+  .h1{font-size:36px;font-weight:900;color:#141210;line-height:1.4;letter-spacing:1px;margin-top:14px;}
+  .sub{font-size:13.5px;color:#5c5340;line-height:1.75;margin-top:8px;}
+  .kw{border-top:1px solid #141210;border-bottom:1px solid #141210;padding:7px 0;margin-top:12px;font-size:12px;color:#7a6f55;letter-spacing:2px;}
+  .seal{position:absolute;right:18px;top:56px;width:60px;height:60px;border:4px solid #b53225;border-radius:8px;color:#b53225;font-size:24px;font-weight:900;display:flex;align-items:center;justify-content:center;transform:rotate(9deg);background:rgba(181,50,37,.05);}
+  .body{flex:1;display:flex;flex-direction:column;gap:13px;padding-top:18px;min-height:0;}
+  .sec-hd{font-size:14px;font-weight:900;color:#141210;letter-spacing:1px;flex:none;}
+  .crime{position:relative;background:#efe5c9;border:1.5px solid #141210;border-radius:6px;padding:12px 18px;flex:none;}
+  .crime-t{font-size:15px;font-weight:900;color:#b53225;letter-spacing:1px;padding-right:110px;}
+  .crime-d{font-size:13.5px;color:#2b2620;line-height:1.7;margin-top:5px;padding-right:110px;}
+  .stamp{position:absolute;right:14px;top:12px;border:2.5px solid #b53225;color:#b53225;font-size:15px;font-weight:900;padding:3px 9px;border-radius:4px;background:rgba(245,237,216,.9);}
+  .judge{position:relative;background:#141210;padding:14px 18px;border-radius:4px;flex:none;}
+  .judge-t{font-size:12px;font-weight:800;color:#f5edd8;letter-spacing:3px;margin-bottom:6px;}
+  .judge-c{font-size:15px;font-weight:700;color:#f5edd8;line-height:1.7;padding-right:96px;}
+  .judge-seal{position:absolute;right:16px;bottom:10px;border:3px solid #b53225;color:#b53225;font-size:13px;font-weight:900;padding:4px 10px;border-radius:50% 50% 50% 4px;transform:rotate(-8deg);background:#f5edd8;}
+  .footer{border-top:1px solid #141210;padding-top:10px;margin-top:14px;display:flex;justify-content:space-between;font-size:11.5px;color:#7a6f55;line-height:1.6;flex:none;}
+</style>
+</head>
+<body>
+<div id="fig">
+  <span class="wm song">檄文讨贼</span>
+
+  <div class="hd">
+    <div class="hd-top">
+      <span class="pub song">奉热榜之名</span>
+      <span class="no m">讨伐檄 · 第 N 号</span>
+    </div>
+    <div class="h1 song">讨「XX」檄</div>
+    <div class="sub">副题一行：仿古文腔写现代事，反差越大越好笑——其罪有三，其心可诛。</div>
+    <div class="kw m">讨伐对象 ｜ 罪状三条 ｜ 传檄天下</div>
+    <span class="seal song">檄</span>
+  </div>
+
+  <div class="body">
+    <div class="sec-hd song">檄曰 · 数罪：其罪有三，条条可诛</div>
+    <div class="crime">
+      <div class="crime-t song">罪状一 ｜ 罪名占位，越短越狠</div>
+      <div class="crime-d">罪状事实陈述：基于事实的吐槽，靠事实本身的荒诞感制造笑点，不虚构。</div>
+      <span class="stamp song" style="transform:rotate(-6deg);">离谱！</span>
+    </div>
+    <div class="crime">
+      <div class="crime-t song">罪状二 ｜ 罪名占位</div>
+      <div class="crime-d">罪状事实陈述：从语料取朱批词，每篇二到四处，别盖满画面。</div>
+      <span class="stamp song" style="transform:rotate(5deg);">该！</span>
+    </div>
+    <div class="crime">
+      <div class="crime-t song">罪状三 ｜ 罪名占位</div>
+      <div class="crime-d">罪状事实陈述：罪状之间要有递进，从行为到态度到格局，一层比一层重。</div>
+      <span class="stamp song" style="transform:rotate(-4deg);">岂有此理！</span>
+    </div>
+    <div class="judge">
+      <div class="judge-t m">本官判曰 · 主判官收束</div>
+      <div class="judge-c song">"判词钉子话：一半古腔一半人话，可引用、可转发、可贴墙。"</div>
+      <span class="judge-seal song">传阅</span>
+    </div>
+  </div>
+
+  <div class="footer m"><span>▲ 图注：罪状清单版式示意（檄文风 · 编辑部绘制）</span><span>罪状据公开事实 · 吐槽立场占位</span></div>
+</div>
+</body>
+</html>
