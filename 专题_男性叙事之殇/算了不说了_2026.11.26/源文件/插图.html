@@ -1,0 +1,51 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #e8e8e8; font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+  .mono { font-family: Consolas, "Courier New", monospace; }
+  .board { position: relative; overflow: hidden; background: #fff; }
+  .wide { width: 900px; height: 383px; }
+  .sq { width: 900px; height: 900px; }
+  .bar { position: absolute; left: 48px; width: 4px; background: #1a6fb5; }
+  .tag { color: #1a6fb5; font-weight: 700; letter-spacing: .2em; }
+  .h1 { color: #111; font-weight: 700; line-height: 1.35; }
+  .sub { color: #888; line-height: 1.6; }
+  .foot { position: absolute; left: 48px; right: 48px; display: flex; justify-content: space-between;
+    font-size: 11px; color: #bbb; letter-spacing: .08em; }
+  .stamp { position: absolute; border: 2px solid #1a6fb5; color: #1a6fb5; border-radius: 3px;
+    font-weight: 800; letter-spacing: .12em; }
+
+  #fig { position:relative;width:1200px;height:780px;overflow:hidden;background:#fff; }
+  .conn { position:absolute;height:1px;background:#1a6fb5; }
+  .dot { position:absolute;width:6px;height:6px;background:#1a6fb5;border-radius:50%; }
+</style></head><body><div id="fig">
+  <div style="position:absolute;left:48px;top:44px;" class="mono tag" style="font-size:12px;">机制图 10 / 28</div>
+  <div class="bar" style="left:48px;top:44px;height:18px;"></div>
+  <div style="position:absolute;left:48px;right:48px;top:104px;">
+    <div style="font-size:28px;font-weight:700;color:#111;">机制示意 10</div>
+    <div style="font-size:14px;color:#888;margin-top:8px;">社会观察 · 一句话怎么长进习惯里</div>
+  </div>
+  <div class="conn" style="left:150px;top:360px;width:900px;"></div>
+  <div class="dot" style="left:148px;top:357px;"></div><div class="dot" style="left:598px;top:357px;"></div><div class="dot" style="left:1048px;top:357px;"></div>
+  
+  <div style="position:absolute;left:60px;top:250px;width:240px;text-align:center;">
+    <div class="mono" style="font-size:11px;color:#1a6fb5;letter-spacing:.16em;">STEP 01</div>
+    <div style="font-size:19px;font-weight:700;margin:8px 0;">默认</div>
+    <div style="font-size:13px;color:#777;line-height:1.7;">先假定谁有错</div>
+  </div>
+  <div style="position:absolute;left:480px;top:250px;width:240px;text-align:center;">
+    <div class="mono" style="font-size:11px;color:#1a6fb5;letter-spacing:.16em;">STEP 02</div>
+    <div style="font-size:19px;font-weight:700;margin:8px 0;">自证</div>
+    <div style="font-size:13px;color:#777;line-height:1.7;">证明没发生的事</div>
+  </div>
+  <div style="position:absolute;left:900px;top:250px;width:240px;text-align:center;">
+    <div class="mono" style="font-size:11px;color:#1a6fb5;letter-spacing:.16em;">STEP 03</div>
+    <div style="font-size:19px;font-weight:700;margin:8px 0;">退出</div>
+    <div style="font-size:13px;color:#777;line-height:1.7;">算了不说了</div>
+  </div>
+  <div style="position:absolute;left:48px;right:48px;top:440px;background:#f5f8fb;border-left:3px solid #1a6fb5;padding:18px 22px;">
+    <div class="mono" style="font-size:11px;color:#1a6fb5;letter-spacing:.14em;margin-bottom:9px;">来源立场：公开资料</div>
+    <div style="font-size:18px;color:#222;line-height:1.75;">“事实与观点分离，出处可见。”</div>
+  </div>
+  <div style="position:absolute;left:48px;bottom:46px;" class="mono" style="font-size:12px;color:#999;line-height:1.8;">据公开资料整理<br>编辑部绘制</div>
+  <div style="position:absolute;right:48px;bottom:46px;" class="mono" style="font-size:12px;color:#1a6fb5;letter-spacing:.14em;">事实 ≠ 立场 · 出处可见</div>
+</div></body></html>
